@@ -1,0 +1,7 @@
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\CommandGiverModule\bin\Debug\CommandGiverModule.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\CommandGiverModule\bin\Debug\CommandGiverModule.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\CommandGiverModule\bin\Debug\EngPlayerCommands.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\CommandGiverModule\bin\Debug\EngPlayerCommands.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\CommandGiverModule\obj\Debug\CommandGiverModule.csprojResolveAssemblyReference.cache
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\CommandGiverModule\obj\Debug\CommandGiverModule.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\CommandGiverModule\obj\Debug\CommandGiverModule.pdb
