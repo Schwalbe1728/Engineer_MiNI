@@ -1150,6 +1150,51 @@ Prefab:
       propertyPath: breakTorque
       value: 40000
       objectReference: {fileID: 0}
+    - target: {fileID: 146138742581656008, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 146283329688134664, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 146760944078075360, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 146369922237357808, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 146138742581656008, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_ForceAppPointDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146283329688134664, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_ForceAppPointDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146760944078075360, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_ForceAppPointDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146369922237357808, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_ForceAppPointDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54988566825557010, guid: 686ab437fead8af41a9e67f3c1f08354,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 686ab437fead8af41a9e67f3c1f08354, type: 2}
   m_IsPrefabParent: 0
@@ -1346,4 +1391,4 @@ MonoBehaviour:
   - {fileID: 740987777}
   - {fileID: 1919118105}
   - {fileID: 791274180}
-  gameplayScript: {fileID: 0}
+  gameplayScript: {fileID: 1744428664}

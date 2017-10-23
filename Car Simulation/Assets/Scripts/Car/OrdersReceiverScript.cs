@@ -30,19 +30,19 @@ public class OrdersReceiverScript : MonoBehaviour {
         foreach(AxleInfo axle in axleInfos)
         {
             axle.rightWheel.motorTorque = 0;
-            axle.rightWheel.brakeTorque = 0;
+            axle.rightWheel.brakeTorque = Mathf.Infinity;
             axle.rightWheel.steerAngle = 0;
 
             axle.leftWheel.motorTorque = 0;
-            axle.leftWheel.brakeTorque = 0;
-            axle.leftWheel.steerAngle = 0;
+            axle.leftWheel.brakeTorque = Mathf.Infinity;
+            axle.leftWheel.steerAngle = 0;            
 
             axle.rightWheelTransform.localRotation = Quaternion.Euler(0, 0, 90);
             axle.leftWheelTransform.localRotation = Quaternion.Euler(0, 0, 90);
         }
-
+        
         CarBody.velocity = Vector3.zero;
-        CarBody.angularVelocity = Vector3.zero;
+        CarBody.angularVelocity = Vector3.zero;        
         turnDegree = 0;
         torque = 0;
 
@@ -71,8 +71,8 @@ public class OrdersReceiverScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate ()
-    {   
-        foreach(AxleInfo axle in axleInfos)
+    {
+        foreach (AxleInfo axle in axleInfos)
         {
             if (axle.motor)
             {
@@ -80,8 +80,8 @@ public class OrdersReceiverScript : MonoBehaviour {
                 axle.leftWheel.motorTorque = torque;
             }
 
-            axle.rightWheel.brakeTorque = 0; //maxMotorTorque;
-            axle.leftWheel.brakeTorque = 0; //maxMotorTorque; 
+            axle.rightWheel.brakeTorque = breakTorque; //maxMotorTorque;
+            axle.leftWheel.brakeTorque = breakTorque; //maxMotorTorque; 
             
             if(axle.steering)
             {
@@ -99,7 +99,6 @@ public class OrdersReceiverScript : MonoBehaviour {
             while (!inputSource.ListEmpty) ;
         }
 
-        //turnDegree *= 0.995f;
         if (turnDegree > 0)
         {
             turnDegree = Mathf.Max(turnDegree - maxSteeringAngle * Time.fixedDeltaTime / steerResetDelay, 0);
@@ -136,12 +135,6 @@ public class OrdersReceiverScript : MonoBehaviour {
 
         foreach(AxleInfo axle in axleInfos)
         {
-            if(axle.motor)
-            {
-                axle.rightWheel.motorTorque = torque;
-                axle.leftWheel.motorTorque = torque;
-            }
-
             axle.rightWheel.brakeTorque = 0;
             axle.leftWheel.brakeTorque = 0;
         }
@@ -163,8 +156,6 @@ public class OrdersReceiverScript : MonoBehaviour {
 
     private void InterpretTurn(Turn turn)
     {
-        //Debug.Log("Accelerate");
-
         turnDegree =
             Mathf.Clamp(
                 turnDegree - turn.TurnDegree * turnDegreePerSec * Time.fixedDeltaTime,
@@ -178,18 +169,7 @@ public class OrdersReceiverScript : MonoBehaviour {
             {
                 UpdateSteeringWheels(axle.rightWheel, axle.rightWheelTransform);
                 UpdateSteeringWheels(axle.leftWheel, axle.leftWheelTransform);
-
-                /*
-                axle.rightWheel.steerAngle = -turnDegree;
-                axle.leftWheel.steerAngle = -turnDegree;                                
-
-                axle.rightWheelTransform.localRotation = Quaternion.Euler(0, -turnDegree, 90); //new Quaternion(0, -turnDegree, 0, 1);
-                axle.leftWheelTransform.localRotation = Quaternion.Euler(0, -turnDegree, 90); //new Quaternion(0, -turnDegree, 0, 1);
-                */
             }
-
-            //axle.rightWheel.brakeTorque = 0;
-            //axle.leftWheel.brakeTorque = 0;
         }
     }
 

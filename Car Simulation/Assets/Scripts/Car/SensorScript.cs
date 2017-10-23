@@ -30,5 +30,5 @@ public class SensorScript : MonoBehaviour {
         {
             currentDistance = 1;
         }
-	}    
+	}
 }
