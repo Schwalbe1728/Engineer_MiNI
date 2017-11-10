@@ -22,6 +22,13 @@ public class GameplayScript : MonoBehaviour
     [SerializeField]
     private Text ScoreValueText;
 
+    [SerializeField]
+    private Rigidbody CarRigidbody;
+
+    [SerializeField]
+    private Text VelocityValueText;
+
+
     private float currentScore;
     private int currentPenalty;
     private bool GameInProgress;
@@ -84,6 +91,16 @@ public class GameplayScript : MonoBehaviour
         {
             ScoreValueText.text = Score.ToString();
         }
+
+        if(VelocityValueText != null)
+        {
+            VelocityValueText.text = Mathf.RoundToInt(Velocity()).ToString();
+        }
+    }
+
+    private float Velocity()
+    {
+        return CarRigidbody.velocity.magnitude * 3.6f;
     }
 
     private IEnumerator PenalizeTime()
