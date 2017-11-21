@@ -83,7 +83,7 @@ public class GameplayScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        currentScore += 1000 * Vector3.Distance(LastPosition, CarPosition.position) * Time.deltaTime;
+        currentScore += (500 * Vector3.Distance(LastPosition, CarPosition.position) + 1 * Velocity()) * Time.deltaTime;
 
         LastPosition = CarPosition.position;
 

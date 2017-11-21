@@ -46,11 +46,14 @@ public class OrdersReceiverScript : MonoBehaviour {
         turnDegree = 0;
         torque = 0;
 
-        Command dump;
-
-        while(!inputSource.ListEmpty)
+        if (inputSource != null)
         {
-            dump = inputSource.FirstCommand;
+            Command dump;
+
+            while (!inputSource.ListEmpty)
+            {
+                dump = inputSource.FirstCommand;
+            }
         }
     }
 
@@ -90,7 +93,7 @@ public class OrdersReceiverScript : MonoBehaviour {
             }
         }
 
-        if (InProgress && !inputSource.ListEmpty)
+        if (InProgress && inputSource != null && !inputSource.ListEmpty)
         {                   
             do
             {
