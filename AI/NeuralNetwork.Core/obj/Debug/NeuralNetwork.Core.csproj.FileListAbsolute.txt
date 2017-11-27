@@ -1,0 +1,10 @@
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\NeuralNetwork.Core.dll
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\NeuralNetwork.Core.pdb
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.csprojResolveAssemblyReference.cache
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.csproj.CoreCompileInputs.cache
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.dll
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.pdb
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\PommaLabs.Thrower.dll
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\Troschuetz.Random.dll
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\PommaLabs.Thrower.xml
+C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\Troschuetz.Random.xml
