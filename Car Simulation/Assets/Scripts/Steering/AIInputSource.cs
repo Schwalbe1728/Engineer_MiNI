@@ -50,11 +50,13 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
     public void BindWithCar(GameObject car)
     {
         SensorsSource = car.transform;
-        gameplayScript = gameObject.GetComponent<GameplayScript>();
+        gameplayScript = car.GetComponent<GameplayScript>();
     }
 
     void Awake()
     {
+        CommandsList = new List<Command>();
+
         //Sensors = SensorsSource.GetComponentsInChildren<SensorScript>();
 
         // wstaw ten obiekt do obiektu AI

@@ -4,22 +4,39 @@ using UnityEngine;
 
 public class CarsOnSceneManager : MonoBehaviour
 {
+    public bool SimulationStarted { get { return simulationStarted; } }
+
+    private bool simulationStarted = false;
+
     private Color[] CarColors;
     private Transform[] CarsOnTheScene;
 
     private GameplayScript[] CarsGameplayScripts;
+
+    public void StartSimulation()
+    {
+        simulationStarted = true;
+    }
+
+    public void StopSimulation()
+    {
+        simulationStarted = false;
+    }
+
 
     public Vector3 AveragePosition()
     {
         Vector3 average = Vector3.zero;
 
         if (CarsOnTheScene != null)
-        {                    
+        {
             foreach (Transform car in CarsOnTheScene)
             {
                 average += car.position;
-            }                        
+            }
         }
+        else
+            return Vector3.zero;        
 
         return average / CarsOnTheScene.Length;
     }
@@ -28,7 +45,7 @@ public class CarsOnSceneManager : MonoBehaviour
     {
         Vector3 average = AveragePosition();
 
-        if (CarsOnTheScene != null)
+        if (CarsOnTheScene != null && CarsOnTheScene.Length > 1)
         {            
             Vector3 temp = Vector3.zero;
             float sumDist = 0;
@@ -62,13 +79,12 @@ public class CarsOnSceneManager : MonoBehaviour
         return result;
     }
 
-	// Use this for initialization
-	void Awake ()
+    public void CarAdded()
     {
         CarsOnTheScene = new Transform[transform.childCount];
         Debug.Log("Cars On Scene: " + transform.childCount.ToString());
 
-        for(int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             CarsOnTheScene[i] = transform.GetChild(i);
         }
@@ -94,55 +110,67 @@ public class CarsOnSceneManager : MonoBehaviour
 
         CarColors = new Color[CarsOnTheScene.Length];
         SetCarColors(CarColors.Length);
+    }
+
+	// Use this for initialization
+	void Awake ()
+    {
+        CarAdded();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        int leftInGame = CarsOnTheScene.Length;
-
-        foreach(GameplayScript script in CarsGameplayScripts)
+        if (simulationStarted)
         {
-            if(!script.InProgress)
-            {
-                leftInGame--;
-            }
-        }
+            int leftInGame = CarsOnTheScene.Length;
 
-        if(leftInGame == 0)
-        {
             foreach (GameplayScript script in CarsGameplayScripts)
             {
-                script.Restart();
+                if (!script.InProgress)
+                {
+                    leftInGame--;
+                }
             }
 
-            Debug.Log("Restart");
+            if (leftInGame == 0)
+            {
+                foreach (GameplayScript script in CarsGameplayScripts)
+                {
+                    script.Restart();
+                }
+
+                Debug.Log("Restart");
+            }
         }
     }
 
     private void SetCarColors(int numberOfCars)
     {
-        float step = 1f / (numberOfCars - 1);
-        float value = 0;
-
-        for(int i = 0; i < numberOfCars; i++)
+        if (numberOfCars > 0)
         {
-            //R = 1 - value; //2 * Mathf.Max(0.5f - value, 0);
-            //G = 1 - Mathf.Abs(0.5f - value) * 2;
-            //B = 1 - R; //2 * Mathf.Max(value - 0.5f, 0);                        
+            float step = 1f / (numberOfCars - 1);
+            float value = 0;
 
-            if (value < 0.5f)
+            for (int i = 0; i < numberOfCars; i++)
             {
-                CarColors[i] = Color.Lerp(Color.red, Color.green, value * 2);
-            }
-            else
-            {
-                CarColors[i] = Color.Lerp(Color.green, Color.blue, (value-0.5f) * 2);
-            }
+                //R = 1 - value; //2 * Mathf.Max(0.5f - value, 0);
+                //G = 1 - Mathf.Abs(0.5f - value) * 2;
+                //B = 1 - R; //2 * Mathf.Max(value - 0.5f, 0);                        
 
-            CarsOnTheScene[i].GetChild(0).GetComponent<Renderer>().material.color = CarColors[i];
+                if (value < 0.5f)
+                {
+                    CarColors[i] = Color.Lerp(Color.red, Color.green, value * 2);
+                }
+                else
+                {
+                    CarColors[i] = Color.Lerp(Color.green, Color.blue, (value - 0.5f) * 2);
+                }
 
-            value += step;
+                CarsOnTheScene[i].GetChild(0).GetComponent<Renderer>().material.color = CarColors[i];
+
+                value += step;
+            }
         }
     }
 

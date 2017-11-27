@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ConeScript : MonoBehaviour
 {
-    private Transform CarPosition;
+    //private Transform CarPosition;
     //private GameplayScript gameplayScript;
 
     void Awake()
     {
-        CarPosition = GameObject.Find("Car").GetComponent<Transform>();
+        //CarPosition = GameObject.Find("Car").GetComponent<Transform>();
         //gameplayScript = GameObject.Find("Gameplay Manager").GetComponent<GameplayScript>();
     }
 	

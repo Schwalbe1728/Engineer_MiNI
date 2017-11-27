@@ -80,11 +80,16 @@ public class GameplayScript : MonoBehaviour
         }
     }
 
+    public void SetStartPosition(Transform start)
+    {
+        StartPosition = start;
+    }
+
     void Start()
     {
         OnGameEnded += CheckIfNewRecord;
 
-        Restart();        
+        //Restart();        
     }
 
     void FixedUpdate()
