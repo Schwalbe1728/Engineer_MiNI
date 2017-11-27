@@ -18,16 +18,16 @@ public class GameplayScript : MonoBehaviour
     private Transform StartPosition;
 
     private Vector3 LastPosition;
-
+    /*
     [SerializeField]
     private Text ScoreValueText;
-
+    */
     [SerializeField]
     private Rigidbody CarRigidbody;
-
+    /*
     [SerializeField]
     private Text VelocityValueText;
-
+    */
 
     private float currentScore;
     private int currentPenalty;
@@ -36,12 +36,16 @@ public class GameplayScript : MonoBehaviour
 
 	public void EndGame()
     {
+        GameInProgress = false;
+
+        Debug.Log("Score: " + Score);
+
         if(OnGameEnded != null)
         {
             OnGameEnded(Score);
         }
 
-        Restart();
+        //Restart();
     }
 
     public bool InProgress
@@ -59,6 +63,8 @@ public class GameplayScript : MonoBehaviour
 
     public void Restart()
     {
+        GameInProgress = true;
+
         StopAllCoroutines();
         currentScore = 0;
         currentPenalty = 0;
@@ -87,15 +93,17 @@ public class GameplayScript : MonoBehaviour
 
         LastPosition = CarPosition.position;
 
-        if(ScoreValueText != null)
+        /*if(ScoreValueText != null)
         {
             ScoreValueText.text = Score.ToString();
         }
-
+        */
+        /*
         if(VelocityValueText != null)
         {
             VelocityValueText.text = Mathf.RoundToInt(Velocity()).ToString();
         }
+        */
     }
 
     private float Velocity()
@@ -114,10 +122,12 @@ public class GameplayScript : MonoBehaviour
 
     private void CheckIfNewRecord(int score)
     {
+        /*
         if( score > PlayerPrefs.GetFloat("Highest Score", 0) )
         {
             PlayerPrefs.SetFloat("Highest Score", score);
             Debug.Log("New record!: " + score);
         }
+        */
     }
 }

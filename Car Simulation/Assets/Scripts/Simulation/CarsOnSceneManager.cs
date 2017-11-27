@@ -7,6 +7,8 @@ public class CarsOnSceneManager : MonoBehaviour
     private Color[] CarColors;
     private Transform[] CarsOnTheScene;
 
+    private GameplayScript[] CarsGameplayScripts;
+
     public Vector3 AveragePosition()
     {
         Vector3 average = Vector3.zero;
@@ -15,7 +17,7 @@ public class CarsOnSceneManager : MonoBehaviour
         {                    
             foreach (Transform car in CarsOnTheScene)
             {
-                average += 1.05f * car.position;
+                average += car.position;
             }                        
         }
 
@@ -36,7 +38,7 @@ public class CarsOnSceneManager : MonoBehaviour
                 float tm = Vector3.Distance(car.position, average);
                 sumDist += tm;
 
-                temp += 1.05f * car.position * tm;
+                temp += car.position * tm;
             }
 
             average = temp / (sumDist);
@@ -71,6 +73,8 @@ public class CarsOnSceneManager : MonoBehaviour
             CarsOnTheScene[i] = transform.GetChild(i);
         }
 
+        CarsGameplayScripts = new GameplayScript[CarsOnTheScene.Length];
+
         for (int i = 0; i < CarsOnTheScene.Length; i++)
         {
             Collider[] car1 = CarsOnTheScene[i].gameObject.GetComponentsInChildren<Collider>();
@@ -84,6 +88,8 @@ public class CarsOnSceneManager : MonoBehaviour
                 //Physics.IgnoreCollision(car1, car2);
                 SetIgnoreColliders(car1, car2);
             }
+
+            CarsGameplayScripts[i] = CarsOnTheScene[i].gameObject.GetComponent<GameplayScript>();
         }
 
         CarColors = new Color[CarsOnTheScene.Length];
@@ -91,8 +97,27 @@ public class CarsOnSceneManager : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        
+	void Update ()
+    {
+        int leftInGame = CarsOnTheScene.Length;
+
+        foreach(GameplayScript script in CarsGameplayScripts)
+        {
+            if(!script.InProgress)
+            {
+                leftInGame--;
+            }
+        }
+
+        if(leftInGame == 0)
+        {
+            foreach (GameplayScript script in CarsGameplayScripts)
+            {
+                script.Restart();
+            }
+
+            Debug.Log("Restart");
+        }
     }
 
     private void SetCarColors(int numberOfCars)

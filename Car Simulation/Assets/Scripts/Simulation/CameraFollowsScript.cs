@@ -19,7 +19,7 @@ public class CameraFollowsScript : MonoBehaviour
         if(carManager != null)
         {
             Vector3 temp = carManager.AveragePositionAndRelax(); //carManager.AveragePosition();
-            temp += new Vector3(0, 25 + carManager.MaxDistanceFromPoint(temp, 5), 0);
+            temp += new Vector3(0, 25 + 1.1f * carManager.MaxDistanceFromPoint(temp, 5), 0);
 
             cameraPosition.position = temp;
         }

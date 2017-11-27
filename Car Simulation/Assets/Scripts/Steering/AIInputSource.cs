@@ -9,8 +9,11 @@ using BindAIToUnityModule;
 
 public class AIInputSource : InputSource, IAcquireData, IGiveCommand
 {
-    [SerializeField]
+    //[SerializeField]
     private SensorScript[] Sensors;
+
+    [SerializeField]
+    private Transform SensorsSource;
 
     [SerializeField]
     private IAIUnityBinder AIObject;
@@ -44,8 +47,16 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
         CommandsList.Add(command);
     }
 
+    public void BindWithCar(GameObject car)
+    {
+        SensorsSource = car.transform;
+        gameplayScript = gameObject.GetComponent<GameplayScript>();
+    }
+
     void Awake()
     {
+        //Sensors = SensorsSource.GetComponentsInChildren<SensorScript>();
+
         // wstaw ten obiekt do obiektu AI
         if (AIObject != null)
         {
