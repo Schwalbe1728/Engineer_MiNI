@@ -12,6 +12,9 @@ public class StartSimulationPanelScript : MonoBehaviour {
     private GameObject InputSourcesCollectionObject;
 
     [SerializeField]
+    private GameObject PopulationManagerObject;
+
+    [SerializeField]
     private NoOfCarsPanel NumberOfCarsPanel;
 
     [SerializeField]
@@ -22,6 +25,9 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
     [SerializeField]
     private GameObject AIInputSourcePrefab;
+
+    [SerializeField]
+    private GameObject AISpecimanPrefab;
 
     [SerializeField]
     private Toggle HumanInputEnabled;
@@ -38,9 +44,12 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
             if ( i != 0 || !HumanInputEnabled.isOn )
             {
+                GameObject AISpecimen = Instantiate(AISpecimanPrefab, PopulationManagerObject.transform);
                 GameObject inputSource = Instantiate(AIInputSourcePrefab, InputSourcesCollectionObject.transform);
                 AIInputSource AISource = inputSource.GetComponent<AIInputSource>();
-                
+
+                AISource.BindWithAI(AISpecimen.GetComponent<SpecimenScript>());
+
                 car.GetComponent<OrdersReceiverScript>().SetInputSource(AISource);
                 AISource.BindWithCar(car);
             }
@@ -55,6 +64,7 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
         carsManager.CarAdded();
         carsManager.StartSimulation();
+        PopulationManagerObject.GetComponent<PopulationManagerScript>().StartSimulation();
 
         HidePanel();       
     }

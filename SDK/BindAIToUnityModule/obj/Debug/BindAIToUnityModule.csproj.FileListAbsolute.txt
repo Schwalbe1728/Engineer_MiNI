@@ -9,3 +9,14 @@ C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\BindAIToUni
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\BindAIToUnityModule\obj\Debug\BindAIToUnityModule.csprojResolveAssemblyReference.cache
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\BindAIToUnityModule\obj\Debug\BindAIToUnityModule.dll
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\SDK\BindAIToUnityModule\obj\Debug\BindAIToUnityModule.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\bin\Debug\BindAIToUnityModule.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\bin\Debug\BindAIToUnityModule.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\bin\Debug\CommandGiverModule.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\bin\Debug\DataAcquiringModule.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\bin\Debug\EngPlayerCommands.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\bin\Debug\DataAcquiringModule.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\bin\Debug\CommandGiverModule.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\bin\Debug\EngPlayerCommands.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\obj\Debug\BindAIToUnityModule.csprojResolveAssemblyReference.cache
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\obj\Debug\BindAIToUnityModule.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\SDK\BindAIToUnityModule\obj\Debug\BindAIToUnityModule.pdb

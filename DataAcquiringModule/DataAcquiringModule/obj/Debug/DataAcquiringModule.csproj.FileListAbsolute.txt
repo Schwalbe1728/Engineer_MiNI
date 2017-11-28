@@ -2,3 +2,8 @@ C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\DataAcquiringMo
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\DataAcquiringModule\DataAcquiringModule\bin\Debug\DataAcquiringModule.pdb
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\DataAcquiringModule\DataAcquiringModule\obj\Debug\DataAcquiringModule.dll
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\DataAcquiringModule\DataAcquiringModule\obj\Debug\DataAcquiringModule.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\DataAcquiringModule\DataAcquiringModule\bin\Debug\DataAcquiringModule.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\DataAcquiringModule\DataAcquiringModule\bin\Debug\DataAcquiringModule.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\DataAcquiringModule\DataAcquiringModule\obj\Debug\DataAcquiringModule.csprojResolveAssemblyReference.cache
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\DataAcquiringModule\DataAcquiringModule\obj\Debug\DataAcquiringModule.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\DataAcquiringModule\DataAcquiringModule\obj\Debug\DataAcquiringModule.pdb

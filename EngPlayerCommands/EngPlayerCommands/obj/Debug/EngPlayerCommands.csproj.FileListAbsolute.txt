@@ -2,3 +2,8 @@ C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\EngPlayerComman
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\EngPlayerCommands\EngPlayerCommands\bin\Debug\EngPlayerCommands.pdb
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\EngPlayerCommands\EngPlayerCommands\obj\Debug\EngPlayerCommands.dll
 C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\EngPlayerCommands\EngPlayerCommands\obj\Debug\EngPlayerCommands.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\EngPlayerCommands\EngPlayerCommands\bin\Debug\EngPlayerCommands.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\EngPlayerCommands\EngPlayerCommands\bin\Debug\EngPlayerCommands.pdb
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\EngPlayerCommands\EngPlayerCommands\obj\Debug\EngPlayerCommands.csprojResolveAssemblyReference.cache
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\EngPlayerCommands\EngPlayerCommands\obj\Debug\EngPlayerCommands.dll
+C:\Users\Jarek\Documents\Visual Studio 2015\Projects\Inżynierka\Engineer_MiNI\EngPlayerCommands\EngPlayerCommands\obj\Debug\EngPlayerCommands.pdb

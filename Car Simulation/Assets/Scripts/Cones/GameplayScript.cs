@@ -11,6 +11,8 @@ public class GameplayScript : MonoBehaviour
     public event GameEnded OnGameEnded;
     public event GameStarted OnGameStarted;
 
+    private static int AUTOFAIL_SCORE = -250;
+
     [SerializeField]
     private Transform CarPosition;
 
@@ -122,6 +124,11 @@ public class GameplayScript : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             currentPenalty++;
+
+            if(Score < AUTOFAIL_SCORE)
+            {
+                EndGame();
+            }
         }
     }
 

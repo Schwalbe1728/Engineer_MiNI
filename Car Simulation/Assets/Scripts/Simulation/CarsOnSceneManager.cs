@@ -13,6 +13,9 @@ public class CarsOnSceneManager : MonoBehaviour
 
     private GameplayScript[] CarsGameplayScripts;
 
+    [SerializeField]
+    private PopulationManagerScript populationManager;
+
     public void StartSimulation()
     {
         simulationStarted = true;
@@ -135,6 +138,8 @@ public class CarsOnSceneManager : MonoBehaviour
 
             if (leftInGame == 0)
             {
+                populationManager.RoundEnded();
+                       
                 foreach (GameplayScript script in CarsGameplayScripts)
                 {
                     script.Restart();

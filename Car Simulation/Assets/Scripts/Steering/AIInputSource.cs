@@ -32,7 +32,7 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
 
         SensorData result = new SensorData(distances);
 
-        if(gameplayScript != null)
+        if(gameplayScript != null && result != null)
         {
             result.InsertData("Score", gameplayScript.Score);
             result.InsertData("Game In Progress", (gameplayScript.InProgress) ? 1 : 0);
@@ -53,17 +53,16 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
         gameplayScript = car.GetComponent<GameplayScript>();
     }
 
-    void Awake()
+    public void BindWithAI(IAIUnityBinder speciman)
+    {
+        AIObject = speciman;
+        AIObject.SetCommandGiver(this);
+        AIObject.SetDataReceiver(this);
+    }
+
+    void Start()
     {
         CommandsList = new List<Command>();
-
-        //Sensors = SensorsSource.GetComponentsInChildren<SensorScript>();
-
-        // wstaw ten obiekt do obiektu AI
-        if (AIObject != null)
-        {
-            AIObject.SetCommandGiver(this);
-            AIObject.SetDataReceiver(this);
-        }
+        Sensors = SensorsSource.GetComponentsInChildren<SensorScript>();        
     }
 }

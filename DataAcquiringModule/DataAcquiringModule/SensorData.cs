@@ -17,6 +17,7 @@ namespace DataAcquiringModule
         public SensorData(float[] sensorValues)
         {
             sensors = sensorValues;
+            additionalData = new Dictionary<string, float>();
         }
 
         public void InsertData(string key, float value)
