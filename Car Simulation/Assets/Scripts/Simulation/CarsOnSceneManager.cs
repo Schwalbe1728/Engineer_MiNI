@@ -145,7 +145,7 @@ public class CarsOnSceneManager : MonoBehaviour
                     script.Restart();
                 }
 
-                Debug.Log("Restart");
+                //Debug.Log("Restart");
             }
         }
     }

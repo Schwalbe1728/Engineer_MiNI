@@ -12,6 +12,7 @@ public class GameplayScript : MonoBehaviour
     public event GameStarted OnGameStarted;
 
     private static int AUTOFAIL_SCORE = -250;
+    private WaypointManagerScript WaypointManager;
 
     [SerializeField]
     private Transform CarPosition;
@@ -40,7 +41,7 @@ public class GameplayScript : MonoBehaviour
     {
         GameInProgress = false;
 
-        Debug.Log("Score: " + Score);
+        //Debug.Log("Score: " + Score);
 
         if(OnGameEnded != null)
         {
@@ -76,6 +77,8 @@ public class GameplayScript : MonoBehaviour
         GameInProgress = true;
         coroutine = StartCoroutine(PenalizeTime());
 
+        WaypointManager.Reset();
+
         if(OnGameStarted != null)
         {
             OnGameStarted();
@@ -87,16 +90,21 @@ public class GameplayScript : MonoBehaviour
         StartPosition = start;
     }
 
-    void Start()
+    void Awake()
     {
         OnGameEnded += CheckIfNewRecord;
 
+        WaypointManager = GameObject.Find("Waypoints").GetComponent<WaypointManagerScript>();
         //Restart();        
     }
 
     void FixedUpdate()
     {
-        currentScore += (500 * Vector3.Distance(LastPosition, CarPosition.position) + 1 * Velocity()) * Time.deltaTime;
+        currentScore +=
+            (500 * Vector3.Distance(LastPosition, CarPosition.position) 
+             /*- 100 * (1-WaypointManager.ScoreProgressToWaypoint(CarPosition))*/
+             + Vector3.Distance(StartPosition.position, CarPosition.position)
+             + 1 * Velocity()) * Time.deltaTime;
 
         LastPosition = CarPosition.position;
 
@@ -120,10 +128,13 @@ public class GameplayScript : MonoBehaviour
 
     private IEnumerator PenalizeTime()
     {
+        float penaltyPerSec = 25.0f;
+
         while(GameInProgress)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds( 1 / penaltyPerSec);
             currentPenalty++;
+            //currentPenalty += currentPenalty / 48;
 
             if(Score < AUTOFAIL_SCORE)
             {

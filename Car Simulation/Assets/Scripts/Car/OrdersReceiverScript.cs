@@ -59,7 +59,6 @@ public class OrdersReceiverScript : MonoBehaviour {
 
     public void GameStarted()
     {
-        Debug.Log("Game Started");
         InProgress = true;
     }
 
