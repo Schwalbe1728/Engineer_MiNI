@@ -100,10 +100,15 @@ public class GameplayScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        float lastToCar = Vector3.Distance(LastPosition, CarPosition.position);
+        float startToCar = Vector3.Distance(StartPosition.position, CarPosition.position);
+        float startToLast = Vector3.Distance(StartPosition.position, LastPosition);
+
         currentScore +=
-            (500 * Vector3.Distance(LastPosition, CarPosition.position) 
+            (300 * (lastToCar + startToCar - startToLast )
              /*- 100 * (1-WaypointManager.ScoreProgressToWaypoint(CarPosition))*/
-             + Vector3.Distance(StartPosition.position, CarPosition.position)
+             //+ 50 * (startToCar - startToLast)
+             //+ startToCar * ((startToCar > startToLast)? 1 : -0.5f )             
              + 1 * Velocity()) * Time.deltaTime;
 
         LastPosition = CarPosition.position;
