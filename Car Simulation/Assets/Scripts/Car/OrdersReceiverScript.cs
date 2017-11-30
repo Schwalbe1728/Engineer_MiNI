@@ -59,14 +59,18 @@ public class OrdersReceiverScript : MonoBehaviour {
 
     public void GameStarted()
     {
-        Debug.Log("Game Started");
         InProgress = true;
+    }
+
+    public void SetInputSource(InputSource input)
+    {
+        inputSource = input;
     }
 
     void Awake()
     {
         InProgress = false;
-        GameplayScript temp = GameObject.Find("Gameplay Manager").GetComponent<GameplayScript>();
+        GameplayScript temp = gameObject.GetComponent<GameplayScript>(); //GameObject.Find("Gameplay Manager").GetComponent<GameplayScript>();
 
         temp.OnGameEnded += GameEnded;
         temp.OnGameStarted += GameStarted;

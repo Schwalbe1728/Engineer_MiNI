@@ -9,8 +9,11 @@ using BindAIToUnityModule;
 
 public class AIInputSource : InputSource, IAcquireData, IGiveCommand
 {
-    [SerializeField]
+    //[SerializeField]
     private SensorScript[] Sensors;
+
+    [SerializeField]
+    private Transform SensorsSource;
 
     [SerializeField]
     private IAIUnityBinder AIObject;
@@ -29,7 +32,7 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
 
         SensorData result = new SensorData(distances);
 
-        if(gameplayScript != null)
+        if(gameplayScript != null && result != null)
         {
             result.InsertData("Score", gameplayScript.Score);
             result.InsertData("Game In Progress", (gameplayScript.InProgress) ? 1 : 0);
@@ -44,13 +47,22 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
         CommandsList.Add(command);
     }
 
-    void Awake()
+    public void BindWithCar(GameObject car)
     {
-        // wstaw ten obiekt do obiektu AI
-        if (AIObject != null)
-        {
-            AIObject.SetCommandGiver(this);
-            AIObject.SetDataReceiver(this);
-        }
+        SensorsSource = car.transform;
+        gameplayScript = car.GetComponent<GameplayScript>();
+    }
+
+    public void BindWithAI(IAIUnityBinder speciman)
+    {
+        AIObject = speciman;
+        AIObject.SetCommandGiver(this);
+        AIObject.SetDataReceiver(this);
+    }
+
+    void Start()
+    {
+        CommandsList = new List<Command>();
+        Sensors = SensorsSource.GetComponentsInChildren<SensorScript>();        
     }
 }

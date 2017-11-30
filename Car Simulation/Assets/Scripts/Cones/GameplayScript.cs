@@ -11,6 +11,9 @@ public class GameplayScript : MonoBehaviour
     public event GameEnded OnGameEnded;
     public event GameStarted OnGameStarted;
 
+    private static int AUTOFAIL_SCORE = -250;
+    private WaypointManagerScript WaypointManager;
+
     [SerializeField]
     private Transform CarPosition;
 
@@ -18,16 +21,16 @@ public class GameplayScript : MonoBehaviour
     private Transform StartPosition;
 
     private Vector3 LastPosition;
-
+    /*
     [SerializeField]
     private Text ScoreValueText;
-
+    */
     [SerializeField]
     private Rigidbody CarRigidbody;
-
+    /*
     [SerializeField]
     private Text VelocityValueText;
-
+    */
 
     private float currentScore;
     private int currentPenalty;
@@ -36,12 +39,16 @@ public class GameplayScript : MonoBehaviour
 
 	public void EndGame()
     {
+        GameInProgress = false;
+
+        //Debug.Log("Score: " + Score);
+
         if(OnGameEnded != null)
         {
             OnGameEnded(Score);
         }
 
-        Restart();
+        //Restart();
     }
 
     public bool InProgress
@@ -59,6 +66,8 @@ public class GameplayScript : MonoBehaviour
 
     public void Restart()
     {
+        GameInProgress = true;
+
         StopAllCoroutines();
         currentScore = 0;
         currentPenalty = 0;
@@ -68,34 +77,48 @@ public class GameplayScript : MonoBehaviour
         GameInProgress = true;
         coroutine = StartCoroutine(PenalizeTime());
 
+        WaypointManager.Reset();
+
         if(OnGameStarted != null)
         {
             OnGameStarted();
         }
     }
 
-    void Start()
+    public void SetStartPosition(Transform start)
+    {
+        StartPosition = start;
+    }
+
+    void Awake()
     {
         OnGameEnded += CheckIfNewRecord;
 
-        Restart();        
+        WaypointManager = GameObject.Find("Waypoints").GetComponent<WaypointManagerScript>();
+        //Restart();        
     }
 
     void FixedUpdate()
     {
-        currentScore += (500 * Vector3.Distance(LastPosition, CarPosition.position) + 1 * Velocity()) * Time.deltaTime;
+        currentScore +=
+            (500 * Vector3.Distance(LastPosition, CarPosition.position) 
+             /*- 100 * (1-WaypointManager.ScoreProgressToWaypoint(CarPosition))*/
+             + Vector3.Distance(StartPosition.position, CarPosition.position)
+             + 1 * Velocity()) * Time.deltaTime;
 
         LastPosition = CarPosition.position;
 
-        if(ScoreValueText != null)
+        /*if(ScoreValueText != null)
         {
             ScoreValueText.text = Score.ToString();
         }
-
+        */
+        /*
         if(VelocityValueText != null)
         {
             VelocityValueText.text = Mathf.RoundToInt(Velocity()).ToString();
         }
+        */
     }
 
     private float Velocity()
@@ -105,19 +128,29 @@ public class GameplayScript : MonoBehaviour
 
     private IEnumerator PenalizeTime()
     {
+        float penaltyPerSec = 25.0f;
+
         while(GameInProgress)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds( 1 / penaltyPerSec);
             currentPenalty++;
+            //currentPenalty += currentPenalty / 48;
+
+            if(Score < AUTOFAIL_SCORE)
+            {
+                EndGame();
+            }
         }
     }
 
     private void CheckIfNewRecord(int score)
     {
+        /*
         if( score > PlayerPrefs.GetFloat("Highest Score", 0) )
         {
             PlayerPrefs.SetFloat("Highest Score", score);
             Debug.Log("New record!: " + score);
         }
+        */
     }
 }
