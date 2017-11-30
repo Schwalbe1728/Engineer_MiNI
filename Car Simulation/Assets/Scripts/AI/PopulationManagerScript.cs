@@ -1,14 +1,34 @@
 ﻿using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Learning;
 using NeuralNetwork.Core.Model;
+using NeuralNetwork.Core.Model.Neurons;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopulationManagerScript : MonoBehaviour
 {
     public bool SimulationStarted { get { return simulationStarted; } }
+
+    [SerializeField]
+    private float PercentToSelect;
+
+    [SerializeField]
+    private float MutationChance;
+
+    [SerializeField]
+    private Text GenNumberText;
+
+    [SerializeField]
+    private Text BestScoreText;
+
+    [SerializeField]
+    private Text WorstScoreText;
+
+    [SerializeField]
+    private Text AverageScoreText;
 
     private bool simulationStarted = false;
 
@@ -23,9 +43,13 @@ public class PopulationManagerScript : MonoBehaviour
 
         if (learningProcess == null)
         {
-            learningProcess = new LearningProcess(Specimen.Length, config);
-            learningProcess.NewRandomPopulation(Specimen.Length, new List<int> { 3, 5, 4, 3, 2 }
-            , new List<Type> { typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron) });
+            learningProcess =
+                new LearningProcess(Specimen.Length, config,
+                    new List<int> { 3, 5, 4, 2 },
+                    new List<Type> { typeof(TanHNeuron), typeof(TanHNeuron), typeof(TanHNeuron) }
+                );
+            //learningProcess.NewRandomPopulation(Specimen.Length, new List<int> { 3, 5, 4, 3, 2 }
+            //, new List<Type> { typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron) });
             learningProcess.LearningAlgorithm.Config = config;
         }
 
@@ -73,9 +97,42 @@ public class PopulationManagerScript : MonoBehaviour
     {
         config = new GeneticAlgorithmConfig();
         config.RandOptions = new RandomizerOptions(-1, 1);
-        config.PercentToSelect = 0.4;
-        config.MutationChance = 0.05;
+        config.PercentToSelect = PercentToSelect;
+        config.MutationChance = MutationChance;
         config.ParentChances = Chances;
+    }
+
+    void Update()
+    {
+        if (Specimen != null)
+        {
+            GenNumberText.text = " ";
+
+            float Min = int.MaxValue;
+            float Max = int.MinValue;
+            float Sum = 0;
+
+            foreach (SpecimenScript speciman in Specimen)
+            {
+                float score = speciman.FinalScore();
+
+                Sum += score;
+
+                if (score > Max)
+                {
+                    Max = score;
+                }
+
+                if (score < Min)
+                {
+                    Min = score;
+                }
+            }
+
+            WorstScoreText.text = Min.ToString("n0");
+            BestScoreText.text = Max.ToString("n0");
+            AverageScoreText.text = (Sum / Specimen.Length).ToString("n1");
+        }
     }
 
     private int[] Chances(int n)
@@ -103,8 +160,9 @@ public class PopulationManagerScript : MonoBehaviour
         for(int i = 0; i < n; i++)
         {
             result[i] = Mathf.Max(1, Mathf.RoundToInt(20 * scores[i] / max));
-        }*/
+        }
 
         return result;
+        */
     }
 }

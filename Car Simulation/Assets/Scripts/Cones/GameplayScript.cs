@@ -105,7 +105,7 @@ public class GameplayScript : MonoBehaviour
         float startToLast = Vector3.Distance(StartPosition.position, LastPosition);
 
         currentScore +=
-            (300 * (lastToCar + startToCar - startToLast )
+            (300 * (lastToCar / 2 + startToCar - startToLast )
              /*- 100 * (1-WaypointManager.ScoreProgressToWaypoint(CarPosition))*/
              //+ 50 * (startToCar - startToLast)
              //+ startToCar * ((startToCar > startToLast)? 1 : -0.5f )             

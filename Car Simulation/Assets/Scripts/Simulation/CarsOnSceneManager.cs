@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarsOnSceneManager : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class CarsOnSceneManager : MonoBehaviour
 
     [SerializeField]
     private PopulationManagerScript populationManager;
+
+    [SerializeField]
+    private Text CarsLeftText;
 
     public void StartSimulation()
     {
@@ -135,6 +139,8 @@ public class CarsOnSceneManager : MonoBehaviour
                     leftInGame--;
                 }
             }
+
+            if (CarsLeftText != null) CarsLeftText.text = leftInGame.ToString();
 
             if (leftInGame == 0)
             {
