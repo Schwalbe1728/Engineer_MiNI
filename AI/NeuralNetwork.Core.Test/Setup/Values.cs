@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using NeuralNetwork.Core.Interfaces;
 using NeuralNetwork.Core.Model;
+using NeuralNetwork.Core.Model.Neurons;
 
 namespace NeuralNetwork.Core.Test.Setup
 {

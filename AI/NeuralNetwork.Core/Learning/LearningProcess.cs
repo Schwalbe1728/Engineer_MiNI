@@ -21,10 +21,10 @@ namespace NeuralNetwork.Core.Learning
             HistoricalData = new List<ProcessData>();
         }
 
-        public LearningProcess(int populationCount, GeneticAlgorithmConfig alg) : base()
+        public LearningProcess(int populationCount, GeneticAlgorithmConfig alg, List<int> layerCounts, List<Type> neuronTypes) : base()
         {
-            NewRandomPopulation(populationCount, new List<int> {3,5,2}
-            , new List<Type> {typeof(IdentityNeuron),typeof(IdentityNeuron)} );
+            NewRandomPopulation(populationCount, layerCounts
+            , neuronTypes);
             Generation = 0;
             HistoricalData = new List<ProcessData>();
             LearningAlgorithm.Config = alg;

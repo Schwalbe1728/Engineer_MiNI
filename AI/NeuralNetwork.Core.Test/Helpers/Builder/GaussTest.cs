@@ -3,6 +3,7 @@ using System.Linq;
 using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Learning;
 using NeuralNetwork.Core.Model;
+using NeuralNetwork.Core.Model.Neurons;
 using NUnit.Framework;
 using Troschuetz.Random;
 

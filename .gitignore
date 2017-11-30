@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/AI/.vs/NeuralNetwork/v15/Server/sqlite3/storage.ide-wal
+/AI/.vs/NeuralNetwork/v15/Server/sqlite3/storage.ide-shm
+/AI/.vs/NeuralNetwork/v15/Server/sqlite3/storage.ide
+/AI/.vs/NeuralNetwork/v15/Server/sqlite3/db.lock

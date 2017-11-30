@@ -2,7 +2,7 @@
 using NeuralNetwork.Core.Helpers;
 using NeuralNetwork.Core.Interfaces;
 
-namespace NeuralNetwork.Core.Model
+namespace NeuralNetwork.Core.Model.Neurons
 {
     [Serializable]
     public class IdentityNeuron : INeuron<double>
