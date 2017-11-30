@@ -8,3 +8,13 @@ C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\PommaLabs
 C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\Troschuetz.Random.dll
 C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\PommaLabs.Thrower.xml
 C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Core\bin\Debug\Troschuetz.Random.xml
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\bin\Debug\NeuralNetwork.Core.dll
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\bin\Debug\NeuralNetwork.Core.pdb
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\bin\Debug\PommaLabs.Thrower.dll
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\bin\Debug\Troschuetz.Random.dll
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\bin\Debug\PommaLabs.Thrower.xml
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\bin\Debug\Troschuetz.Random.xml
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.csprojResolveAssemblyReference.cache
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.csproj.CoreCompileInputs.cache
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.dll
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.pdb

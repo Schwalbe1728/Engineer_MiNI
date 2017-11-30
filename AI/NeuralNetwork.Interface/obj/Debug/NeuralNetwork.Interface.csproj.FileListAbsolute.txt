@@ -11,3 +11,16 @@ C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Interface\bin\Debug\Pomm
 C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Interface\bin\Debug\NeuralNetwork.Core.pdb
 C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Interface\bin\Debug\Troschuetz.Random.xml
 C:\Users\trzas\source\repos\NeuralNetwork\NeuralNetwork.Interface\bin\Debug\PommaLabs.Thrower.xml
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\NeuralNetwork.Interface.exe.config
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\NeuralNetwork.Interface.exe
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\NeuralNetwork.Interface.pdb
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\NeuralNetwork.Core.dll
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\Troschuetz.Random.dll
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\PommaLabs.Thrower.dll
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\NeuralNetwork.Core.pdb
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\Troschuetz.Random.xml
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\bin\Debug\PommaLabs.Thrower.xml
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interface.csprojResolveAssemblyReference.cache
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interface.csproj.CoreCompileInputs.cache
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interface.exe
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interface.pdb

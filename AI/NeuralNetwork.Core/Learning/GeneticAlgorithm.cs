@@ -47,7 +47,7 @@ namespace NeuralNetwork.Core.Learning
             {
                 GenerationIndex = generationIndex,
                 BestScore = Population[0].Key,
-                BestSpecimen = Population[0].Value,
+                BestSpecimen = Population[0].Value.Copy(),
                 WorstScore = Population.Last().Key,
                 AverageScore = Population.Average(x => x.Key),
                 MedianScore = median,

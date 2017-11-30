@@ -2,6 +2,7 @@
 using NUnit.Framework.Internal;
 using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Model;
+using NeuralNetwork.Core.Model.Neurons;
 
 namespace NeuralNetwork.Core.Test.Helpers.Builder
 {

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Messaging;
 using NeuralNetwork.Core.Interfaces;
 using NeuralNetwork.Core.Model;
+using NeuralNetwork.Core.Model.Neurons;
 
 namespace NeuralNetwork.Core.Helpers
 {

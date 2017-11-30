@@ -1,4 +1,5 @@
 ﻿using NeuralNetwork.Core.Model;
+using NeuralNetwork.Core.Model.Neurons;
 using NeuralNetwork.Core.Test.Setup;
 using NUnit.Framework;
 
