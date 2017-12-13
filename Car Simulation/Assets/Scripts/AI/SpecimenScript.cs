@@ -18,7 +18,7 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
     private NetworkBase<double> NeuralNetwork;
     private SensorData LastSensorReading;
 
-    private bool GameFinished;
+    public bool GameFinished { get; private set; }
 
     public void SetCommandGiver(IGiveCommand comm)
     {

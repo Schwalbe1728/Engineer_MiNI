@@ -32,6 +32,12 @@ public class StartSimulationPanelScript : MonoBehaviour {
     [SerializeField]
     private Toggle HumanInputEnabled;
 
+    [SerializeField]
+    private InputField MutationChanceInputField;
+
+    [SerializeField]
+    private InputField SelectPercentInputField;
+
     public void StartSimulation()
     {
         CarsOnSceneManager carsManager = CarsCollectionObject.GetComponent<CarsOnSceneManager>();
@@ -64,7 +70,37 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
         carsManager.CarAdded();
         carsManager.StartSimulation();
-        PopulationManagerObject.GetComponent<PopulationManagerScript>().StartSimulation();
+        PopulationManagerScript popScript = PopulationManagerObject.GetComponent<PopulationManagerScript>();//.StartSimulation();        
+
+        float mut, sel;
+
+        if (!float.TryParse( MutationChanceInputField.text, out mut ))
+        {
+            Debug.LogWarning("Mutation Chance ma błędny format");
+            string temp = MutationChanceInputField.text.Replace(".", ",");
+
+            if (!float.TryParse(temp, out mut))
+            {
+                Debug.LogWarning("Mutation Chance ma błędny format... wait what");
+                //MutationChanceInputField.text.Replace(".", ",");
+            }
+        }
+
+        if (!float.TryParse(SelectPercentInputField.text, out sel))
+        {
+            Debug.LogWarning("Selection Chance ma błędny format");
+            string temp = SelectPercentInputField.text.Replace(".", ",");
+
+            if(!float.TryParse(temp, out sel))
+            {
+
+            }
+        }
+
+        mut = Mathf.Clamp01(mut);
+        sel = Mathf.Clamp01(sel);                
+
+        popScript.StartSimulation(mut, sel);
 
         HidePanel();       
     }

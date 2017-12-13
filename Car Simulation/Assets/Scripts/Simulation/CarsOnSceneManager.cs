@@ -34,18 +34,23 @@ public class CarsOnSceneManager : MonoBehaviour
     public Vector3 AveragePosition()
     {
         Vector3 average = Vector3.zero;
+        int activeCars = 0;
 
         if (CarsOnTheScene != null)
         {
             foreach (Transform car in CarsOnTheScene)
             {
-                average += car.position;
+                if (car.GetComponent<GameplayScript>().InProgress)
+                {
+                    average += car.position;
+                    activeCars++;
+                }
             }
         }
         else
             return Vector3.zero;        
 
-        return average / CarsOnTheScene.Length;
+        return (activeCars > 0)? average / activeCars : Vector3.zero;
     }
 
     public Vector3 AveragePositionAndRelax()
@@ -59,10 +64,13 @@ public class CarsOnSceneManager : MonoBehaviour
 
             foreach (Transform car in CarsOnTheScene)
             {
-                float tm = Vector3.Distance(car.position, average);
-                sumDist += tm;
+                if (car.GetComponent<GameplayScript>().InProgress)
+                {
+                    float tm = Vector3.Distance(car.position, average);
+                    sumDist += tm;
 
-                temp += car.position * tm;
+                    temp += car.position * tm;                    
+                }
             }
 
             average = temp / (sumDist);
@@ -77,7 +85,7 @@ public class CarsOnSceneManager : MonoBehaviour
 
         foreach(Transform car in CarsOnTheScene)
         {
-            if(Vector3.Distance(point, car.position) > result)
+            if(Vector3.Distance(point, car.position) > result && car.GetComponent<GameplayScript>().InProgress)
             {
                 result = Vector3.Distance(point, car.position);
             }

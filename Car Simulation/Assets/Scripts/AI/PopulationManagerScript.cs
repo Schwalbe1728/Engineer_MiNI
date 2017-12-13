@@ -36,13 +36,21 @@ public class PopulationManagerScript : MonoBehaviour
     private GeneticAlgorithmConfig config;
     private LearningProcess learningProcess;
 
-    public void StartSimulation()
+    public void StartSimulation(float mutChance, float selectPercent)
     {
+        //Debug.Log("Start Simulation - Mutation Chance = " + mutChance + ", Selection Percent = " + selectPercent);
+
         simulationStarted = true;
         if(Specimen == null) Specimen = transform.GetComponentsInChildren<SpecimenScript>();
 
         if (learningProcess == null)
         {
+            PercentToSelect = selectPercent;
+            MutationChance = mutChance;
+
+            config.PercentToSelect = PercentToSelect;
+            config.MutationChance = MutationChance;
+
             learningProcess =
                 new LearningProcess(Specimen.Length, config,
                     new List<int> { 3, 5, 2 },
@@ -67,7 +75,7 @@ public class PopulationManagerScript : MonoBehaviour
     public void RoundEnded()
     {
         StopSimulation();
-        StartSimulation();
+        StartSimulation(MutationChance, PercentToSelect);
     }
 
     public void StopSimulation()
@@ -91,6 +99,21 @@ public class PopulationManagerScript : MonoBehaviour
             ", Med: " + tmpData.MedianScore + 
             ", Best: " + tmpData.BestScore + 
             ", Worst: " + tmpData.WorstScore);
+    }
+
+    public List<SpecimenScript> GetActiveCars()
+    {
+        List<SpecimenScript> result = new List<SpecimenScript>();
+
+        foreach(SpecimenScript speciman in Specimen)
+        {
+            if(!speciman.GameFinished)
+            {
+                result.Add(speciman);
+            }
+        }
+
+        return result;
     }
 
     void Awake()
