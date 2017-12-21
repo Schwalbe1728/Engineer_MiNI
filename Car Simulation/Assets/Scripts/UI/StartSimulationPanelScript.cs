@@ -68,8 +68,7 @@ public class StartSimulationPanelScript : MonoBehaviour {
             }
         }
 
-        carsManager.CarAdded();
-        carsManager.StartSimulation();
+        carsManager.CarAdded();        
         PopulationManagerScript popScript = PopulationManagerObject.GetComponent<PopulationManagerScript>();//.StartSimulation();        
 
         float mut, sel;
@@ -98,9 +97,10 @@ public class StartSimulationPanelScript : MonoBehaviour {
         }
 
         mut = Mathf.Clamp01(mut);
-        sel = Mathf.Clamp01(sel);                
+        sel = Mathf.Clamp01(sel);
 
-        popScript.StartSimulation(mut, sel);
+        carsManager.StartSimulation(0f);
+        popScript.StartSimulation(mut, sel);        
 
         HidePanel();       
     }

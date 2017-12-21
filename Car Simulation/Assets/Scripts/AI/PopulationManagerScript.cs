@@ -53,13 +53,13 @@ public class PopulationManagerScript : MonoBehaviour
 
             learningProcess =
                 new LearningProcess(Specimen.Length, config,
-                    new List<int> { 3, 5, 2 },
-                    new List<Type> { typeof(TanHNeuron), typeof(TanHNeuron)/*, typeof(TanHNeuron) */}
+                    new List<int> { 5, 4, 2 },
+                    new List<Type> { typeof(TanHNeuron), typeof(TanHNeuron), /*typeof(TanHNeuron)*/ }
                 );
             //learningProcess.NewRandomPopulation(Specimen.Length, new List<int> { 3, 5, 4, 3, 2 }
             //, new List<Type> { typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron) });
             learningProcess.LearningAlgorithm.Config = config;
-        }
+        }        
 
         for(int i = 0; i < Specimen.Length; i++)
         {

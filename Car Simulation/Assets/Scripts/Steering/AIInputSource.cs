@@ -21,6 +21,25 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
     [SerializeField]
     private GameplayScript gameplayScript;
 
+    public void ActivateSensors()
+    {
+        if (Sensors != null)
+        {
+            foreach (SensorScript sensor in Sensors)
+            {
+                sensor.Activate();
+            }
+        }
+    }
+
+    public void DeativateSensors()
+    {
+        foreach (SensorScript sensor in Sensors)
+        {
+            sensor.Deactivate();
+        }
+    }
+
     public SensorData GetData()
     {
         float[] distances = new float[Sensors.Length];
@@ -63,6 +82,7 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
     void Start()
     {
         CommandsList = new List<Command>();
-        Sensors = SensorsSource.GetComponentsInChildren<SensorScript>();        
+        Sensors = SensorsSource.GetComponentsInChildren<SensorScript>();
+        ActivateSensors();      
     }
 }

@@ -7,6 +7,7 @@ using DataAcquiringModule;
 using System;
 using NeuralNetwork.Core.Model;
 using EngPlayerCommands;
+using Assets.Scripts.AI;
 
 public class SpecimenScript : MonoBehaviour, IAIUnityBinder
 {
@@ -63,12 +64,16 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
             
             if (LastSensorReading != null && LastSensorReading.Data("Game In Progress") > 0)
             {
+                //Debug.Log("Score: " + LastSensorReading.Data("Score"));
+
                 //float[] decisionValues = NeuralNetwork.Calculate(LastSensorReading.Sensors);
                 double[] reeeee = new double[LastSensorReading.Sensors.Length];
                 for(int i = 0; i < reeeee.Length; i++)
                 {
                     reeeee[i] = (double)LastSensorReading.Sensors[i];
                 }
+
+                //reeeee[reeeee.Length - 1] = (double)LastSensorReading.Data("Score");
 
                 CalculateNextOrder(NeuralNetwork.Calculate(reeeee));
             }
@@ -87,17 +92,26 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
         double accelerateDecision = sensorReadings[1];
 
         if(ValueOverThreshold(turningDecision))
-        {            
-            CommandGiver.GiveCommand(
+        {
+            /*CommandGiver.GiveCommand(
                 new Turn(
                             (turningDecision > 0)? 
                                 TurnDirection.Right :
                                 TurnDirection.Left
-                                ));                       
+                                ));
+                                */
+
+            CommandGiver.GiveCommand(
+                new SimplifiedCommand(
+                    (turningDecision > 0) ? 
+                        CommandType.TurnRight : 
+                        CommandType.TurnLeft));
+
+            //Debug.Log("Turn");
         }
 
         if (ValueOverThreshold(accelerateDecision))
-        {
+        {/*
             if(accelerateDecision > 0)
             {
                 CommandGiver.GiveCommand(new Accelerate());
@@ -105,7 +119,15 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
             else
             {
                 CommandGiver.GiveCommand(new Break());
-            }
+            }*/
+
+            CommandGiver.GiveCommand(
+                new SimplifiedCommand(
+                    (accelerateDecision > 0) ?
+                        CommandType.Accelerate :
+                        CommandType.Break
+                    )
+                );
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using EngPlayerCommands;
+﻿using Assets.Scripts.AI;
+using EngPlayerCommands;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,22 +34,26 @@ public class HumanInputSourceScript : InputSource {
 
         if(rightPressed && !leftPressed)
         {
-            CommandsList.Add(new Turn(TurnDirection.Right));
+            //CommandsList.Add(new Turn(TurnDirection.Right));
+            CommandsList.Add(new SimplifiedCommand(CommandType.TurnRight));
         }
 
         if(leftPressed && !rightPressed)
         {
-            CommandsList.Add(new Turn(TurnDirection.Left));
+            //CommandsList.Add(new Turn(TurnDirection.Left));
+            CommandsList.Add(new SimplifiedCommand(CommandType.TurnLeft));
         }
 
         if(accPressed && !breakPressed)
         {
-            CommandsList.Add(new Accelerate());
+            //CommandsList.Add(new Accelerate());
+            CommandsList.Add(new SimplifiedCommand(CommandType.Accelerate));
         }
 
         if (!accPressed && breakPressed)
         {
-            CommandsList.Add(new Break());
+            //CommandsList.Add(new Break());
+            CommandsList.Add(new SimplifiedCommand(CommandType.Break));
         }
 
     }

@@ -77,7 +77,7 @@ public class GameplayScript : MonoBehaviour
         GameInProgress = true;
         coroutine = StartCoroutine(PenalizeTime());
 
-        WaypointManager.Reset();
+        //WaypointManager.Reset();
 
         if(OnGameStarted != null)
         {
@@ -109,7 +109,7 @@ public class GameplayScript : MonoBehaviour
              /*- 100 * (1-WaypointManager.ScoreProgressToWaypoint(CarPosition))*/
              //+ 50 * (startToCar - startToLast)
              //+ startToCar * ((startToCar > startToLast)? 1 : -0.5f )             
-             + 1 * Velocity()) * Time.deltaTime;
+             + 0.1f * Velocity()) * Time.deltaTime;
 
         LastPosition = CarPosition.position;
 

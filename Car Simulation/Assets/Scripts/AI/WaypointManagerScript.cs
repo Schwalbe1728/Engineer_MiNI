@@ -44,7 +44,7 @@ public class WaypointManagerScript : MonoBehaviour
 
     void Update()
     {
-        CheckIfWaypointPassed();
+        //CheckIfWaypointPassed();
     }
 
     private void CheckIfWaypointPassed(bool forcePass = false)

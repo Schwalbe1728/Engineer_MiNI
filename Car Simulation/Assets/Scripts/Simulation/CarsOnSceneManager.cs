@@ -11,6 +11,8 @@ public class CarsOnSceneManager : MonoBehaviour
 
     private Color[] CarColors;
     private Transform[] CarsOnTheScene;
+    private Bounds CarRectBounds;
+    private bool BoundsCreated = false;
 
     private GameplayScript[] CarsGameplayScripts;
 
@@ -20,17 +22,30 @@ public class CarsOnSceneManager : MonoBehaviour
     [SerializeField]
     private Text CarsLeftText;
 
-    public void StartSimulation()
+    public void StartSimulation(float delay = 0f)
     {
-        simulationStarted = true;
-    }
+        Debug.Log("CarsOnSceneManager.StartSimulation");
+
+        if (delay <= 0f)
+        {
+            simulationStarted = true;
+            foreach(GameplayScript gs in CarsGameplayScripts)
+            {
+                gs.Restart();
+            }
+        }
+        else
+        {
+            StartCoroutine(DelayedStart(delay));
+        }
+    }    
 
     public void StopSimulation()
     {
         simulationStarted = false;
     }
 
-
+    [System.Obsolete]
     public Vector3 AveragePosition()
     {
         Vector3 average = Vector3.zero;
@@ -55,6 +70,30 @@ public class CarsOnSceneManager : MonoBehaviour
 
     public Vector3 AveragePositionAndRelax()
     {
+        //CarRectBounds = new Bounds();
+
+        bool foundFirst = false;
+
+        foreach (GameplayScript car in CarsGameplayScripts)
+        {
+            if (car.InProgress)
+            {
+                if (!foundFirst)
+                {
+                    foundFirst = true;
+                    CarRectBounds = new Bounds(car.gameObject.transform.position, Vector3.zero);
+                }
+                else
+                {
+                    CarRectBounds.Encapsulate(car.gameObject.transform.position);
+                }
+            }
+        }        
+
+        return CarRectBounds.center;
+
+        #region Obsolete Previous Version
+        /*
         Vector3 average = AveragePosition();
 
         if (CarsOnTheScene != null && CarsOnTheScene.Length > 1)
@@ -77,10 +116,13 @@ public class CarsOnSceneManager : MonoBehaviour
         }        
 
         return average;
+        */
+        #endregion
     }
 
     public float MaxDistanceFromPoint(Vector3 point, float min = 30)
     {
+        /*
         float result = min;
 
         foreach(Transform car in CarsOnTheScene)
@@ -92,6 +134,10 @@ public class CarsOnSceneManager : MonoBehaviour
         }
 
         return result;
+        */
+        float res = Mathf.Max(CarRectBounds.size.x, CarRectBounds.size.y, CarRectBounds.size.z);
+
+        return (CarRectBounds == null || res < min) ? min : res;
     }
 
     public void CarAdded()
@@ -202,5 +248,11 @@ public class CarsOnSceneManager : MonoBehaviour
                 Physics.IgnoreCollision(car1[i], car2[j]);
             }
         }
+    }
+
+    private IEnumerator DelayedStart(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        StartSimulation();
     }
 }

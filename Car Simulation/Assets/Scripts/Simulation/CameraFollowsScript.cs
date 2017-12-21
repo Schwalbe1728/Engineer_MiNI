@@ -8,22 +8,25 @@ public class CameraFollowsScript : MonoBehaviour
     private CarsOnSceneManager carManager;    
 
     private Transform cameraPosition;
+    private Vector3 velocity;
 
     void Awake()
     {
         cameraPosition = this.transform;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if(carManager != null && carManager.SimulationStarted)
         {
             Vector3 temp = carManager.AveragePositionAndRelax(); //carManager.AveragePosition();
+            //Debug.Log(temp);
             temp += new Vector3(0, 25 + 1.1f * carManager.MaxDistanceFromPoint(temp, 5), 0);
 
             if (!float.IsNaN(temp.x) && !float.IsNaN(temp.y) && !float.IsNaN(temp.z))
             {
-                cameraPosition.position = temp;
+                cameraPosition.position = //temp;
+                    Vector3.SmoothDamp(cameraPosition.position, temp, ref velocity, 0.4f);
             }
         }
     }
