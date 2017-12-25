@@ -30,15 +30,32 @@ public class PopulationManagerScript : MonoBehaviour
     [SerializeField]
     private Text AverageScoreText;
 
+    [SerializeField]
+    private Text MedianScoreText;
+
+
+    [SerializeField]
+    private NeuronDefinitionsPanelScript neuronDefinitionsPanelScript;
+
     private bool simulationStarted = false;
 
     private SpecimenScript[] Specimen;
     private GeneticAlgorithmConfig config;
     private LearningProcess learningProcess;
 
+    private List<int> HiddenLayersSettings;
+    private List<Type> NeuronTypesSettings;
+
     public void StartSimulation(float mutChance, float selectPercent)
     {
         //Debug.Log("Start Simulation - Mutation Chance = " + mutChance + ", Selection Percent = " + selectPercent);
+
+        if(HiddenLayersSettings == null || NeuronTypesSettings == null)
+        {
+            neuronDefinitionsPanelScript.GetNeuronDefinitions(out HiddenLayersSettings, out NeuronTypesSettings);
+            HiddenLayersSettings.Add(2);
+            //HiddenLayersSettings.Insert(0, 5);
+        }
 
         simulationStarted = true;
         if(Specimen == null) Specimen = transform.GetComponentsInChildren<SpecimenScript>();
@@ -50,14 +67,23 @@ public class PopulationManagerScript : MonoBehaviour
 
             config.PercentToSelect = PercentToSelect;
             config.MutationChance = MutationChance;
-
+            /*
             learningProcess =
                 new LearningProcess(Specimen.Length, config,
                     new List<int> { 5, 4, 2 },
-                    new List<Type> { typeof(TanHNeuron), typeof(TanHNeuron), /*typeof(TanHNeuron)*/ }
+                    new List<Type> { typeof(TanHNeuron), typeof(TanHNeuron), /*typeof(TanHNeuron) }
                 );
+            */
             //learningProcess.NewRandomPopulation(Specimen.Length, new List<int> { 3, 5, 4, 3, 2 }
             //, new List<Type> { typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron) });
+
+            learningProcess =
+                new LearningProcess(
+                    Specimen.Length, config,
+                    HiddenLayersSettings,
+                    NeuronTypesSettings
+                    );
+
             learningProcess.LearningAlgorithm.Config = config;
         }        
 
@@ -133,28 +159,30 @@ public class PopulationManagerScript : MonoBehaviour
 
             float Min = int.MaxValue;
             float Max = int.MinValue;
+            float Med;
             float Sum = 0;
+
+            List<float> results = new List<float>();
 
             foreach (SpecimenScript speciman in Specimen)
             {
                 float score = speciman.FinalScore();
-
                 Sum += score;
-
-                if (score > Max)
-                {
-                    Max = score;
-                }
-
-                if (score < Min)
-                {
-                    Min = score;
-                }
+                results.Add(score);
             }
+
+            results.Sort();
+            Min = results[0];
+            Max = results[results.Count - 1];
+            Med =
+                (results.Count % 2 == 0 && results.Count > 1) ?
+                    (results[results.Count / 2] + results[results.Count / 2 - 1]) / 2 :
+                    results[results.Count / 2];
 
             WorstScoreText.text = Min.ToString("n0");
             BestScoreText.text = Max.ToString("n0");
             AverageScoreText.text = (Sum / Specimen.Length).ToString("n1");
+            MedianScoreText.text = Med.ToString("n1");
         }
     }
 

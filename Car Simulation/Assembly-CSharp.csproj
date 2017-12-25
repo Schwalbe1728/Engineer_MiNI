@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\NeuronDefinitionsPanelScript.cs" />
      <Compile Include="Assets\Scripts\AI\PopulationManagerScript.cs" />
      <Compile Include="Assets\Scripts\AI\SimplifiedCommand.cs" />
      <Compile Include="Assets\Scripts\AI\SpecimenScript.cs" />
