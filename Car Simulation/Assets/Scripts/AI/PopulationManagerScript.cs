@@ -8,9 +8,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public delegate void RoundEnded(ProcessData processData);
+
 public class PopulationManagerScript : MonoBehaviour
 {
     public bool SimulationStarted { get { return simulationStarted; } }
+    public event RoundEnded OnRoundEnded;
 
     [SerializeField]
     private float PercentToSelect;
@@ -118,6 +121,11 @@ public class PopulationManagerScript : MonoBehaviour
         learningProcess.Learn(scores);
         int temp = learningProcess.HistoricalData.Count;
         ProcessData tmpData = learningProcess.HistoricalData[temp - 1];
+
+        if(OnRoundEnded != null)
+        {
+            OnRoundEnded(tmpData);
+        }
 
         Debug.Log(
             "Generation " + tmpData.GenerationIndex + 
