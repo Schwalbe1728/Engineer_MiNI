@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Car\SensorScript.cs" />
      <Compile Include="Assets\Scripts\Cones\ConeScript.cs" />
      <Compile Include="Assets\Scripts\Cones\GameplayScript.cs" />
+     <Compile Include="Assets\Scripts\Plots\MultipleTrendPlotScript.cs" />
      <Compile Include="Assets\Scripts\Plots\PlotScript.cs" />
      <Compile Include="Assets\Scripts\Plots\PlotsManagerScript.cs" />
      <Compile Include="Assets\Scripts\Simulation\CameraFollowsScript.cs" />

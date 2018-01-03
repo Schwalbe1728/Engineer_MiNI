@@ -46,12 +46,8 @@ public class PlotScript : MonoBehaviour
 
         PlotLineRenderer.m_points = plotPoints.ToArray();
 
-        //PlotLineRenderer.Rebuild(UnityEngine.UI.CanvasUpdate.Layout);
-        //XAxisRenderer.Rebuild(UnityEngine.UI.CanvasUpdate.Layout);
-
         PlotLineRenderer.SetVerticesDirty();
         XAxisRenderer.SetVerticesDirty();
-        //Debug.Log("Points: " + PlotLineRenderer.m_points.Length);
     }
 }
 
@@ -64,8 +60,8 @@ public class Plot
     [SerializeField]
     private float XExpansion;
 
-    private float MaxY;
-    private float MinY;
+    public float MaxY { get; private set; }
+    public float MinY { get; private set; }
 
     private List<float> Values;
 
@@ -87,22 +83,25 @@ public class Plot
         if (val < MinY) MinY = val;
     }
 
-    public List<Vector2> GetPlotPoints(float width, float height)
+    public List<Vector2> GetPlotPoints(float width, float height, bool given = false, float min = 0, float max = 0)
     {
         List<Vector2> result = new List<Vector2>();
+
+        float Max = (given)? max : MaxY;
+        float Min = (given) ? min : MinY;
 
         if (Values == null) Values = new List<float>();
 
         if (Values.Count > 0)
         {
-            float dY = MaxY - MinY + 2 * YExpansion;
-            float dX = (width - 2 * XExpansion) / Values.Count;
+            float dY = Max - Min + 2 * YExpansion;
+            float dX = (width - 2 * XExpansion) / (Values.Count - 1);
 
             float currX = XExpansion;
 
             foreach(float val in Values)
             {
-                float currY = (YExpansion + val - MinY) / dY;
+                float currY = (YExpansion + val - Min) / dY;
 
                 result.Add(new Vector2(currX / width, currY));
                 currX += dX;
