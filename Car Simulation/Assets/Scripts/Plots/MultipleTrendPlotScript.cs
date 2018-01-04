@@ -26,8 +26,13 @@ public class MultipleTrendPlotScript : MonoBehaviour
     private Plot AverageScorePlot;
     private Plot MedianScorePlot;
 
-    private float MaxY;
-    private float MinY;
+    public float MaxY { get; private set; }
+    public float MinY { get; private set; }
+    public float MaxX { get { return Count - 1; } }
+    public float MinX { get { return (Count > 0) ? 0 : -1; } }
+
+    public int Count { get { return BestScorePlot.Count; } }
+
 
     private List<Plot> PlotsArray;
 
@@ -73,7 +78,7 @@ public class MultipleTrendPlotScript : MonoBehaviour
 
     private void UpdatePlots(ProcessData generationResults)
     {
-        Debug.Log("UpdatePlots");
+        //Debug.Log("UpdatePlots");
 
         AddValueToPlot(BestScorePlot, generationResults.BestScore);
         AddValueToPlot(WorstScorePlot, generationResults.WorstScore);
@@ -85,7 +90,7 @@ public class MultipleTrendPlotScript : MonoBehaviour
         foreach(Plot plot in PlotsArray)
         {
             PlotLinesRenderersArray[i].m_points = 
-                plot.GetPlotPoints(plotArea.rect.width, plotArea.rect.height, true, MinY, MaxY).ToArray();
+                plot.GetPlotPoints(plotArea.rect.width, plotArea.rect.height, true, MinY-Expansion, MaxY+Expansion).ToArray();
 
             PlotLinesRenderersArray[i].SetVerticesDirty();
 
@@ -126,6 +131,20 @@ public class MultipleTrendPlotScript : MonoBehaviour
         float dY = MaxY - MinY + 2 * Expansion;
 
         return (Expansion + val - MinY) / dY;
+    }
+
+    public float GetXPositionOfValue(float val)
+    {
+        float result = 0;
+
+        if (BestScorePlot != null && BestScorePlot.Count > 0)
+        {
+            float max = BestScorePlot.Count - 1;
+
+            result = Mathf.Max(0, Mathf.Min(1f, val / max));
+        }
+
+        return result;
     }
 
 }

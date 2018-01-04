@@ -65,6 +65,8 @@ public class Plot
 
     private List<float> Values;
 
+    public int Count { get { return (Values != null) ? Values.Count : -1; } }
+
     public Plot(float Expansion = 10f)
     {
         //YExpansion = Expansion;

@@ -3009,6 +3009,7 @@ GameObject:
   - component: {fileID: 1043588602}
   - component: {fileID: 1043588604}
   - component: {fileID: 1043588603}
+  - component: {fileID: 1043588605}
   m_Layer: 5
   m_Name: X Axis
   m_TagString: Untagged
@@ -3074,6 +3075,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1043588601}
+--- !u!114 &1043588605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1043588601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40fdc6d78399624e8e428133301e2e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Axis: 0
+  PopulationManager: {fileID: 1289849080}
+  QuantityOfQuants: 5
+  QuantPrefab: {fileID: 1632326143879194, guid: a54d9eda58eb3454eb82cd0cf97b25d5,
+    type: 2}
+  Plot: {fileID: 629915796}
 --- !u!1 &1057144152
 GameObject:
   m_ObjectHideFlags: 0
@@ -5016,6 +5034,7 @@ GameObject:
   - component: {fileID: 1646356389}
   - component: {fileID: 1646356391}
   - component: {fileID: 1646356390}
+  - component: {fileID: 1646356392}
   m_Layer: 5
   m_Name: Y Axis
   m_TagString: Untagged
@@ -5081,6 +5100,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1646356388}
+--- !u!114 &1646356392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1646356388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40fdc6d78399624e8e428133301e2e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Axis: 1
+  PopulationManager: {fileID: 1289849080}
+  QuantityOfQuants: 5
+  QuantPrefab: {fileID: 1019571144612534, guid: 7c0de6963a88cff49a32a2d699f0d6d8,
+    type: 2}
+  Plot: {fileID: 629915796}
 --- !u!1 &1676499819
 GameObject:
   m_ObjectHideFlags: 0
