@@ -108,9 +108,9 @@ MonoBehaviour:
     width: 1366
     height: 635
   m_MinSize: {x: 711, y: 492}
-  m_MaxSize: {x: 18006, y: 14042}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 4891
+  controlID: 3419
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -131,10 +131,10 @@ MonoBehaviour:
     y: 0
     width: 694
     height: 635
-  m_MinSize: {x: 202, y: 342}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 200, y: 321}
+  m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 4892
+  controlID: 3593
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 4799
+  controlID: 3530
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -601,9 +601,9 @@ MonoBehaviour:
     height: 333
   m_TreeViewState:
     scrollPos: {x: 0, y: 68}
-    m_SelectedIDs: 982c0000
-    m_LastClickedID: 11416
-    m_ExpandedIDs: ec10fffff08bffff1afcffff00000000582b0000d82b0000462c0000982c00001a2d0000
+    m_SelectedIDs: 5e2b0000
+    m_LastClickedID: 11102
+    m_ExpandedIDs: 1afcffff000000005e2b00004c2c0000222d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -664,20 +664,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts/Plots
   m_ViewMode: 1
   m_StartGridSize: 50
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts/Plots
   m_LastFoldersGridSize: 50
   m_LastProjectPath: "C:\\Users\\Jarek\\Documents\\Visual Studio 2015\\Projects\\In\u017Cynierka\\Engineer_MiNI\\Car
     Simulation"
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 13}
-    m_SelectedIDs: 72280000
-    m_LastClickedID: 10354
-    m_ExpandedIDs: 00000000e2270000602800001429000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 97}
+    m_SelectedIDs: 50280000
+    m_LastClickedID: 10320
+    m_ExpandedIDs: 00000000e2270000602800001a29000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -705,7 +705,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e2270000602800001429000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000e2270000602800001a29000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -757,7 +757,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 193}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 50
   m_DirectoriesAreaWidth: 144
 --- !u!114 &21
@@ -786,7 +786,7 @@ MonoBehaviour:
     y: 92
     width: 323
     height: 614
-  m_ScrollPosition: {x: 0, y: 204.95508}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -100

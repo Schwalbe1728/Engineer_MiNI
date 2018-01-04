@@ -85,23 +85,25 @@ public class Plot
         if (val < MinY) MinY = val;
     }
 
-    public List<Vector2> GetPlotPoints(float width, float height, bool given = false, float min = 0, float max = 0)
+    public List<Vector2> GetPlotPoints(float width, float height, int n = int.MaxValue, bool given = false, float min = 0, float max = 0)
     {
         List<Vector2> result = new List<Vector2>();
 
         float Max = (given)? max : MaxY;
-        float Min = (given) ? min : MinY;
+        float Min = (given) ? min : MinY;        
 
         if (Values == null) Values = new List<float>();
+
+        int MinIndexToReturn = (Values.Count - n > 0) ? Values.Count - n : 0;
 
         if (Values.Count > 0)
         {
             float dY = Max - Min + 2 * YExpansion;
-            float dX = (width - 2 * XExpansion) / (Values.Count - 1);
+            float dX = (width - 2 * XExpansion) / (Values.Count - MinIndexToReturn - 1);
 
             float currX = XExpansion;
 
-            foreach(float val in Values)
+            foreach(float val in Values.GetLastNElements(n))
             {
                 float currY = (YExpansion + val - Min) / dY;
 

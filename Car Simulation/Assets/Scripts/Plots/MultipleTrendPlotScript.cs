@@ -21,6 +21,10 @@ public class MultipleTrendPlotScript : MonoBehaviour
     [SerializeField]
     private float Expansion;
 
+    [SerializeField]
+    [Range(10, 100000)]
+    private int MaxPointsToShow = 10;
+
     private Plot BestScorePlot;
     private Plot WorstScorePlot;
     private Plot AverageScorePlot;
@@ -29,7 +33,7 @@ public class MultipleTrendPlotScript : MonoBehaviour
     public float MaxY { get; private set; }
     public float MinY { get; private set; }
     public float MaxX { get { return Count - 1; } }
-    public float MinX { get { return (Count > 0) ? 0 : -1; } }
+    public float MinX { get { return (Count > 0) ? ((Count - MaxPointsToShow > 0)? Count - MaxPointsToShow : 0  ) : -1; } }
 
     public int Count { get { return BestScorePlot.Count; } }
 
@@ -90,7 +94,8 @@ public class MultipleTrendPlotScript : MonoBehaviour
         foreach(Plot plot in PlotsArray)
         {
             PlotLinesRenderersArray[i].m_points = 
-                plot.GetPlotPoints(plotArea.rect.width, plotArea.rect.height, true, MinY-Expansion, MaxY+Expansion).ToArray();
+                plot.GetPlotPoints(plotArea.rect.width, plotArea.rect.height, MaxPointsToShow, true, MinY-Expansion, MaxY+Expansion).
+                ToArray();
 
             PlotLinesRenderersArray[i].SetVerticesDirty();
 
@@ -138,13 +143,50 @@ public class MultipleTrendPlotScript : MonoBehaviour
         float result = 0;
 
         if (BestScorePlot != null && BestScorePlot.Count > 0)
-        {
+        {            
             float max = BestScorePlot.Count - 1;
+            float min = Mathf.Max(BestScorePlot.Count - MaxPointsToShow, 0);
 
-            result = Mathf.Max(0, Mathf.Min(1f, val / max));
+            //result = Mathf.Max(0, Mathf.Min(1f, val / max));                                    
+            //result = Mathf.Max(0, Mathf.Min(1f, (val - (max - MaxPointsToShow + 1)) / (MaxPointsToShow - 1)));
+            result = Mathf.Max(0, Mathf.Min(1f, (val - min) / (max - min)));
+        }
+
+        return result;
+    }    
+}
+
+public static class ListExtension
+{
+    public static List<T> GetLastNElements<T>(this List<T> list, int n)
+    {
+        List<T> result = null;
+
+        if(n > list.Count)
+        {
+            result = list;
+        }
+        else
+        {
+            result = list.GetRange(list.Count - n, n);
         }
 
         return result;
     }
+    /*
+    public static List<float> GetLastNElements(this List<float> list, int n)
+    {
+        List<float> result = null;
 
+        if (n > list.Count)
+        {
+            result = list;
+        }
+        else
+        {
+            result = list.GetRange(list.Count - n, n);
+        }
+
+        return result;
+    }*/
 }

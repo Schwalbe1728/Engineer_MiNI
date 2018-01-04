@@ -1865,6 +1865,7 @@ MonoBehaviour:
   XAxisRenderer: {fileID: 1043588603}
   YAxisRenderer: {fileID: 1646356390}
   Expansion: 10
+  MaxPointsToShow: 100
   PlotLinesRenderersArray:
   - {fileID: 1762753825}
   - {fileID: 1210865104}
