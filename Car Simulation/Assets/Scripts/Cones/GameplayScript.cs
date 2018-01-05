@@ -33,7 +33,7 @@ public class GameplayScript : MonoBehaviour
     */
 
     private float currentScore;
-    private int currentPenalty;
+    private float currentPenalty;
     private bool GameInProgress;
     private Coroutine coroutine;
 
@@ -138,7 +138,15 @@ public class GameplayScript : MonoBehaviour
         while(GameInProgress)
         {
             yield return new WaitForSeconds( 1 / penaltyPerSec);
-            currentPenalty++;
+
+            if (Time.deltaTime < 1 / penaltyPerSec)
+            {
+                currentPenalty++;
+            }
+            else
+            {
+                currentPenalty += penaltyPerSec * Time.deltaTime;
+            }
             //currentPenalty += currentPenalty / 48;
 
             if(Score < AUTOFAIL_SCORE)
