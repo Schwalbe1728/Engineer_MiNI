@@ -97,16 +97,7 @@ public class OrdersReceiverScript : MonoBehaviour {
                 AssertCommand(inputSource.FirstCommand);
             }
             while (!inputSource.ListEmpty) ;
-        }
-        
-        if (turnDegree > 0)
-        {
-            turnDegree = Mathf.Max(turnDegree - maxSteeringAngle * Time.fixedDeltaTime / steerResetDelay, 0);
-        }
-        else
-        {
-            turnDegree = Mathf.Min(turnDegree + maxSteeringAngle * Time.fixedDeltaTime / steerResetDelay, 0);
-        }
+        }       
         
         foreach (AxleInfo axle in axleInfos)
         {
@@ -162,11 +153,11 @@ public class OrdersReceiverScript : MonoBehaviour {
                 break;
 
             case CommandType.TurnLeft:
-                InterpretTurn(-1.0f);
+                InterpretTurn(-temp.Value);
                 break;
 
             case CommandType.TurnRight:
-                InterpretTurn(1.0f);
+                InterpretTurn(temp.Value);
                 break;
         }
     }
@@ -206,12 +197,16 @@ public class OrdersReceiverScript : MonoBehaviour {
 
     private void InterpretTurn(/*Turn turn */ float turn)
     {
+        /*
         turnDegree =
             Mathf.Clamp(
                 turnDegree - turn * turnDegreePerSec * Time.fixedDeltaTime,
                 -maxSteeringAngle, 
                 maxSteeringAngle
             );
+        */
+
+        turnDegree = maxSteeringAngle * turn;
 
         /*
         foreach (AxleInfo axle in axleInfos)
