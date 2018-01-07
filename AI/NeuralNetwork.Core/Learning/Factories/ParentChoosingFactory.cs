@@ -15,7 +15,7 @@ namespace NeuralNetwork.Core.Learning.Factories
                 case ParentChoosingMethod.ScoreLinear:
                     return ScoreLinear;
                 case ParentChoosingMethod.ScoreCubic:
-                    return PositionLinear;
+                    return ScoreCubic;
             }
             return PositionLinear;
         }

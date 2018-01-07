@@ -86,10 +86,12 @@ namespace NeuralNetwork.Interface.Examples
                     Console.WriteLine("----------------------------");
                     var a1 = spec.Calculate(test);
                     Console.WriteLine($"network: {a1[0]} {a1[1]}");
+                    var fit = FitnessFunction(test, a1);
                     a1 = Problem(test);
                     Console.WriteLine($"exptected: {a1[0]} {a1[1]}");
                     var neuron0 = spec.Layers[0].Neurons[0].GetWeights();
                     var neuron1 = spec.Layers[0].Neurons[1].GetWeights();
+                    Console.WriteLine("Fitness " + fit);
                     Console.WriteLine("----------------------------");
                     Console.WriteLine(
                         $"({Math.Round(neuron0[0], 2)}x1 {Math.Round(neuron0[1], 2)}x2 {Math.Round(neuron0[2], 2)}x3 {Math.Round(neuron0[3],3)})({Math.Round(neuron1[0], 2)}x1 {Math.Round(neuron1[1], 2)}x2 {Math.Round(neuron1[2], 2)}x3 {Math.Round(neuron1[3], 3)})");
