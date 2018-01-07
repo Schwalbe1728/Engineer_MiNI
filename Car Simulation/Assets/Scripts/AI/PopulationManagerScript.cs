@@ -156,7 +156,8 @@ public class PopulationManagerScript : MonoBehaviour
         config.RandOptions = new RandomizerOptions(-1, 1);
         config.PercentToSelect = PercentToSelect;
         config.MutationChance = MutationChance;
-        config.ParentChances = Chances;
+        //config.ParentChances = Chances;
+        config.SetParentChoosingMethod(NeuralNetwork.Core.Learning.Enums.ParentChoosingMethod.ScoreLinear);
     }
 
     void Update()
