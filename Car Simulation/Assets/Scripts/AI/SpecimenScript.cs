@@ -100,12 +100,13 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
                                 TurnDirection.Left
                                 ));
                                 */
+            float turnValue = (Mathf.Abs((float)turningDecision) - DeadZoneThreshold) / (1 - DeadZoneThreshold);
 
             CommandGiver.GiveCommand(
                 new SimplifiedCommand(
                     (turningDecision > 0) ? 
                         CommandType.TurnRight : 
-                        CommandType.TurnLeft));
+                        CommandType.TurnLeft, turnValue));
 
             //Debug.Log("Turn");
         }
