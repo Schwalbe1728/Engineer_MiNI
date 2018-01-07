@@ -36,3 +36,7 @@ sysinfo.txt
 /AI/.vs/NeuralNetwork/v15/sqlite3/storage.ide-wal
 /AI/.vs/NeuralNetwork/v15/sqlite3/storage.ide-shm
 /AI/.vs/NeuralNetwork/v15/sqlite3/db.lock
+/SDK/BindAIToUnityModule/obj
+/SDK/CommandGiverModule/obj
+/SDK/SDK/obj
+/Car Simulation/obj

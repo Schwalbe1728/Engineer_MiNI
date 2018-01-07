@@ -74,7 +74,7 @@ namespace NeuralNetwork.Core.Learning
 
         public void Crosbreeding()
         {
-            var weights = Config.ParentChances(Population.Count);
+            var weights = Config.ParentChances(Population.Count, Population.Select(x=>x.Key).ToArray());
             var total = weights.Sum();
 
             while (Population.Count < PopulationCount)
@@ -140,8 +140,14 @@ namespace NeuralNetwork.Core.Learning
 
         public void Mutation()
         {
+            bool first = true;
             foreach (var specimen in Population)
             {
+                if (first)
+                {
+                    first = false;
+                    continue;
+                }
                 var net = specimen.Value;
                 foreach (var layer in net.Layers)
                 {

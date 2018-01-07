@@ -57,6 +57,8 @@
     <Compile Include="Interfaces\ILayer.cs" />
     <Compile Include="Interfaces\INetwork.cs" />
     <Compile Include="Interfaces\INeuron.cs" />
+    <Compile Include="Learning\Enums\ParentChoosingMethod.cs" />
+    <Compile Include="Learning\Factories\ParentChoosingFactory.cs" />
     <Compile Include="Learning\GeneticAlgorithm.cs" />
     <Compile Include="Learning\GeneticAlgorithmConfig.cs" />
     <Compile Include="Learning\LearningProcess.cs" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Learning;
+using NeuralNetwork.Core.Learning.Enums;
 using NeuralNetwork.Core.Model;
 using NeuralNetwork.Core.Model.Neurons;
 
@@ -21,7 +22,7 @@ namespace NeuralNetwork.Interface.Examples
             config.RandOptions = new RandomizerOptions(-1, 1, 0.3);
             config.PercentToSelect = 0.5;
             config.MutationChance = 0.2;
-            config.ParentChances = Chances;
+            config.SetParentChoosingMethod(ParentChoosingMethod.ScoreCubic);
             process = new LearningProcess(populationCount, config, new List<int> { 3, 2 }, new List<Type>() {typeof(IdentityNeuron)});
         }
 
