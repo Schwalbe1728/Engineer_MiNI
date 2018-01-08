@@ -79,12 +79,18 @@ namespace NeuralNetwork.Core.Learning
             var weights = Config.ParentChances(Population.Count, Population.Select(x=>x.Key).ToArray());
             var total = weights.Sum();
 
+
+            for (int i = 1; i < weights.Length; i++)
+                weights[i] = weights[i] + weights[i - 1];
+
             while (Population.Count < PopulationCount)
             {
                 var indexes = ChooseParents(weights, total);
                 NetworkBase<double> female = Population[indexes[0]].Value;
                 NetworkBase<double> male = Population[indexes[1]].Value;
 
+                //Console.WriteLine($"f: {indexes[0]} m:{indexes[1]}");
+                
                 NetworkBase<double> child1 = female.Copy();
                 NetworkBase<double> child2 = male.Copy();
 
@@ -117,6 +123,9 @@ namespace NeuralNetwork.Core.Learning
         {
             var result = new int[2];
             int[] value = {0, 0};
+
+            if (sum == 0)
+                return value;
 
             if (CanSelfReproduce)
                 value = Random.Integers(sum).Take(2).ToArray();

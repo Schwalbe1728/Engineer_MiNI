@@ -20,6 +20,8 @@ namespace NeuralNetwork.Core.Learning.Factories
                     return PositionCubic;
                 case ParentChoosingMethod.PositionExponential:
                     return PositionExponential;
+                case ParentChoosingMethod.Geom:
+                    return Geom;
             }
             return PositionLinear;
         }
@@ -88,6 +90,18 @@ namespace NeuralNetwork.Core.Learning.Factories
             for (int i = 0; i < count; i++)
             {
                 result[i] = (count - i) * 2 ^ (count - i);
+            }
+            return result;
+        }
+
+        public static int[] Geom(int count, double[] scores)
+        {
+            int total = 1000000;
+            int[] result = new int[count];
+            for (int i = 0; i < count; i++)
+            {
+                total = total / 2;
+                result[i] = total;
             }
             return result;
         }

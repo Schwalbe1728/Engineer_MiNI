@@ -6,6 +6,7 @@
         ScoreLinear,
         ScoreCubic,
         PositionCubic,
-        PositionExponential
+        PositionExponential,
+        Geom
     }
 }

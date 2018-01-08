@@ -17,3 +17,4 @@ D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\bin\Debug\Troschuetz.Random.xml
 D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.csproj.CoreCompileInputs.cache
 D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.dll
 D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.pdb
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Core\obj\Debug\NeuralNetwork.Core.csprojResolveAssemblyReference.cache

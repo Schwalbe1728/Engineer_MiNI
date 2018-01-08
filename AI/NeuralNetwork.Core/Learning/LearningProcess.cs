@@ -48,7 +48,10 @@ namespace NeuralNetwork.Core.Learning
 
             var builder = Builder.GetBuilder(layerCount, neuronTypes);
             for (int i = 0; i < PopulationCount; i++)
+            {
                 Population[i] = builder.GetEmpty().Randomize();
+            }
         }
-    }
+
+      }
 }

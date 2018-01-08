@@ -13,16 +13,16 @@ namespace NeuralNetwork.Interface.Examples
     {
         private LearningProcess process;
         Random rand = new Random();
-        int populationCount = 20;
+        int populationCount = 2000;
 
 
         public Perceptron()
         {
             GeneticAlgorithmConfig config = new GeneticAlgorithmConfig();
             config.RandOptions = new RandomizerOptions(-1, 1, 0.3);
-            config.PercentToSelect = 0.6;
+            config.PercentToSelect = 0.4;
             config.MutationChance = 0.05;
-            config.SetParentChoosingMethod(ParentChoosingMethod.PositionExponential);
+            config.SetParentChoosingMethod(ParentChoosingMethod.Geom);
             process = new LearningProcess(populationCount, config, new List<int> { 3, 2 }, new List<Type>() {typeof(IdentityNeuron)});
         }
 
