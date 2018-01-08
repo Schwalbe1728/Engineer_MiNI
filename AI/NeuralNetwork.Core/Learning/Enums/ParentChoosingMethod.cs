@@ -4,6 +4,8 @@
     {
         PositionLinear,
         ScoreLinear,
-        ScoreCubic
+        ScoreCubic,
+        PositionCubic,
+        PositionExponential
     }
 }

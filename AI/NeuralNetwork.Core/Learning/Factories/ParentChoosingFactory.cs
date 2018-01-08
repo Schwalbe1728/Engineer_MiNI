@@ -16,6 +16,10 @@ namespace NeuralNetwork.Core.Learning.Factories
                     return ScoreLinear;
                 case ParentChoosingMethod.ScoreCubic:
                     return ScoreCubic;
+                case ParentChoosingMethod.PositionCubic:
+                    return PositionCubic;
+                case ParentChoosingMethod.PositionExponential:
+                    return PositionExponential;
             }
             return PositionLinear;
         }
@@ -44,7 +48,7 @@ namespace NeuralNetwork.Core.Learning.Factories
 
             for (int i = 0; i < count; i++)
             {
-                result[i] = (int) ((scores[i] * 1000)/max);
+                result[i] = (int) ((scores[i] * 1000) / max);
             }
             return result;
         }
@@ -62,7 +66,28 @@ namespace NeuralNetwork.Core.Learning.Factories
 
             for (int i = 0; i < count; i++)
             {
-                result[i] = (int)Math.Pow((scores[i] * 1000) / max,1.33333333);
+                result[i] = (int) Math.Pow((scores[i] * 1000) / max, 1.33333333);
+            }
+            return result;
+        }
+
+        public static int[] PositionCubic(int count, double[] scores)
+        {
+            int[] result = new int[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                result[i] = (int) Math.Pow(count - i, 2);
+            }
+            return result;
+        }
+        public static int[] PositionExponential(int count, double[] scores)
+        {
+            int[] result = new int[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                result[i] = (count - i) * 2 ^ (count - i);
             }
             return result;
         }

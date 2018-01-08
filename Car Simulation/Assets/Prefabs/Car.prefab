@@ -257,13 +257,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1082421559234340}
-  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: -0.258819, z: 0, w: 0.9659259}
   m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4103807822627418}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
 --- !u!4 &4156356784577652
 Transform:
   m_ObjectHideFlags: 1
@@ -323,7 +323,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1956305412520490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3, z: 0}
+  m_LocalPosition: {x: 444.82294, y: 1.0000004, z: 348.90436}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4156356784577652}
@@ -338,26 +338,26 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1703965419493366}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.5, z: 0, w: 0.8660254}
   m_LocalPosition: {x: -0.5, y: 0, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4103807822627418}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -60, z: 0}
 --- !u!4 &4833754040540722
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602381378566140}
-  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4103807822627418}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!4 &4870090664063830
 Transform:
   m_ObjectHideFlags: 1
@@ -390,13 +390,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1038192560657752}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.5, z: 0, w: 0.8660254}
   m_LocalPosition: {x: 0.5, y: 0, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4103807822627418}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 60, z: 0}
 --- !u!4 &4948516149761456
 Transform:
   m_ObjectHideFlags: 1
@@ -703,8 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3084ef4157102fc4bb7549bbdd16d7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxRange: 40
-  UpdateFrequency: 20
+  MaxRange: 20
+  UpdateFrequency: 5
   RandomizeFrequency: 1
 --- !u!114 &114454204120061780
 MonoBehaviour:
@@ -717,8 +717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3084ef4157102fc4bb7549bbdd16d7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxRange: 40
-  UpdateFrequency: 20
+  MaxRange: 20
+  UpdateFrequency: 5
   RandomizeFrequency: 1
 --- !u!114 &114551455352665424
 MonoBehaviour:
@@ -731,8 +731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3084ef4157102fc4bb7549bbdd16d7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxRange: 40
-  UpdateFrequency: 20
+  MaxRange: 20
+  UpdateFrequency: 5
   RandomizeFrequency: 1
 --- !u!114 &114667484147028988
 MonoBehaviour:
@@ -760,11 +760,12 @@ MonoBehaviour:
     rightWheelTransform: {fileID: 4217394068216660}
     motor: 1
     steering: 0
-  maxMotorTorque: 4000
+  maxMotorTorque: 3000
   breakTorque: 5000
-  maxSteeringAngle: 40
-  turnDegreePerSec: 180
-  steerResetDelay: 10
+  maxSteeringAngle: 60
+  turnDegreePerSec: 210
+  steerResetDelay: 0.5
+  maxSpeed: 12
 --- !u!114 &114773091778945864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -790,8 +791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3084ef4157102fc4bb7549bbdd16d7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxRange: 40
-  UpdateFrequency: 20
+  MaxRange: 20
+  UpdateFrequency: 5
   RandomizeFrequency: 1
 --- !u!114 &114997282853917908
 MonoBehaviour:
@@ -804,8 +805,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3084ef4157102fc4bb7549bbdd16d7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxRange: 40
-  UpdateFrequency: 20
+  MaxRange: 20
+  UpdateFrequency: 5
   RandomizeFrequency: 1
 --- !u!146 &146138742581656008
 WheelCollider:

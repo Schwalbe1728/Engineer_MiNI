@@ -14,9 +14,11 @@ namespace NeuralNetwork.Core.Learning
         public int PopulationCount;
         public GeneticAlgorithmConfig Config;
         public TRandom Random;
+        public bool CanSelfReproduce;
 
         public GeneticAlgorithm()
         {
+            CanSelfReproduce = true;
             Random = new TRandom();
             Config = new GeneticAlgorithmConfig();
             Config.RandOptions = new RandomizerOptions(-1, 1);
@@ -92,6 +94,7 @@ namespace NeuralNetwork.Core.Learning
                 if (Population.Count != PopulationCount)
                     Population.Add(new KeyValuePair<double, NetworkBase<double>>(0, child2));
             }
+            
         }
 
         public void RandomNeuronSwap(NetworkBase<double> child1, NetworkBase<double> child2)
@@ -114,8 +117,13 @@ namespace NeuralNetwork.Core.Learning
         {
             var result = new int[2];
             int[] value = {0, 0};
-            while (value[0] == value[1]) //prevent parent from reproducing with itself
+
+            if (CanSelfReproduce)
                 value = Random.Integers(sum).Take(2).ToArray();
+            else
+                while (value[0] == value[1]) //prevent parent from reproducing with itself
+                    Random.Integers(sum).Take(2).ToArray();
+
             bool first = true, second = true;
 
             for (int i = 0; i < weights.Length; i++)

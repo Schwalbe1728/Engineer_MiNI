@@ -20,9 +20,9 @@ namespace NeuralNetwork.Interface.Examples
         {
             GeneticAlgorithmConfig config = new GeneticAlgorithmConfig();
             config.RandOptions = new RandomizerOptions(-1, 1, 0.3);
-            config.PercentToSelect = 0.5;
-            config.MutationChance = 0.2;
-            config.SetParentChoosingMethod(ParentChoosingMethod.ScoreCubic);
+            config.PercentToSelect = 0.6;
+            config.MutationChance = 0.05;
+            config.SetParentChoosingMethod(ParentChoosingMethod.PositionExponential);
             process = new LearningProcess(populationCount, config, new List<int> { 3, 2 }, new List<Type>() {typeof(IdentityNeuron)});
         }
 

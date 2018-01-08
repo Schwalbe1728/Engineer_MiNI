@@ -17,6 +17,7 @@ public class OrdersReceiverScript : MonoBehaviour {
     public float maxSteeringAngle; // maximum steer angle the wheel can have
     public float turnDegreePerSec;
     public float steerResetDelay;
+    public float maxSpeed;
 
     //private float velocity;
     private float turnDegree;
@@ -116,6 +117,10 @@ public class OrdersReceiverScript : MonoBehaviour {
                 UpdateSteeringWheels(axle.rightWheel, axle.rightWheelTransform);
                 UpdateSteeringWheels(axle.leftWheel, axle.leftWheelTransform);
             }
+        }
+        if (CarBody.velocity.magnitude > maxSpeed)
+        {
+            CarBody.velocity = CarBody.velocity.normalized * maxSpeed;
         }
     }
 

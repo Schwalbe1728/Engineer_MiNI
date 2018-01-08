@@ -5,6 +5,7 @@ using NeuralNetwork.Core.Model.Neurons;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Troschuetz.Random;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,6 +50,8 @@ public class PopulationManagerScript : MonoBehaviour
     private List<int> HiddenLayersSettings;
     private List<Type> NeuronTypesSettings;
 
+    public float sigma = 0.1f;
+
     public void StartSimulation(float mutChance, float selectPercent)
     {
         //Debug.Log("Start Simulation - Mutation Chance = " + mutChance + ", Selection Percent = " + selectPercent);
@@ -79,7 +82,7 @@ public class PopulationManagerScript : MonoBehaviour
             */
             //learningProcess.NewRandomPopulation(Specimen.Length, new List<int> { 3, 5, 4, 3, 2 }
             //, new List<Type> { typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron) });
-
+            config.RandOptions.Sigma = sigma;
             learningProcess =
                 new LearningProcess(
                     Specimen.Length, config,
@@ -157,7 +160,7 @@ public class PopulationManagerScript : MonoBehaviour
         config.PercentToSelect = PercentToSelect;
         config.MutationChance = MutationChance;
         //config.ParentChances = Chances;
-        config.SetParentChoosingMethod(NeuralNetwork.Core.Learning.Enums.ParentChoosingMethod.ScoreLinear);
+        config.SetParentChoosingMethod(NeuralNetwork.Core.Learning.Enums.ParentChoosingMethod.PositionExponential);
     }
 
     void Update()

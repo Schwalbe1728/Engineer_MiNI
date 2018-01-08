@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3954,6 +3954,7 @@ MonoBehaviour:
   AverageScoreText: {fileID: 2130238231}
   MedianScoreText: {fileID: 1988752266}
   neuronDefinitionsPanelScript: {fileID: 1618431489}
+  sigma: 0
 --- !u!4 &1289849081
 Transform:
   m_ObjectHideFlags: 0
