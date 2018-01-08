@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NeuralNetwork.Core.Learning.Enums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +38,12 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
     [SerializeField]
     private InputField SelectPercentInputField;
+
+    [SerializeField]
+    private Dropdown ParentChoosingDropdown;
+
+    [SerializeField]
+    private InputField SigmaInputField;
 
     public void StartSimulation()
     {
@@ -95,6 +102,18 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
             }
         }
+
+        if(!float.TryParse(SigmaInputField.text, out popScript.sigma))
+        {
+            string temp = SigmaInputField.text.Replace(".", ",");
+
+            if(!float.TryParse(temp, out popScript.sigma))
+            {
+
+            }
+        }
+
+        popScript.SetParentChoosingMethod((ParentChoosingMethod)ParentChoosingDropdown.value);
 
         mut = Mathf.Clamp01(mut);
         sel = Mathf.Clamp01(sel);

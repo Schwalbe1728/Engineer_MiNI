@@ -760,12 +760,12 @@ MonoBehaviour:
     rightWheelTransform: {fileID: 4217394068216660}
     motor: 1
     steering: 0
-  maxMotorTorque: 3000
+  maxMotorTorque: 3600
   breakTorque: 5000
   maxSteeringAngle: 60
   turnDegreePerSec: 210
   steerResetDelay: 0.5
-  maxSpeed: 12
+  maxSpeed: 60
 --- !u!114 &114773091778945864
 MonoBehaviour:
   m_ObjectHideFlags: 1

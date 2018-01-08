@@ -118,9 +118,9 @@ public class OrdersReceiverScript : MonoBehaviour {
                 UpdateSteeringWheels(axle.leftWheel, axle.leftWheelTransform);
             }
         }
-        if (CarBody.velocity.magnitude > maxSpeed)
+        if (CarBody.velocity.magnitude * 3.6f > maxSpeed)
         {
-            CarBody.velocity = CarBody.velocity.normalized * maxSpeed;
+            CarBody.velocity = CarBody.velocity.normalized * maxSpeed / 3.6f;
         }
     }
 
@@ -150,11 +150,11 @@ public class OrdersReceiverScript : MonoBehaviour {
         switch(temp.ComType)
         {
             case CommandType.Accelerate:
-                InterpretAccelerate();
+                InterpretAccelerate(temp.Value);
                 break;
 
             case CommandType.Break:
-                InterpretBreak();
+                InterpretBreak(temp.Value);
                 break;
 
             case CommandType.TurnLeft:
@@ -167,18 +167,20 @@ public class OrdersReceiverScript : MonoBehaviour {
         }
     }
 
-    private void InterpretAccelerate(Accelerate acc = null)
+    private void InterpretAccelerate(float val, Accelerate acc = null)
     {
         //Debug.Log("Accelerate");
 
         //torque = Mathf.Clamp(torque + torquePerSecond * Time.fixedDeltaTime, 0, maxMotorTorque);
 
+        val = Mathf.Lerp(0.5f, 1, val);
+
         foreach(AxleInfo axle in axleInfos)
         {
             if(axle.motor)
             {
-                axle.rightWheel.motorTorque = maxMotorTorque;
-                axle.leftWheel.motorTorque = maxMotorTorque;
+                axle.rightWheel.motorTorque = val * maxMotorTorque;
+                axle.leftWheel.motorTorque = val * maxMotorTorque;
             }
 
             axle.rightWheel.brakeTorque = 0;
@@ -186,14 +188,14 @@ public class OrdersReceiverScript : MonoBehaviour {
         }
     }
 
-    private void InterpretBreak(Break br = null)
+    private void InterpretBreak(float val, Break br = null)
     {
         //torque = Mathf.Clamp(torque - breakTorque, 0, maxMotorTorque);
 
         foreach (AxleInfo axle in axleInfos)
         {
-            axle.rightWheel.brakeTorque = breakTorque;
-            axle.leftWheel.brakeTorque = breakTorque;
+            axle.rightWheel.brakeTorque = val * breakTorque;
+            axle.leftWheel.brakeTorque = val * breakTorque;
 
             axle.rightWheel.motorTorque = 0;
             axle.leftWheel.motorTorque = 0;

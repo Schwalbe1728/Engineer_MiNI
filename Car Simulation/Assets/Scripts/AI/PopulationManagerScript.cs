@@ -1,5 +1,6 @@
 ﻿using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Learning;
+using NeuralNetwork.Core.Learning.Enums;
 using NeuralNetwork.Core.Model;
 using NeuralNetwork.Core.Model.Neurons;
 using System;
@@ -37,6 +38,8 @@ public class PopulationManagerScript : MonoBehaviour
     [SerializeField]
     private Text MedianScoreText;
 
+    [SerializeField]
+    private ParentChoosingMethod parentChoosingMethod;
 
     [SerializeField]
     private NeuronDefinitionsPanelScript neuronDefinitionsPanelScript;
@@ -50,7 +53,12 @@ public class PopulationManagerScript : MonoBehaviour
     private List<int> HiddenLayersSettings;
     private List<Type> NeuronTypesSettings;
 
-    public float sigma = 0.1f;
+    public float sigma;
+
+    public void SetParentChoosingMethod(ParentChoosingMethod meth)
+    {
+        parentChoosingMethod = meth;
+    }
 
     public void StartSimulation(float mutChance, float selectPercent)
     {
@@ -73,6 +81,8 @@ public class PopulationManagerScript : MonoBehaviour
 
             config.PercentToSelect = PercentToSelect;
             config.MutationChance = MutationChance;
+            config.SetParentChoosingMethod(parentChoosingMethod);
+            
             /*
             learningProcess =
                 new LearningProcess(Specimen.Length, config,
@@ -160,7 +170,7 @@ public class PopulationManagerScript : MonoBehaviour
         config.PercentToSelect = PercentToSelect;
         config.MutationChance = MutationChance;
         //config.ParentChances = Chances;
-        config.SetParentChoosingMethod(NeuralNetwork.Core.Learning.Enums.ParentChoosingMethod.PositionExponential);
+        config.SetParentChoosingMethod(parentChoosingMethod);
     }
 
     void Update()

@@ -122,11 +122,14 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
                 CommandGiver.GiveCommand(new Break());
             }*/
 
+            float accelValue = (Mathf.Abs((float)accelerateDecision) - DeadZoneThreshold) / (1 - DeadZoneThreshold);
+
             CommandGiver.GiveCommand(
                 new SimplifiedCommand(
                     (accelerateDecision > 0) ?
                         CommandType.Accelerate :
-                        CommandType.Break
+                        CommandType.Break,
+                        accelValue
                     )
                 );
         }

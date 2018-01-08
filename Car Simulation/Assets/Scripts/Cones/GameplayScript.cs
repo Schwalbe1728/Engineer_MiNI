@@ -107,11 +107,11 @@ public class GameplayScript : MonoBehaviour
         float startToLast = Vector3.Distance(StartPosition.position, LastPosition);
 
         //currentScore +=
-        float inc =    (100 * (2 * lastToCar + (startToCar - startToLast) / 2 )
+        float inc =    (100 * (2 * lastToCar + (startToCar - startToLast) / 3 )
              /*- 100 * (1-WaypointManager.ScoreProgressToWaypoint(CarPosition))*/
              //+ 50 * (startToCar - startToLast)
              //+ startToCar * ((startToCar > startToLast)? 1 : -0.5f )             
-             + 0.1f * Velocity()) * Time.deltaTime;
+             + 0.005f * Velocity()) * Time.deltaTime;
 
         currentScore += inc;
         if (inc < 0) Debug.Log("Zmniejsza się!: " + inc.ToString("n1"));

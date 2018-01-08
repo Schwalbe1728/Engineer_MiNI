@@ -44,10 +44,10 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>F:/PROGRAMY/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>F:/PROGRAMY/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -85,82 +85,82 @@
      <None Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Shaders\UIScreen.shader" />
      <None Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Shaders\UI Particle MultiplyDouble.shader" />
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Networking">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.TestRunner">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/Editor/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Timeline">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Timeline">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.TreeEditor">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Analytics">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/Editor/UnityEditor.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/Editor/UnityEditor.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.HoloLens">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/Editor/UnityEditor.Purchasing.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.VR">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
- <HintPath>F:/PROGRAMY/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="BindAIToUnityModule">
- <HintPath>D:/PROJEKTY/Engineer/Car Simulation/Assets/DLL/AI Interfaces/BindAIToUnityModule.dll</HintPath>
+ <HintPath>C:/Users/Jarek/Documents/Visual Studio 2015/Projects/Inżynierka/Engineer_MiNI/Car Simulation/Assets/DLL/AI Interfaces/BindAIToUnityModule.dll</HintPath>
  </Reference>
  <Reference Include="CommandGiverModule">
- <HintPath>D:/PROJEKTY/Engineer/Car Simulation/Assets/DLL/AI Interfaces/CommandGiverModule.dll</HintPath>
+ <HintPath>C:/Users/Jarek/Documents/Visual Studio 2015/Projects/Inżynierka/Engineer_MiNI/Car Simulation/Assets/DLL/AI Interfaces/CommandGiverModule.dll</HintPath>
  </Reference>
  <Reference Include="DataAcquiringModule">
- <HintPath>D:/PROJEKTY/Engineer/Car Simulation/Assets/DLL/AI Interfaces/DataAcquiringModule.dll</HintPath>
+ <HintPath>C:/Users/Jarek/Documents/Visual Studio 2015/Projects/Inżynierka/Engineer_MiNI/Car Simulation/Assets/DLL/AI Interfaces/DataAcquiringModule.dll</HintPath>
  </Reference>
  <Reference Include="EngPlayerCommands">
- <HintPath>D:/PROJEKTY/Engineer/Car Simulation/Assets/DLL/AI Interfaces/EngPlayerCommands.dll</HintPath>
+ <HintPath>C:/Users/Jarek/Documents/Visual Studio 2015/Projects/Inżynierka/Engineer_MiNI/Car Simulation/Assets/DLL/AI Interfaces/EngPlayerCommands.dll</HintPath>
  </Reference>
  <Reference Include="NeuralNetwork.Core">
- <HintPath>D:/PROJEKTY/Engineer/Car Simulation/Assets/DLL/AI Library/NeuralNetwork.Core.dll</HintPath>
+ <HintPath>C:/Users/Jarek/Documents/Visual Studio 2015/Projects/Inżynierka/Engineer_MiNI/Car Simulation/Assets/DLL/AI Library/NeuralNetwork.Core.dll</HintPath>
  </Reference>
  <Reference Include="PommaLabs.Thrower">
- <HintPath>D:/PROJEKTY/Engineer/Car Simulation/Assets/DLL/AI Library/PommaLabs.Thrower.dll</HintPath>
+ <HintPath>C:/Users/Jarek/Documents/Visual Studio 2015/Projects/Inżynierka/Engineer_MiNI/Car Simulation/Assets/DLL/AI Library/PommaLabs.Thrower.dll</HintPath>
  </Reference>
  <Reference Include="Troschuetz.Random">
- <HintPath>D:/PROJEKTY/Engineer/Car Simulation/Assets/DLL/AI Library/Troschuetz.Random.dll</HintPath>
+ <HintPath>C:/Users/Jarek/Documents/Visual Studio 2015/Projects/Inżynierka/Engineer_MiNI/Car Simulation/Assets/DLL/AI Library/Troschuetz.Random.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
