@@ -1179,7 +1179,7 @@ GameObject:
   - component: {fileID: 414266458}
   m_Layer: 0
   m_Name: Cube (6)
-  m_TagString: Untagged
+  m_TagString: Cones
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2975,7 +2975,7 @@ GameObject:
   - component: {fileID: 890806858}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Cones
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3172,7 +3172,7 @@ GameObject:
   - component: {fileID: 938510978}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Cones
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4200,7 +4200,7 @@ GameObject:
   - component: {fileID: 1223344970}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Cones
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5201,6 +5201,34 @@ Prefab:
     - target: {fileID: 4794906590491700, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1294226992840394, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461364629848416, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810065671601306, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661740061893992, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370967757985378, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555015295719880, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613748925419114, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
@@ -6826,7 +6854,7 @@ GameObject:
   - component: {fileID: 1814893391}
   m_Layer: 0
   m_Name: Cube (7)
-  m_TagString: Untagged
+  m_TagString: Cones
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7613,6 +7641,34 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1613748925419114, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1810065671601306, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661740061893992, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1294226992840394, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370967757985378, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461364629848416, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555015295719880, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
+      propertyPath: m_TagString
+      value: Cones
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3a96b618ba45a44b907340dda2696f8, type: 2}
   m_IsPrefabParent: 0
@@ -7626,7 +7682,7 @@ GameObject:
   - component: {fileID: 1885795589}
   m_Layer: 0
   m_Name: Labirynth 3
-  m_TagString: Untagged
+  m_TagString: Cones
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

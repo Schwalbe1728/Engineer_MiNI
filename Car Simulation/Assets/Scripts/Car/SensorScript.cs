@@ -55,7 +55,8 @@ public class SensorScript : MonoBehaviour {
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxRange))
             {
-                currentDistance = hit.distance / MaxRange;                
+                currentDistance = hit.distance / MaxRange;
+                //Debug.Log(hit.collider.tag);
             }
             else
             {
