@@ -65,16 +65,32 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
             if (LastSensorReading != null && LastSensorReading.Data("Game In Progress") > 0)
             {
                 //Debug.Log("Score: " + LastSensorReading.Data("Score"));
+                int maxSensor = 0;
 
                 //float[] decisionValues = NeuralNetwork.Calculate(LastSensorReading.Sensors);
                 double[] reeeee = new double[LastSensorReading.Sensors.Length];
                 for(int i = 0; i < reeeee.Length; i++)
                 {
                     reeeee[i] = (double)LastSensorReading.Sensors[i];
+
+                    if (reeeee[i] >= 1) maxSensor++;
                 }
 
                 //reeeee[reeeee.Length - 1] = (double)LastSensorReading.Data("Score");
+                /*
+                if (UnityEngine.Random.Range(0f, 1f) < 0.01f || maxSensor == reeeee.Length)
+                {
+                    Debug.Log("Sensors: Active = " + LastSensorReading.Data("Active Sensors").ToString("n0") + " " +
+                        reeeee[0].ToString("n3") + " " +
+                        reeeee[1].ToString("n3") + " " +
+                        reeeee[2].ToString("n3") + " " +
+                        reeeee[3].ToString("n3") + " " +
+                        reeeee[4].ToString("n3")
+                        );
+                }
 
+                if (maxSensor == reeeee.Length) throw new Exception("Czujniki się zjebały?!!");
+                */
                 CalculateNextOrder(NeuralNetwork.Calculate(reeeee));
             }
             else
@@ -86,7 +102,7 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
 
     private void CalculateNextOrder(double[] sensorReadings)
     {
-        //Debug.Log("Interpretuj: " + sensorReadings[0].ToString("n2") + " " + sensorReadings[1].ToString("n2"));
+        //Debug.Log("Interpretuj: " + sensorReadings[0].ToString("n2") + " " + sensorReadings[1].ToString("n2"));    
 
         double turningDecision = sensorReadings[0];
         double accelerateDecision = sensorReadings[1];

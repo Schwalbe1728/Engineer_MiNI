@@ -16,12 +16,15 @@ public class SensorScript : MonoBehaviour {
     [SerializeField]
     private bool RandomizeFrequency;
 
+    [SerializeField]    
     private float currentDistance;
 
     private float timer;
     private float updateDelay;
 
     private bool Work;
+
+    public bool SensorActive { get { return Work; } }
 
     public void Activate()
     {
@@ -30,7 +33,7 @@ public class SensorScript : MonoBehaviour {
     }
 
     public void Deactivate()
-    {
+    {        
         Work = false;
     }
 

@@ -43,10 +43,12 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
     public SensorData GetData()
     {
         float[] distances = new float[Sensors.Length];
+        int activeSensors = 0;
 
         for(int i = 0; i < distances.Length; i++)
         {
             distances[i] = Sensors[i].Distance;
+            if (Sensors[i].SensorActive) activeSensors++;
         }
 
         SensorData result = new SensorData(distances);
@@ -55,7 +57,10 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
         {
             result.InsertData("Score", gameplayScript.Score);
             result.InsertData("Game In Progress", (gameplayScript.InProgress) ? 1 : 0);
+            result.InsertData("Active Sensors", activeSensors);
         }
+
+        if (activeSensors == 0 && gameplayScript.InProgress) Debug.LogWarning("Nieaktywne czujniki!!!");
 
         return result;
     }

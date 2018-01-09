@@ -24,6 +24,7 @@ public class OrdersReceiverScript : MonoBehaviour {
     //private float torque;
 
     private bool InProgress;
+    private bool Human;
 
     public void GameEnded(int score)
     {
@@ -59,6 +60,7 @@ public class OrdersReceiverScript : MonoBehaviour {
 
             if(inputSource is AIInputSource)
             {
+                //Debug.LogWarning("OrdersReceiver Deactivate");
                 (inputSource as AIInputSource).DeativateSensors();
             }
         }

@@ -171,6 +171,8 @@ public class PopulationManagerScript : MonoBehaviour
         config.MutationChance = MutationChance;
         //config.ParentChances = Chances;
         config.SetParentChoosingMethod(parentChoosingMethod);
+
+        Application.runInBackground = true;
     }
 
     void Update()
