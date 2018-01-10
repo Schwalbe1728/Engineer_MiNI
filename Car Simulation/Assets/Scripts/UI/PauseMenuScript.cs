@@ -12,6 +12,9 @@ public class PauseMenuScript : MonoBehaviour
     private GameObject pauseMenuUI;
 
     [SerializeField]
+    private StartSimulationPanelScript startSimScript;
+
+    [SerializeField]
     private KeyCode pauseActivationKey;
 
     void Update()
@@ -41,5 +44,16 @@ public class PauseMenuScript : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gamePaused = false;
+    }
+
+    public void RestartSimulation()
+    {
+        //usunięcie wszystkiego na scenie
+
+        Resume();
+
+        startSimScript.ShowPanel();
+        startSimScript.StopSimulation();
+        startSimScript.DespawnSimulationObjects();
     }
 }

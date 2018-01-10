@@ -27,10 +27,13 @@ public class PlotsManagerScript : MonoBehaviour {
 
 	private void OnRoundEnded(ProcessData generationResults)
     {
-        AddValueToPlot(BestScorePlot, generationResults.BestScore);
-        AddValueToPlot(WorstScorePlot, generationResults.WorstScore);
-        AddValueToPlot(AverageScorePlot, generationResults.AverageScore);
-        AddValueToPlot(MedianScorePlot, generationResults.MedianScore);
+        if (generationResults != null)
+        {
+            AddValueToPlot(BestScorePlot, generationResults.BestScore);
+            AddValueToPlot(WorstScorePlot, generationResults.WorstScore);
+            AddValueToPlot(AverageScorePlot, generationResults.AverageScore);
+            AddValueToPlot(MedianScorePlot, generationResults.MedianScore);
+        }
     }
 
     private void AddValueToPlot(PlotScript plot, double val)

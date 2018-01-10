@@ -16,6 +16,9 @@ public class StartSimulationPanelScript : MonoBehaviour {
     private GameObject PopulationManagerObject;
 
     [SerializeField]
+    private MultipleTrendPlotScript Plots;
+
+    [SerializeField]
     private NoOfCarsPanel NumberOfCarsPanel;
 
     [SerializeField]
@@ -47,6 +50,8 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
     public void StartSimulation()
     {
+        Plots.RestartedSimulation();
+
         CarsOnSceneManager carsManager = CarsCollectionObject.GetComponent<CarsOnSceneManager>();
 
         for(int i = 0; i < NumberOfCarsPanel.NumberOfCars; i++)
@@ -132,5 +137,38 @@ public class StartSimulationPanelScript : MonoBehaviour {
     public void HidePanel()
     {
         gameObject.SetActive(false);
+    }
+
+    public void StopSimulation()
+    {
+        CarsOnSceneManager carsManager = 
+            CarsCollectionObject.GetComponent<CarsOnSceneManager>();
+
+        carsManager.StopSimulation();
+        carsManager.StopAllCoroutines();
+
+         PopulationManagerScript populationScript =
+            PopulationManagerObject.GetComponent<PopulationManagerScript>();
+
+        populationScript.StopSimulation(true);
+        populationScript.StopAllCoroutines();
+    }
+
+    public void DespawnSimulationObjects()
+    {
+        for(int i = 0; i < CarsCollectionObject.transform.childCount; i++)
+        {
+            Destroy(CarsCollectionObject.transform.GetChild(i).gameObject, 0.1f);
+        }
+
+        for (int i = 0; i < PopulationManagerObject.transform.childCount; i++)
+        {
+            Destroy(PopulationManagerObject.transform.GetChild(i).gameObject, 0.1f);
+        }
+
+        for (int i = 0; i < InputSourcesCollectionObject.transform.childCount; i++)
+        {
+            Destroy(InputSourcesCollectionObject.transform.GetChild(i).gameObject, 0.1f);
+        }
     }
 }

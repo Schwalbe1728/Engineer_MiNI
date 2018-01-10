@@ -46,6 +46,19 @@ public class MultipleTrendPlotScript : MonoBehaviour
     [SerializeField]
     private Color[] PlotsColors;
 
+    public void RestartedSimulation()
+    {
+        MaxY = 0;
+        MinY = 0;
+
+        foreach(Plot plot in PlotsArray)
+        {
+            plot.Clear();
+        }
+
+        UpdatePlots(null);
+    }
+
     void Awake()
     {
         PlotsArray = new List<Plot>();
@@ -84,10 +97,13 @@ public class MultipleTrendPlotScript : MonoBehaviour
     {
         //Debug.Log("UpdatePlots");
 
-        AddValueToPlot(BestScorePlot, generationResults.BestScore);
-        AddValueToPlot(WorstScorePlot, generationResults.WorstScore);
-        AddValueToPlot(AverageScorePlot, generationResults.AverageScore);
-        AddValueToPlot(MedianScorePlot, generationResults.MedianScore);
+        if (generationResults != null)
+        {
+            AddValueToPlot(BestScorePlot, generationResults.BestScore);
+            AddValueToPlot(WorstScorePlot, generationResults.WorstScore);
+            AddValueToPlot(AverageScorePlot, generationResults.AverageScore);
+            AddValueToPlot(MedianScorePlot, generationResults.MedianScore);
+        }
 
         int i = 0;
 

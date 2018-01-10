@@ -120,32 +120,41 @@ public class PopulationManagerScript : MonoBehaviour
         StartSimulation(MutationChance, PercentToSelect);
     }
 
-    public void StopSimulation()
+    public void StopSimulation(bool stopForGood = false)
     {
         simulationStarted = false;
 
-        double[] scores = new double[Specimen.Length];
-
-        for(int i = 0; i < Specimen.Length; i++)
+        if (!stopForGood)
         {
-            scores[i] = (double)(Specimen[i].FinalScore());
+            double[] scores = new double[Specimen.Length];
+
+            for (int i = 0; i < Specimen.Length; i++)
+            {
+                scores[i] = (double)(Specimen[i].FinalScore());
+            }
+
+            learningProcess.Learn(scores);
+            int temp = learningProcess.HistoricalData.Count;
+            ProcessData tmpData = learningProcess.HistoricalData[temp - 1];
+
+            if (OnRoundEnded != null)
+            {
+                OnRoundEnded(tmpData);
+            }
+
+            Debug.Log(
+                "Generation " + tmpData.GenerationIndex +
+                ", Avg: " + tmpData.AverageScore.ToString("n2") +
+                ", Med: " + tmpData.MedianScore +
+                ", Best: " + tmpData.BestScore +
+                ", Worst: " + tmpData.WorstScore);
         }
-
-        learningProcess.Learn(scores);
-        int temp = learningProcess.HistoricalData.Count;
-        ProcessData tmpData = learningProcess.HistoricalData[temp - 1];
-
-        if(OnRoundEnded != null)
+        else
         {
-            OnRoundEnded(tmpData);
+            Specimen = null;
+            learningProcess = null;
+            OnRoundEnded(null);
         }
-
-        Debug.Log(
-            "Generation " + tmpData.GenerationIndex + 
-            ", Avg: " + tmpData.AverageScore.ToString("n2") + 
-            ", Med: " + tmpData.MedianScore + 
-            ", Best: " + tmpData.BestScore + 
-            ", Worst: " + tmpData.WorstScore);
     }
 
     public List<SpecimenScript> GetActiveCars()

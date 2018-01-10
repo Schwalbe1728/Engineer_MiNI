@@ -85,6 +85,13 @@ public class Plot
         if (val < MinY) MinY = val;
     }
 
+    public void Clear()
+    {
+        Values.Clear();
+        MaxY = 0;
+        MinY = 0;
+    }
+
     public List<Vector2> GetPlotPoints(float width, float height, int n = int.MaxValue, bool given = false, float min = 0, float max = 0)
     {
         List<Vector2> result = new List<Vector2>();
