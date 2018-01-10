@@ -71,6 +71,7 @@
      <Compile Include="Assets\Scripts\Steering\AIInputSource.cs" />
      <Compile Include="Assets\Scripts\Steering\HumanInputSourceScript.cs" />
      <Compile Include="Assets\Scripts\UI\NoOfCarsPanel.cs" />
+     <Compile Include="Assets\Scripts\UI\PauseMenuScript.cs" />
      <Compile Include="Assets\Scripts\UI\StartSimulationPanelScript.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Examples\ComboBox\ComboBoxChanged.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Examples\Cooldown\CooldownEffect_Image.cs" />
