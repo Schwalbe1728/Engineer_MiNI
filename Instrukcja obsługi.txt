@@ -1,0 +1,141 @@
+INSTRUKCJA OBSŁUGI
+------------------
+
+Program służy do przeprowadzania symulacji, w czasie której sieci
+neuronowe uczone są prowadzenia samochodu.
+
+1. EKRAN KONFIGURACJI
+
+Po uruchomieniu programu, użytkownikowi przedstawione zostaje menu
+konfiguracji; za jego pomocą ustalamy parametry symulacji którą 
+chcemy przeprowadzić.
+
+	1A. LICZBA SAMOCHODÓW
+	Użytkownik może zmieniać liczbę samochodów (a przez to również
+	i wielkość populacji sztucznej inteligencji) przy pomocy
+	przycisków "+" i "-". Możliwymi ustawieniami są liczby z zakresu
+	od 10 do 100.
+	Odradzamy ustawienie bardzo dużej ilości samochodów, jeśli 
+	symulacja nie jest przeprowadzana na relatywnie komputerze
+	dysponującym relatywnie dużą mocą obliczeniową. Jednocześnie,
+	z naszych obserwacji wynika, że populacje wielkości 50-70
+	pojazdów są w stanie w miarę szybko nauczyć się podstawowych
+	zachowań.
+	
+	1B. TRYB MANUALNY
+	Zaznaczenie tej opcji pozwala użytkownikowi przejąć stery nad
+	jednym z samochodów. 
+	Domyślne sterowanie w trybie manualnym:
+	W - Gaz
+	S - Hamowanie
+	A, D - skręt w lewo, prawo.
+	
+	1C. Szansa mutacji
+	Jest to parametr konfiguracyjny algorytmu ewolucyjnego.
+	Po każdym zakończonym przejeździe, na podstawie jego wyników
+	tworzona jest nowa generacja sieci neuronowych, zaś dla każdego
+	neuronu sieci sprawdzane jest, czy zachodzi jego mutacja - szansa
+	na jej zajście jest opisana przez ten parametr właśnie.
+	Parametr przyjmuje wartości zmiennoprzecinkowe od 0 do 1, gdzie 
+	"1" jest równoznaczne 100% szansie mutacji.
+	
+	1D. Procent selekcji
+	Jest to parametr konfiguracyjny algorytmu ewolucyjnego.
+	Po każdym zakończonym przejeździe, na podstawie jego wyników, 
+	wybierana jest pewna liczba najlepszych osobników, na podstawie
+	których stworzymy potomstwo. Pozostałe osobniki które nie zostały
+	wybrane zostają odrzucone i zastąpione wygenerowanym potomstwem.
+	Parametr przyjmuje wartości zmiennoprzecinkowe od 0 (wyłącznie) do 1, gdzie 
+	"1" jest równoznaczne temu, że 100% osobników zostanie wybranych do
+	nowej generacji.
+	
+	1E. Panel konfiguracji sieci neuronowej
+	W tym panelu możliwe jest zdefiniowanie testowanej sieci neuronowej
+	przy pomocy definicji warstw ukrytych, ich typów i ilości zawartych 
+	przez nie neuronów.
+	Warstwa wejściowa zawsze zawiera liczbę neuronów równą liczbie
+	czujników zamontowanych na samochodzie, nie jest możliwa jej zmiana,
+	niemożliwe też jest jej usunięcie.
+	Przycisk Add Hidden Layer pozwala na dodanie jednej warstwy ukrytej.
+	Przycisk Delete na pozycji opisującej warstwę ukrytą pozwala na jej 
+	usunięcie.
+	Pozycja opisująca warstwę ukrytą zawiera dwie informacje: typ funkcji
+	aktywacji (domyślną jest tangens hiperboliczny) oraz liczbę neuronów 
+	w warstwie, która musi być liczbą naturalną większą od zera.
+	
+	1F. Metoda wyboru rodziców
+	Z rozwijanego menu mamy możliwość wybrania sposobu, w jaki w toku działania
+	algorytmu ewolucyjnego wybierani są rodzice poszczególnych potomków. 
+	Mówiąc dokładniej - odnosi się to do sposobu wyznaczania wagi każdego
+	rodzica, gdyż pary rodziców jako takich wybierane są losowo - przy czym
+	osobnik z większą wagę będzie miał wyższe szanse na zostanie wybranym
+	do rozrodu.
+	Możliwe ustawienia:
+		Position Linear - Waga rodzica jest liniowo związana z pozycją jaką
+			zajmuje on na posortowanej malejąco według wyniku przejazdu listy
+			osobników, np: jeśli do rozrodu wybieramy 40 osobników, najlepszy
+			z nich będzie miał wagę 40, najgorszy zaś - 1.
+		Score Linear - Waga rodzica jest interpolowana liniowo na podstawie 
+			wyniku osiągniętego podczas przejazdu - najgorszy i najlepszy
+			osobnik mają podobnie do poprzedniej opcji najmniejszą i najwyższą
+			wagę, natomiast wagi osobników pomiędzy obliczane są bezpośrednio
+			na podstawie odległości ich wyników od najwyższej wartości w
+			rozpatrywanym przejeździe.
+		Score Cubic - Podobnie jak wyżej, ale przy pomocy interpolacji 
+			bikubicznej.				
+		Position Cubic - Podobnie jak w przypadku Position Linear, tylko 
+			z wagami podniesionymi do kwadratu.			
+		Position Exp - Podobnie jak w przypadku Position Linear, tylko 
+			z wagami obliczonymi na podstawie wzoru: n * 2^n, gdzie n to
+			waga w przypadku liniowym.
+			
+	1G. Sigma
+		?
+		
+	1H. Przycisk Start Simulation
+		Zamyka okno konfiguracji, generuje pojazdy i sieci neuronowe oraz
+		rozpoczyna symulację.
+		
+2. EKRAN SYMULACJI
+	Na ekranie symulacji możemy obserwować postępy symulacji w uczeniu sieci
+	neuronowych.
+	Kamera zmienia swoją pozycję w taki sposób, by zawsze obejmować wszystkie
+	samochody, które nie zakończyły przejazdu - to znaczy takie, które
+	nie uderzyły w żaden element otoczenia, oraz nie zatrzymały się w miejscu.
+	
+	Ekran symulacji zawiera dwa panele statystyk:
+	
+	2A. Panel Statystyk Bieżących
+		Panel Statystyk Bieżących pozwala na obserwację podstawowych danych 
+		opisujących przejazd i postępy generacji widocznej na ekranie w tym 
+		momencie. Możemy z niego odczytać ile samochodów jeszcze kontynuuje
+		przejazd, jaki jest najlepszy, najgorszy oraz średni wynik aktualnej
+		generacji, a także jaka jest mediana wyników. Wartości te aktualizowane
+		są w czasie rzeczywistym.
+		
+	2B. Panel Wykresów
+		Panel ten zawiera wspólny wykres wyników przeszłych generacji: na osi
+		X-ów znajduje się informacja o numerze generacji, z kolei na osi Y-ów
+		o wynikach. Obie osie dostosowują się do zakresu wartości, które mają 
+		one przedstawiać, przy czym zakresem osi Y-ów jest min(y) i max(y) 
+		ze zbioru czterech wykresów: najlepszego wyniku (niebieski), najgorszego
+		wyniku (różowy), średniego wyniku (zielony) oraz mediany (żółty).
+		
+	Symulację można w dowolnym momencie zapauzować poprzez wciśnięcie klawisza
+	ESC, co jednocześnie otwiera MENU PAUZY.
+	
+3. MENU PAUZY
+	Menu Pauzy na chwilę obecną oferuje dwie możliwości:
+	
+	3A. Continue
+		Który zamyka menu pauzy i kontynuuje wstrzymaną symulację
+		
+	3B. Restart
+		Który usuwa samochodu i sieci neuronowe, po czym otwiera ponownie
+		menu konfiguracji; należy zwrócić uwagę, że menu konfiguracji będzie
+		zawierać wartości wprowadzone przez użytkownika dla wcześniejszej 
+		symulacji.
+
+			
+		
+		
