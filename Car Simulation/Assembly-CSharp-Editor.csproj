@@ -67,6 +67,8 @@
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Editor\TextPicRenameEditor.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Editor\uGUITools.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Editor\UIExtensionsMenuOptions.cs" />
+     <Compile Include="Assets\TornadoBanditsStudio\Editor\TBS_EditorInitializer.cs" />
+     <Compile Include="Assets\TornadoBanditsStudio\Editor\TBS_PresentationWindow.cs" />
      <None Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Shaders\UIAdditive.shader" />
      <None Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Shaders\UI Particle AddSmooth.shader" />
      <None Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Shaders\UI Particle Premultiply Blend.shader" />

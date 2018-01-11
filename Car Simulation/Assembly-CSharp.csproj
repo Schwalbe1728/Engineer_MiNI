@@ -242,6 +242,8 @@
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Scripts\Utilities\UISelectableExtension.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Scripts\VR Extensions\VRCursor.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Scripts\VR Extensions\VRInputModule.cs" />
+     <Compile Include="Assets\TornadoBanditsStudio\Low Poly Free Pack\Scripts\TBS_CameraMovement.cs" />
+     <Compile Include="Assets\TornadoBanditsStudio\Low Poly Free Pack\Water\TBS_Water.cs" />
      <None Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Shaders\UIAdditive.shader" />
      <None Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Shaders\UI Particle AddSmooth.shader" />
      <None Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Shaders\UI Particle Premultiply Blend.shader" />
