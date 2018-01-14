@@ -11,8 +11,7 @@ public class GameplayScript : MonoBehaviour
     public event GameEnded OnGameEnded;
     public event GameStarted OnGameStarted;
 
-    //private static int AUTOFAIL_SCORE = -250;
-    private WaypointManagerScript WaypointManager;
+    //private static int AUTOFAIL_SCORE = -250;    
 
     [SerializeField]
     private Transform CarPosition;
@@ -20,7 +19,10 @@ public class GameplayScript : MonoBehaviour
     [SerializeField]
     private Transform StartPosition;
 
+    private Vector3 LastWaypointPosition;
     private Vector3 LastPosition;
+    private HashSet<uint> VisitedWaypoints;
+
     /*
     [SerializeField]
     private Text ScoreValueText;
@@ -74,7 +76,10 @@ public class GameplayScript : MonoBehaviour
         CarPosition.position = StartPosition.position;
         CarPosition.rotation = StartPosition.rotation;
         LastPosition = StartPosition.position;
-        GameInProgress = true;
+        LastWaypointPosition = StartPosition.position;
+
+        if (VisitedWaypoints == null) VisitedWaypoints = new HashSet<uint>();
+        ClearWaypointIndexes();
 
         //coroutine = StartCoroutine(PenalizeTime());
         coroutine = StartCoroutine(CheckIfTimeout());
@@ -92,28 +97,56 @@ public class GameplayScript : MonoBehaviour
         StartPosition = start;
     }
 
+    public void SetWaypointPosition(Vector3 pos)
+    {
+        LastWaypointPosition = pos;
+    }
+
+    public void IncreaseScore(float val)
+    {
+        currentScore += val;
+    }
+
+    public bool AddWaypointIndex(uint id)
+    {        
+        bool result = !VisitedWaypoints.Contains(id);
+
+        if(result)
+        {
+            VisitedWaypoints.Add(id);
+        }
+
+        return result;
+    }
+
+    public void ClearWaypointIndexes()
+    {
+        VisitedWaypoints.Clear();
+    }
+
     void Awake()
     {
         OnGameEnded += CheckIfNewRecord;
-
-        WaypointManager = GameObject.Find("Waypoints").GetComponent<WaypointManagerScript>();
         //Restart();        
     }
 
     void FixedUpdate()
     {
         float lastToCar = Vector3.Distance(LastPosition, CarPosition.position);
-        float startToCar = Vector3.Distance(StartPosition.position, CarPosition.position);
-        float startToLast = Vector3.Distance(StartPosition.position, LastPosition);
+        float waypointToCar = Vector3.Distance(LastWaypointPosition, CarPosition.position);
+        float waypointToLast = Vector3.Distance(LastWaypointPosition, LastPosition);
 
         //currentScore +=
-        float inc = (100 * (lastToCar + (startToCar - startToLast))
+        float inc = (100 * (lastToCar + (waypointToCar - waypointToLast))
              /*- 100 * (1-WaypointManager.ScoreProgressToWaypoint(CarPosition))*/
              //+ 50 * (startToCar - startToLast)
              //+ startToCar * ((startToCar > startToLast)? 1 : -0.5f )             
              + 0.005f * Velocity()) * Time.fixedDeltaTime;
-                
-        if (inc < 0) Debug.Log("Zmniejsza się!: " + inc.ToString("n3"));
+
+        if (inc < 0)
+        {
+            //Debug.Log("Zmniejsza się!: " + inc.ToString("n3"));
+        }
         else
         {
             currentScore += inc;

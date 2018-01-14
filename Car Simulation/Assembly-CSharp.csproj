@@ -55,7 +55,6 @@
      <Compile Include="Assets\Scripts\AI\PopulationManagerScript.cs" />
      <Compile Include="Assets\Scripts\AI\SimplifiedCommand.cs" />
      <Compile Include="Assets\Scripts\AI\SpecimenScript.cs" />
-     <Compile Include="Assets\Scripts\AI\WaypointManagerScript.cs" />
      <Compile Include="Assets\Scripts\AI\WaypointScript.cs" />
      <Compile Include="Assets\Scripts\Car\OrdersReceiverScript.cs" />
      <Compile Include="Assets\Scripts\Car\SensorScript.cs" />
