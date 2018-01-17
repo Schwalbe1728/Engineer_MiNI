@@ -139,6 +139,14 @@ public class GameplayScript : MonoBehaviour
         //Restart();        
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(PopulationManagerScript.StopGeneration))
+        {
+            EndGame();
+        }
+    }
+
     void FixedUpdate()
     {
         float lastToCar = Vector3.Distance(LastPosition, CarPosition.position);

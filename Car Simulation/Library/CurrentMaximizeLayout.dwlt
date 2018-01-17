@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 18006, y: 14042}
   vertical: 0
-  controlID: 6414
+  controlID: 6491
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
-  controlID: 6415
+  controlID: 6492
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 6416
+  controlID: 6493
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,14 +202,14 @@ MonoBehaviour:
     width: 685
     height: 270
   m_SceneLighting: 1
-  lastFramingTime: 7060.706544846999
+  lastFramingTime: 6542.538425049132
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -176.88245, y: 49.724396, z: 185.63844}
+    m_Target: {x: -216.9, y: 1.4000001, z: 170.7}
     speed: 2
-    m_Value: {x: -176.88245, y: 49.724396, z: 185.63844}
+    m_Value: {x: -216.9, y: 1.4000001, z: 170.7}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -232,13 +232,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.1329054, y: -0.82479405, z: 0.21711603, w: -0.5048877}
+    m_Target: {x: 0.20597732, y: -0.052723438, z: 0.011152334, w: 0.9770749}
     speed: 2
-    m_Value: {x: -0.1329054, y: -0.82479405, z: 0.21711603, w: -0.5048877}
+    m_Value: {x: 0.20597668, y: -0.052723274, z: 0.011152299, w: 0.9770719}
   m_Size:
-    m_Target: 76.24809
+    m_Target: 189.93646
     speed: 2
-    m_Value: 76.24809
+    m_Value: 189.93646
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -353,24 +353,24 @@ MonoBehaviour:
     width: 397
     height: 270
   m_TreeViewState:
-    scrollPos: {x: 0, y: 116}
-    m_SelectedIDs: 96cafeff
-    m_LastClickedID: -79210
-    m_ExpandedIDs: 9618ffff1afcffff00000000de2d0000e02f000026300000ec30000092320000
+    scrollPos: {x: 0, y: 180}
+    m_SelectedIDs: ecfdfeff
+    m_LastClickedID: -66068
+    m_ExpandedIDs: 9a46fdff1afcffff00000000fe2d000024330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Waypoint (8)
+      m_OriginalName: Waypoint (8)
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -66068
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_MinSize: {x: 334, y: 271}
   m_MaxSize: {x: 14004, y: 10021}
   vertical: 0
-  controlID: 6367
+  controlID: 6280
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -491,19 +491,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/TornadoBanditsStudio/Low Poly Free Pack/Meshes/Pillars
+    - Assets/TornadoBanditsStudio/Low Poly Free Pack/Meshes/Environments
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/TornadoBanditsStudio/Low Poly Free Pack/Meshes/Pillars
+  - Assets/TornadoBanditsStudio/Low Poly Free Pack/Meshes/Environments
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\Jarek\\Documents\\Visual Studio 2015\\Projects\\In\u017Cynierka\\Engineer_MiNI\\Car
     Simulation"
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 300}
-    m_SelectedIDs: 9c2b0000
-    m_LastClickedID: 11164
+    scrollPos: {x: 0, y: 294}
+    m_SelectedIDs: ea280000
+    m_LastClickedID: 10474
     m_ExpandedIDs: 00000000c8270000f02700009e290000422a0000502a0000402b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -557,10 +557,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 96cafeff
-    m_LastClickedInstanceID: -79210
+    m_SelectedInstanceIDs: ecfdfeff
+    m_LastClickedInstanceID: -66068
     m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c623000000000000902a0000f42a0000
+    m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

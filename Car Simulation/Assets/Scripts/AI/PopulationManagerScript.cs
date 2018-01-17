@@ -14,6 +14,8 @@ public delegate void RoundEnded(ProcessData processData);
 
 public class PopulationManagerScript : MonoBehaviour
 {
+    public static KeyCode StopGeneration = KeyCode.R;
+
     public bool SimulationStarted { get { return simulationStarted; } }
     public event RoundEnded OnRoundEnded;
 
