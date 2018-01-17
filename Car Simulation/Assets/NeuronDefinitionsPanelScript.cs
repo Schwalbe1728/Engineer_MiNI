@@ -74,4 +74,14 @@ public class NeuronDefinitionsPanelScript : MonoBehaviour
     {
         return int.TryParse(def, out layerCount) && layerCount > 0;
     }
+
+    public void ValidateLayerCountInput(string count)
+    {
+        int temp;
+
+        if(GetLayerCount(count, out temp) && temp > 0)
+        {
+
+        }
+    }
 }

@@ -22,6 +22,7 @@ public class GameplayScript : MonoBehaviour
     private Vector3 LastWaypointPosition;
     private Vector3 LastPosition;
     private HashSet<uint> VisitedWaypoints;
+    private Vector3 Normal;
 
     /*
     [SerializeField]
@@ -78,6 +79,9 @@ public class GameplayScript : MonoBehaviour
         LastPosition = StartPosition.position;
         LastWaypointPosition = StartPosition.position;
 
+        Normal = gameObject.transform.forward;
+        Normal.Normalize();
+
         if (VisitedWaypoints == null) VisitedWaypoints = new HashSet<uint>();
         ClearWaypointIndexes();
 
@@ -124,6 +128,11 @@ public class GameplayScript : MonoBehaviour
         VisitedWaypoints.Clear();
     }
 
+    public void SetNormalToWaypoint(Vector3 norm)
+    {
+        Normal = norm;
+    }
+
     void Awake()
     {
         OnGameEnded += CheckIfNewRecord;
@@ -136,8 +145,11 @@ public class GameplayScript : MonoBehaviour
         float waypointToCar = Vector3.Distance(LastWaypointPosition, CarPosition.position);
         float waypointToLast = Vector3.Distance(LastWaypointPosition, LastPosition);
 
+        Vector3 waypointToCarVector = CarPosition.position - LastWaypointPosition;
+        float direction = Vector3.Dot(waypointToCarVector, Normal);
+
         //currentScore +=
-        float inc = (100 * (lastToCar + (waypointToCar - waypointToLast))
+        float inc = (100 * Mathf.Sign(direction) * (lastToCar + (waypointToCar - waypointToLast))
              /*- 100 * (1-WaypointManager.ScoreProgressToWaypoint(CarPosition))*/
              //+ 50 * (startToCar - startToLast)
              //+ startToCar * ((startToCar > startToLast)? 1 : -0.5f )             
@@ -167,7 +179,7 @@ public class GameplayScript : MonoBehaviour
         */
     }
 
-    private float Velocity()
+    public float Velocity()
     {
         return CarRigidbody.velocity.magnitude * 3.6f;
     }

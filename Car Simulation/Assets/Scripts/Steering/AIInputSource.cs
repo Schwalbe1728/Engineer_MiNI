@@ -58,6 +58,7 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
             result.InsertData("Score", gameplayScript.Score);
             result.InsertData("Game In Progress", (gameplayScript.InProgress) ? 1 : 0);
             result.InsertData("Active Sensors", activeSensors);
+            result.InsertData("Velocity", gameplayScript.Velocity());
         }
 
         if (activeSensors == 0 && gameplayScript.InProgress) Debug.LogWarning("Nieaktywne czujniki!!!");

@@ -68,13 +68,15 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
                 int maxSensor = 0;
 
                 //float[] decisionValues = NeuralNetwork.Calculate(LastSensorReading.Sensors);
-                double[] reeeee = new double[LastSensorReading.Sensors.Length];
-                for(int i = 0; i < reeeee.Length; i++)
+                double[] reeeee = new double[LastSensorReading.Sensors.Length + 1];
+                for(int i = 1; i < reeeee.Length; i++)
                 {
-                    reeeee[i] = (double)LastSensorReading.Sensors[i];
+                    reeeee[i] = (double)LastSensorReading.Sensors[i-1];
 
                     if (reeeee[i] >= 1) maxSensor++;
                 }
+
+                reeeee[0] = LastSensorReading.Data("Velocity") / 60;
 
                 //reeeee[reeeee.Length - 1] = (double)LastSensorReading.Data("Score");
                 /*
