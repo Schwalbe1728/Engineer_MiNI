@@ -15963,6 +15963,7 @@ GameObject:
   - component: {fileID: 1290528659}
   - component: {fileID: 1290528658}
   - component: {fileID: 1290528657}
+  - component: {fileID: 1290528660}
   m_Layer: 5
   m_Name: Plots Panel (1)
   m_TagString: Untagged
@@ -16038,6 +16039,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1290528655}
+--- !u!114 &1290528660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1290528655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1593a6bed8e226d469cad4b2a44c1c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPath: /Screenshots/
 --- !u!1 &1293921729
 GameObject:
   m_ObjectHideFlags: 0
@@ -22946,6 +22959,7 @@ GameObject:
   - component: {fileID: 1922118467}
   - component: {fileID: 1922118466}
   - component: {fileID: 1922118465}
+  - component: {fileID: 1922118469}
   m_Layer: 5
   m_Name: Stats Canvas
   m_TagString: Untagged
@@ -23032,6 +23046,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1922118469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1922118464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c891f5f162134f64381464b2c8b61981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bindings:
+  - Key: 104
+    Panel: {fileID: 1290528655}
 --- !u!1 &1929647665
 GameObject:
   m_ObjectHideFlags: 0
