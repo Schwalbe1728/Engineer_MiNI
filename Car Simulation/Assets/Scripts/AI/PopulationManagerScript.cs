@@ -69,11 +69,11 @@ public class PopulationManagerScript : MonoBehaviour
         if(HiddenLayersSettings == null || NeuronTypesSettings == null)
         {
             neuronDefinitionsPanelScript.GetNeuronDefinitions(out HiddenLayersSettings, out NeuronTypesSettings);
-            HiddenLayersSettings.Add(6);
+            HiddenLayersSettings.Insert(0, 6);
             //HiddenLayersSettings.Insert(0, 5);
 
-            HiddenLayersSettings.Reverse();
-            NeuronTypesSettings.Reverse();
+            //HiddenLayersSettings.Reverse();
+            //NeuronTypesSettings.Reverse();
         }
 
         simulationStarted = true;

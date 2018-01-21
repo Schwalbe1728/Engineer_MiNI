@@ -20,6 +20,8 @@ public class NeuronDefinitionsPanelScript : MonoBehaviour
             AddListener(
                 delegate { DeleteNeuronDefinition(added); }
             );
+
+        added.GetComponent<RectTransform>().SetAsFirstSibling();
     }
 
     public void DeleteNeuronDefinition(GameObject toDestroy)
