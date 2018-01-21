@@ -8,12 +8,12 @@ namespace NeuralNetwork.Core.Helpers.Gen
 {
     public static class NeuronFactory
     {
-        static Dictionary<Type, Func<int, bool, INeuron<double>>> types = new Dictionary<Type, Func<int,bool,INeuron<double>>> {
+        static Dictionary<Type, Func<int, bool, NeuronBase<double>>> types = new Dictionary<Type, Func<int,bool, NeuronBase<double>>> {
             { typeof(IdentityNeuron), (x,y) => new IdentityNeuron(x,y) },
             { typeof(StepNeuron), (x,y) => new StepNeuron(x,y) },
             { typeof(TanHNeuron), (x,y) => new TanHNeuron(x,y) }
         };
-        public static INeuron<double> Get(Type t,int inputCount, bool hasConstant = true)
+        public static NeuronBase<double> Get(Type t,int inputCount, bool hasConstant = true)
         {
             if (types.ContainsKey(t))
                 return types[t](inputCount,hasConstant);

@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
     <Reference Include="Troschuetz.Random, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2f204b7110a52060, processorArchitecture=MSIL">
       <HintPath>..\packages\Troschuetz.Random.4.2.0\lib\net461\Troschuetz.Random.dll</HintPath>
     </Reference>
@@ -63,6 +64,8 @@
     <Compile Include="Helpers\Builder\GaussTest.cs" />
     <Compile Include="Model\LayerTests.cs" />
     <Compile Include="Model\NeuronTests.cs" />
+    <Compile Include="SerializatorTests\GeneticAlgorithmSerialization.cs" />
+    <Compile Include="SerializatorTests\NeuralSerialization.cs" />
     <Compile Include="Setup\Values.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

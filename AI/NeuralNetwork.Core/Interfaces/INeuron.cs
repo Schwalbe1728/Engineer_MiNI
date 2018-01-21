@@ -3,8 +3,8 @@
     public interface INeuron<T>
     {
         T Process(T[] input);
-        double[] GetWeights();
-        void SetWeights(double[] weights);
+        T[] GetWeights();
+        void SetWeights(T[] weights);
         int GetCount();
     }
 }

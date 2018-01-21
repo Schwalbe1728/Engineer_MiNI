@@ -1,19 +1,24 @@
-﻿using NeuralNetwork.Core.Interfaces;
+﻿using System;
+using System.Linq;
+using System.Xml.Serialization;
+using NeuralNetwork.Core.Interfaces;
 
 namespace NeuralNetwork.Core.Model
 {
+    [XmlInclude(typeof(Layer<double>))]
+    [Serializable]
     public abstract class LayerBase<T> : ILayer<T>
     {
-        internal int NeuronCount;
-        internal int InputCount;
+        public int NeuronCount;
+        public int InputCount;
 
-        public INeuron<T>[] Neurons { get; set; }
+        public NeuronBase<T>[] Neurons { get; set; }
 
         protected LayerBase(int neuronCount, int inputCount)
         {
             NeuronCount = neuronCount;
             InputCount = inputCount;
-            Neurons = new INeuron<T>[NeuronCount];
+            Neurons = new NeuronBase<T>[NeuronCount];
         }
 
         protected LayerBase() { }
@@ -26,6 +31,17 @@ namespace NeuralNetwork.Core.Model
                 result[i] = Neurons[i].Process(input);
             }
             return result;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is LayerBase<T>))
+                return false;
+            var tmp = (LayerBase<T>)obj;
+            return obj.GetType() == GetType()
+                   && InputCount == tmp.InputCount
+                   && NeuronCount == tmp.NeuronCount
+                   && Neurons.SequenceEqual(tmp.Neurons);
         }
     }
 }

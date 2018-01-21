@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Examples\Classification.cs" />
+    <Compile Include="Examples\Load.cs" />
     <Compile Include="Examples\Perceptron.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

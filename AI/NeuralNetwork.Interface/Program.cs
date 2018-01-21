@@ -15,10 +15,12 @@ namespace NeuralNetwork.Interface
     {
         static void Main(string[] args)
         {
-            var ex1 = new Perceptron();
-            ex1.Run();
+            //var ex1 = new Perceptron();
+            //ex1.Run();
             //var ex2 = new Classification();
             //ex2.Run();
+            var ex3 = new Load();
+            ex3.Run();
         }
     }
 }

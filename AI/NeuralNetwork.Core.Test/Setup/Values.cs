@@ -62,7 +62,7 @@ namespace NeuralNetwork.Core.Test.Setup
             get
             {
                 Layer<double> layer = new Layer<double>(4,3);
-                List<INeuron<double>> neurons = new List<INeuron<double>>();
+                List<NeuronBase<double>> neurons = new List<NeuronBase<double>>();
                 foreach (var neuronData in IdentityNeuronTestsC)
                 {
                     IdentityNeuron neuron = new IdentityNeuron(3) {Weights = (double[])((object[])neuronData)[1]};

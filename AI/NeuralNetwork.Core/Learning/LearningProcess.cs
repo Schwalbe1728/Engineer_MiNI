@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Serialization;
 using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Model;
 
 namespace NeuralNetwork.Core.Learning
 {
+    [Serializable]
     public class LearningProcess
     {
         public NetworkBase<double>[] Population { get; set; }
@@ -53,5 +56,18 @@ namespace NeuralNetwork.Core.Learning
             }
         }
 
-      }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is LearningProcess))
+                return false;
+            var tmp = (LearningProcess)obj;
+            return obj.GetType() == GetType()
+                   && Population.SequenceEqual(tmp.Population)
+                   && Generation == tmp.Generation
+                   && PopulationCount == tmp.PopulationCount
+                   && BestIndex == tmp.BestIndex
+                   && HistoricalData.SequenceEqual(tmp.HistoricalData)
+                   && LearningAlgorithm.Equals(tmp.LearningAlgorithm);
+        }
+    }
 }

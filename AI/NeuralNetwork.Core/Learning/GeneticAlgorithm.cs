@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Xml.Serialization;
 using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Model;
 using Troschuetz.Random;
 
 namespace NeuralNetwork.Core.Learning
 {
+    [Serializable]
     public class GeneticAlgorithm
     {
+        [XmlIgnore]
         public List<KeyValuePair<double, NetworkBase<double>>> Population;
+        [XmlIgnore]
         public int PopulationCount;
         public GeneticAlgorithmConfig Config;
+        [XmlIgnore]
         public TRandom Random;
         public bool CanSelfReproduce;
 
@@ -181,6 +186,16 @@ namespace NeuralNetwork.Core.Learning
                     }
                 }
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is GeneticAlgorithm))
+                return false;
+            var tmp = (GeneticAlgorithm)obj;
+            return obj.GetType() == GetType()
+                   && CanSelfReproduce == tmp.CanSelfReproduce
+                   && Config.Equals(tmp.Config);
         }
     }
 }

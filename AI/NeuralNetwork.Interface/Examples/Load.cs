@@ -5,26 +5,20 @@ using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Helpers.Serializator;
 using NeuralNetwork.Core.Learning;
 using NeuralNetwork.Core.Learning.Enums;
-using NeuralNetwork.Core.Model;
 using NeuralNetwork.Core.Model.Neurons;
 
 namespace NeuralNetwork.Interface.Examples
 {
-    public class Perceptron
+    public class Load
     {
         private LearningProcess process;
         Random rand = new Random();
         int populationCount = 2000;
 
 
-        public Perceptron()
+        public Load()
         {
-            GeneticAlgorithmConfig config = new GeneticAlgorithmConfig();
-            config.RandOptions = new RandomizerOptions(-1, 1, 0.3);
-            config.PercentToSelect = 0.4;
-            config.MutationChance = 0.05;
-            config.SetParentChoosingMethod(ParentChoosingMethod.Geom);
-            process = new LearningProcess(populationCount, config, new List<int> { 3, 2 }, new List<Type>() {typeof(IdentityNeuron)});
+            process = Serializator.Deserialize("leariningtest.xml");
         }
 
         public void Run()
@@ -95,7 +89,7 @@ namespace NeuralNetwork.Interface.Examples
                     Console.WriteLine("Fitness " + fit);
                     Console.WriteLine("----------------------------");
                     Console.WriteLine(
-                        $"({Math.Round(neuron0[0], 2)}x1 {Math.Round(neuron0[1], 2)}x2 {Math.Round(neuron0[2], 2)}x3 {Math.Round(neuron0[3],3)})({Math.Round(neuron1[0], 2)}x1 {Math.Round(neuron1[1], 2)}x2 {Math.Round(neuron1[2], 2)}x3 {Math.Round(neuron1[3], 3)})");
+                        $"({Math.Round(neuron0[0], 2)}x1 {Math.Round(neuron0[1], 2)}x2 {Math.Round(neuron0[2], 2)}x3 {Math.Round(neuron0[3], 3)})({Math.Round(neuron1[0], 2)}x1 {Math.Round(neuron1[1], 2)}x2 {Math.Round(neuron1[2], 2)}x3 {Math.Round(neuron1[3], 3)})");
                     Console.WriteLine("Expected: ");
                     Console.WriteLine($"(x1 + x2 - 2x3 + 0)(x1 - x2 + x3 + 1)");
                     var key = Console.ReadKey();
@@ -122,7 +116,7 @@ namespace NeuralNetwork.Interface.Examples
 
         public static double[] Problem(double[] input)
         {
-            return new[] {input[0] + input[1] - 2 * input[2], input[0] - input[1] + input[2] + 1};
+            return new[] { input[0] + input[1] - 2 * input[2], input[0] - input[1] + input[2] + 1 };
         }
 
         public static double FitnessFunction(double[] inputs, double[] output)

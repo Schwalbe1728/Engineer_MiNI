@@ -54,6 +54,7 @@
     <Compile Include="Helpers\Gen\RandomizerOptions.cs" />
     <Compile Include="Helpers\Gen\NeuralHelper.cs" />
     <Compile Include="Helpers\Identifier.cs" />
+    <Compile Include="Helpers\Serializator\Serializator.cs" />
     <Compile Include="Interfaces\ILayer.cs" />
     <Compile Include="Interfaces\INetwork.cs" />
     <Compile Include="Interfaces\INeuron.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Learning\ProcessData.cs" />
     <Compile Include="Model\Base\LayerBase.cs" />
     <Compile Include="Model\Base\NetworkBase.cs" />
+    <Compile Include="Model\Base\NeuronBase.cs" />
     <Compile Include="Model\Layer.cs" />
     <Compile Include="Model\Network.cs" />
     <Compile Include="Model\Neurons\IdentityNeuron.cs" />

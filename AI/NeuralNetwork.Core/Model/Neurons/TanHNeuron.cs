@@ -1,55 +1,27 @@
-﻿using NeuralNetwork.Core.Helpers;
+﻿using System;
+using NeuralNetwork.Core.Helpers;
 using NeuralNetwork.Core.Interfaces;
 
 namespace NeuralNetwork.Core.Model.Neurons
 {
-    public class TanHNeuron : INeuron<double>
+    [Serializable]
+    public class TanHNeuron : NeuronBase<double>
     {
-        private int _inputCount;
-
-        public bool HasConstant;
-        public double[] Weights { get; set; }
-
-        public TanHNeuron(int inputCount, bool hasConstant = true)
+        public TanHNeuron() { }
+        public TanHNeuron(int inputCount, bool hasConstant = true) : base(inputCount, hasConstant)
         {
-            _inputCount = inputCount;
-            HasConstant = hasConstant;
-
-            if (HasConstant)
-                Weights = new double[_inputCount + 1];
-            else
-                Weights = new double[_inputCount];
         }
 
-        public double Process(double[] input)
+        public override double Process(double[] input)
         {
             double sum = 0;
-            for (int i = 0; i < _inputCount; i++)
+            for (int i = 0; i < InputCount; i++)
             {
                 sum += input[i] * Weights[i];
             }
             if (HasConstant)
-                sum += Weights[_inputCount]; //Constant Neuron
+                sum += Weights[InputCount]; //Constant Neuron
             return ActivationFunctions.TanH(sum);
-        }
-
-        public double[] GetWeights()
-        {
-            return Weights;
-        }
-
-        public void SetWeights(double[] weights)
-        {
-            Weights = weights;
-            if (HasConstant)
-                _inputCount = Weights.Length - 1;
-            else
-                _inputCount = Weights.Length;
-        }
-
-        public int GetCount()
-        {
-            return Weights.Length;
         }
     }
 }
