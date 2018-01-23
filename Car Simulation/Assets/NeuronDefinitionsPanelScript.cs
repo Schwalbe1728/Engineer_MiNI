@@ -30,11 +30,16 @@ public class NeuronDefinitionsPanelScript : MonoBehaviour
         Destroy(toDestroy);
     }
 
+    public void SetNeuronDefinitions(int[] layerCount, List<System.Type> neuronType)
+    {
+        SetNeuronDefinitions(new List<int>(layerCount), neuronType);
+    }
+
     public void SetNeuronDefinitions(List<int> layerCount, List<System.Type> neuronTypes)
     {
         Debug.Log("Layer Count: " + layerCount.Count);
 
-        for(int i = 0; i < layerCount.Count; i++)
+        for(int i = 0; i < layerCount.Count - 1; i++)
         {
             AddNeuronDefinition();
         }

@@ -89,12 +89,21 @@ public class PopulationManagerScript : MonoBehaviour
         PercentToSelect = (float)config.PercentToSelect;
         MutationChance = (float)config.MutationChance;
 
-        /*
+        List<Type> neuronTypes = new List<Type>();
+
+        foreach(LayerBase<double> neuron in learningProcess.Population[0].Layers)
+        {
+            neuronTypes.Add(neuron.Neurons[0].GetType());
+        }
+
+        Debug.Log(learningProcess.Population[0].Layers[0].Neurons[0]);
+
+        
         neuronDefinitionsPanelScript.
             SetNeuronDefinitions(
-                learningProcess.LearningAlgorithm.Population[0].Value.LayersCount,
-                
-            );*/
+                learningProcess.Population[0].LayersCount,
+                neuronTypes
+            );
 
         // D odzyskaj ParentChoosingMethod
         // D odzyskaj config
