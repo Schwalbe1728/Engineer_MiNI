@@ -39,6 +39,14 @@ public class NeuronDefinitionsPanelScript : MonoBehaviour
     {
         Debug.Log("Layer Count: " + layerCount.Count);
 
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            if(!transform.GetChild(i).gameObject.name.Equals("Default Exit Neuron Panel"))
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+        }
+
         for(int i = 0; i < layerCount.Count - 1; i++)
         {
             AddNeuronDefinition();

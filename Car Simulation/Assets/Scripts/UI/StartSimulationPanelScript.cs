@@ -50,10 +50,12 @@ public class StartSimulationPanelScript : MonoBehaviour {
     [SerializeField]
     private InputField SigmaInputField;
 
+    private LearningProcess process;
+
     public void LoadLearningProcess()
     {
         PopulationManagerScript popScript = PopulationManagerObject.GetComponent<PopulationManagerScript>();
-        LearningProcess process = popScript.LoadLearningProcess( GetOpenFilePath() );
+        process = popScript.LoadLearningProcess( GetOpenFilePath() );
 
         if(process != null)
         {
@@ -77,9 +79,37 @@ public class StartSimulationPanelScript : MonoBehaviour {
         }
     }
 
+    public void ForceSaveInConfigurationMenu(bool overridePrevious)
+    {
+        float mut, sel;
+
+        PopulationManagerScript popScript = PassValuesToPopulationManager(out mut, out sel);
+        popScript.MakeLearningProcess(NumberOfCarsPanel.NumberOfCars, mut, sel, overridePrevious);
+
+        if(overridePrevious)
+        {
+            process = null;
+        }
+
+        using (SaveFileDialog sfd = new SaveFileDialog())
+        {
+            sfd.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            switch (sfd.ShowDialog())
+            {
+                case DialogResult.OK:
+                    Debug.Log(sfd.FileName);
+
+                    popScript.SaveLearningProcess(sfd.FileName);
+
+                    break;
+            }
+        }
+    }
+
     public void StartSimulation()
     {
-        Plots.RestartedSimulation();
+        Plots.RestartedSimulation(process);
 
         CarsOnSceneManager carsManager = CarsCollectionObject.GetComponent<CarsOnSceneManager>();
 
@@ -109,53 +139,12 @@ public class StartSimulationPanelScript : MonoBehaviour {
             }
         }
 
-        carsManager.CarAdded();        
-        PopulationManagerScript popScript = PopulationManagerObject.GetComponent<PopulationManagerScript>();//.StartSimulation();        
+        carsManager.CarAdded();                
 
-        float mut, sel;
-
-        if (!float.TryParse( MutationChanceInputField.text, out mut ))
-        {
-            Debug.LogWarning("Mutation Chance ma błędny format");
-            string temp = MutationChanceInputField.text.Replace(".", ",");
-
-            if (!float.TryParse(temp, out mut))
-            {
-                Debug.LogWarning("Mutation Chance ma błędny format... wait what");
-                //MutationChanceInputField.text.Replace(".", ",");
-            }
-        }
-
-        if (!float.TryParse(SelectPercentInputField.text, out sel))
-        {
-            Debug.LogWarning("Selection Chance ma błędny format");
-            string temp = SelectPercentInputField.text.Replace(".", ",");
-
-            if(!float.TryParse(temp, out sel))
-            {
-                Debug.LogWarning("Mutation Chance ma błędny format... wait what");
-            }
-
-            Debug.Log("SelectionChance: " + sel.ToString());
-        }
-
-        if(!float.TryParse(SigmaInputField.text, out popScript.sigma))
-        {
-            string temp = SigmaInputField.text.Replace(".", ",");
-
-            if(!float.TryParse(temp, out popScript.sigma))
-            {
-
-            }
-        }
-
-        popScript.SetParentChoosingMethod((ParentChoosingMethod)ParentChoosingDropdown.value);
-
-        mut = Mathf.Clamp01(mut);
-        sel = Mathf.Clamp01(sel);
+        float mut, sel;        
 
         carsManager.StartSimulation(0f);
-        popScript.StartSimulation(mut, sel, true);        
+        PassValuesToPopulationManager(out mut, out sel).StartSimulation(mut, sel, true);        
 
         HidePanel();       
     }
@@ -201,6 +190,52 @@ public class StartSimulationPanelScript : MonoBehaviour {
         {
             Destroy(InputSourcesCollectionObject.transform.GetChild(i).gameObject, 0.1f);
         }
+    }
+
+    private PopulationManagerScript PassValuesToPopulationManager(out float mut, out float sel)
+    {
+        PopulationManagerScript popScript = PopulationManagerObject.GetComponent<PopulationManagerScript>();
+
+        if (!float.TryParse(MutationChanceInputField.text, out mut))
+        {
+            Debug.LogWarning("Mutation Chance ma błędny format");
+            string temp = MutationChanceInputField.text.Replace(".", ",");
+
+            if (!float.TryParse(temp, out mut))
+            {
+                Debug.LogWarning("Mutation Chance ma błędny format... wait what");
+                //MutationChanceInputField.text.Replace(".", ",");
+            }
+        }
+
+        if (!float.TryParse(SelectPercentInputField.text, out sel))
+        {
+            Debug.LogWarning("Selection Chance ma błędny format");
+            string temp = SelectPercentInputField.text.Replace(".", ",");
+
+            if (!float.TryParse(temp, out sel))
+            {
+                Debug.LogWarning("Selection Chance ma błędny format... wait what");
+            }
+
+        }
+
+        if (!float.TryParse(SigmaInputField.text, out popScript.sigma))
+        {
+            string temp = SigmaInputField.text.Replace(".", ",");
+
+            if (!float.TryParse(temp, out popScript.sigma))
+            {
+
+            }
+        }
+
+        popScript.SetParentChoosingMethod((ParentChoosingMethod)ParentChoosingDropdown.value);
+
+        mut = Mathf.Clamp01(mut);
+        sel = Mathf.Clamp01(sel);
+
+        return popScript;
     }
 
     private string GetOpenFilePath()

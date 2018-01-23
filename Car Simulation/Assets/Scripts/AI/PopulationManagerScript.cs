@@ -48,6 +48,9 @@ public class PopulationManagerScript : MonoBehaviour
     [SerializeField]
     private NeuronDefinitionsPanelScript neuronDefinitionsPanelScript;
 
+    [SerializeField]
+    private MultipleTrendPlotScript plot;
+
     private bool simulationStarted = false;
 
     private SpecimenScript[] Specimen;
@@ -105,13 +108,8 @@ public class PopulationManagerScript : MonoBehaviour
                 neuronTypes
             );
 
-        // D odzyskaj ParentChoosingMethod
-        // D odzyskaj config
-        // odzyskaj HiddenLayerSettings
-        // odzyskaj NeuronTypesSettings
-        // D odzyskaj sigma
-        // D odzyskaj PercentSelect
-        // D odzyskaj MutationChance
+        plot.PreviousLearningProcess(learningProcess);
+        plot.RestartedSimulation(learningProcess);
 
         return learningProcess;
     }
@@ -121,50 +119,51 @@ public class PopulationManagerScript : MonoBehaviour
         parentChoosingMethod = meth;
     }
 
-    public void StartSimulation(float mutChance, float selectPercent, bool configurationStart = false)
+    public void MakeLearningProcess(int SpecimenCount, float mutChance, float selectPercent, bool overrideLearningProcess = false)
     {
-        //Debug.Log("Start Simulation - Mutation Chance = " + mutChance + ", Selection Percent = " + selectPercent);
-
-        if(HiddenLayersSettings == null || NeuronTypesSettings == null)
+        if (overrideLearningProcess || HiddenLayersSettings == null || NeuronTypesSettings == null)
         {
             neuronDefinitionsPanelScript.GetNeuronDefinitions(out HiddenLayersSettings, out NeuronTypesSettings);
             HiddenLayersSettings.Insert(0, 6);
-            //HiddenLayersSettings.Insert(0, 5);
-
-            //HiddenLayersSettings.Reverse();
-            //NeuronTypesSettings.Reverse();
         }
+
+        PercentToSelect = selectPercent;
+        MutationChance = mutChance;
+        config.PercentToSelect = selectPercent;
+        config.MutationChance = mutChance;
+
+        config.SetParentChoosingMethod(parentChoosingMethod);
+        config.RandOptions.Sigma = sigma;
+
+        if (overrideLearningProcess || learningProcess == null)
+        {
+            learningProcess =
+                new LearningProcess(
+                    SpecimenCount, config,
+                    HiddenLayersSettings,
+                    NeuronTypesSettings
+                    );            
+        }
+        else
+        {
+            Debug.Log("Istniał Learning Process");
+
+            //learningProcess.PopulationCount = Specimen.Length;
+        }
+
+        learningProcess.LearningAlgorithm.Config = config;
+    }
+
+    public void StartSimulation(float mutChance, float selectPercent, bool configurationStart = false)
+    {
+        //Debug.Log("Start Simulation - Mutation Chance = " + mutChance + ", Selection Percent = " + selectPercent);        
 
         simulationStarted = true;
         if(Specimen == null) Specimen = transform.GetComponentsInChildren<SpecimenScript>();
 
         if (configurationStart)
         {
-            PercentToSelect = selectPercent;
-            MutationChance = mutChance;
-            config.PercentToSelect = selectPercent;
-            config.MutationChance = mutChance;
-
-            config.SetParentChoosingMethod(parentChoosingMethod);
-            config.RandOptions.Sigma = sigma;
-
-            if (learningProcess == null)
-            {
-                learningProcess =
-                    new LearningProcess(
-                        Specimen.Length, config,
-                        HiddenLayersSettings,
-                        NeuronTypesSettings
-                        );
-
-                learningProcess.LearningAlgorithm.Config = config;
-            }
-            else
-            {
-                Debug.Log("Istniał Learning Process");
-
-                //learningProcess.PopulationCount = Specimen.Length;
-            }
+            MakeLearningProcess(Specimen.Length, mutChance, selectPercent, false);
         }              
 
         for(int i = 0; i < Specimen.Length; i++)

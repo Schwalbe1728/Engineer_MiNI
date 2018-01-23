@@ -56,7 +56,7 @@ public class AxisScript : MonoBehaviour {
                 }
                 else
                 {
-                    if(QuantsNormalizedValues.Length < QuantityOfQuants)
+                    if(QuantsNormalizedValues == null || QuantsNormalizedValues.Length < QuantityOfQuants)
                     {
                         CreateQuants(QuantityOfQuants);
                     }

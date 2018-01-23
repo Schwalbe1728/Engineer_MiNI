@@ -46,7 +46,24 @@ public class MultipleTrendPlotScript : MonoBehaviour
     [SerializeField]
     private Color[] PlotsColors;
 
-    public void RestartedSimulation()
+    private LearningProcess learningProcess;
+
+    public void PreviousLearningProcess(LearningProcess process)
+    {
+        learningProcess = process;
+
+        if (process != null)
+        {
+            foreach (ProcessData data in process.HistoricalData)
+            {
+                UpdatePlots(data);
+            }
+        }
+
+        //RestartedSimulation(process);
+    }
+
+    public void RestartedSimulation(LearningProcess process)
     {
         MaxY = 0;
         MinY = 0;
@@ -56,7 +73,7 @@ public class MultipleTrendPlotScript : MonoBehaviour
             plot.Clear();
         }
 
-        UpdatePlots(null);
+        PreviousLearningProcess(process);
     }
 
     void Awake()
