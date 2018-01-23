@@ -39,7 +39,7 @@ public class NoOfCarsPanel : MonoBehaviour
 
     void Awake()
     {
-        numberOfCars = MinCars;
+        numberOfCars = 70;
         UpdateDisplayedNumber();
     }
 

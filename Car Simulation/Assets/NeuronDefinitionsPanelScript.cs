@@ -30,6 +30,28 @@ public class NeuronDefinitionsPanelScript : MonoBehaviour
         Destroy(toDestroy);
     }
 
+    public void SetNeuronDefinitions(List<int> layerCount, List<System.Type> neuronTypes)
+    {
+        Debug.Log("Layer Count: " + layerCount.Count);
+
+        for(int i = 0; i < layerCount.Count; i++)
+        {
+            AddNeuronDefinition();
+        }
+
+        for(int i = 0; i < layerCount.Count - 1; i++)
+        {
+            GameObject child = transform.GetChild(i).gameObject;
+            InputField inputField = child.GetComponentInChildren<InputField>();
+            Dropdown dropdown = child.GetComponentInChildren<Dropdown>();
+
+            inputField.text = layerCount[i].ToString();
+            dropdown.value = GetNeuronTypeIndex(neuronTypes[i]);
+            //ustaw typ
+            //ustaw liczbę
+        }
+    }
+
     public void GetNeuronDefinitions(out List<int> layerCount, out List<System.Type> neuronTypes)
     {
         layerCount = new List<int>();
@@ -70,6 +92,28 @@ public class NeuronDefinitionsPanelScript : MonoBehaviour
         }
 
         throw new System.Exception("Błędny typ neuronu");
+    }
+    
+    public int GetNeuronTypeIndex(System.Type type)
+    {
+        int result = -1;
+
+        if(type == typeof(TanHNeuron))
+        {
+            result = 0;
+        }
+
+        if (type == typeof(StepNeuron))
+        {
+            result = 1;
+        }
+
+        if (type == typeof(IdentityNeuron))
+        {
+            result = 2;
+        }
+
+        return result;
     }
 
     public bool GetLayerCount(string def, out int layerCount)

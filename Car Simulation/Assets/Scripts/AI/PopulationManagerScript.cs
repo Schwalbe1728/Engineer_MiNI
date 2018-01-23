@@ -1,4 +1,5 @@
 ﻿using NeuralNetwork.Core.Helpers.Gen;
+using NeuralNetwork.Core.Helpers.Serializator;
 using NeuralNetwork.Core.Learning;
 using NeuralNetwork.Core.Learning.Enums;
 using NeuralNetwork.Core.Model;
@@ -6,6 +7,7 @@ using NeuralNetwork.Core.Model.Neurons;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Troschuetz.Random;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,12 +59,60 @@ public class PopulationManagerScript : MonoBehaviour
 
     public float sigma;
 
+    public void SaveLearningProcess(string path)
+    {
+        if(learningProcess.Serialize(path))
+        {
+            Debug.Log("Zapisano w " + path + " , smochodzików " + learningProcess.PopulationCount);
+        }
+        else
+        {
+            Debug.Log("Błąd serializacji!");
+        }
+    }
+
+    public LearningProcess LoadLearningProcess(string path)
+    {
+        if (path == null || !File.Exists(path)) return null;
+
+        learningProcess = Serializator.Deserialize(path);
+
+        if(learningProcess == null)
+        {
+            throw new Exception("Błąd deserializacji!!!");
+        }
+
+        config = learningProcess.LearningAlgorithm.Config;
+        parentChoosingMethod = config.ParentMethod;
+        sigma = (float)config.RandOptions.Sigma;
+
+        PercentToSelect = (float)config.PercentToSelect;
+        MutationChance = (float)config.MutationChance;
+
+        /*
+        neuronDefinitionsPanelScript.
+            SetNeuronDefinitions(
+                learningProcess.LearningAlgorithm.Population[0].Value.LayersCount,
+                
+            );*/
+
+        // D odzyskaj ParentChoosingMethod
+        // D odzyskaj config
+        // odzyskaj HiddenLayerSettings
+        // odzyskaj NeuronTypesSettings
+        // D odzyskaj sigma
+        // D odzyskaj PercentSelect
+        // D odzyskaj MutationChance
+
+        return learningProcess;
+    }
+
     public void SetParentChoosingMethod(ParentChoosingMethod meth)
     {
         parentChoosingMethod = meth;
     }
 
-    public void StartSimulation(float mutChance, float selectPercent)
+    public void StartSimulation(float mutChance, float selectPercent, bool configurationStart = false)
     {
         //Debug.Log("Start Simulation - Mutation Chance = " + mutChance + ", Selection Percent = " + selectPercent);
 
@@ -79,44 +129,44 @@ public class PopulationManagerScript : MonoBehaviour
         simulationStarted = true;
         if(Specimen == null) Specimen = transform.GetComponentsInChildren<SpecimenScript>();
 
-        if (learningProcess == null)
+        if (configurationStart)
         {
             PercentToSelect = selectPercent;
             MutationChance = mutChance;
+            config.PercentToSelect = selectPercent;
+            config.MutationChance = mutChance;
 
-            config.PercentToSelect = PercentToSelect;
-            config.MutationChance = MutationChance;
             config.SetParentChoosingMethod(parentChoosingMethod);
-            
-            /*
-            learningProcess =
-                new LearningProcess(Specimen.Length, config,
-                    new List<int> { 5, 4, 2 },
-                    new List<Type> { typeof(TanHNeuron), typeof(TanHNeuron), /*typeof(TanHNeuron) }
-                );
-            */
-            //learningProcess.NewRandomPopulation(Specimen.Length, new List<int> { 3, 5, 4, 3, 2 }
-            //, new List<Type> { typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron), typeof(IdentityNeuron) });
             config.RandOptions.Sigma = sigma;
-            learningProcess =
-                new LearningProcess(
-                    Specimen.Length, config,
-                    HiddenLayersSettings,
-                    NeuronTypesSettings
-                    );
 
-            learningProcess.LearningAlgorithm.Config = config;
-        }        
+            if (learningProcess == null)
+            {
+                learningProcess =
+                    new LearningProcess(
+                        Specimen.Length, config,
+                        HiddenLayersSettings,
+                        NeuronTypesSettings
+                        );
+
+                learningProcess.LearningAlgorithm.Config = config;
+            }
+            else
+            {
+                Debug.Log("Istniał Learning Process");
+
+                //learningProcess.PopulationCount = Specimen.Length;
+            }
+        }              
 
         for(int i = 0; i < Specimen.Length; i++)
         {
-            Specimen[i].SetNeuralNetwork(learningProcess.Population[i]);
+            Specimen[i].SetNeuralNetwork(learningProcess.Population[i % learningProcess.Population.Length]);
         }
 
         foreach(SpecimenScript spec in Specimen)
         {
             spec.GameStarted();
-        }
+        }        
     }
 
     public void RoundEnded()

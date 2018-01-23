@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using UnityEngine;
 
 public class PauseMenuScript : MonoBehaviour
@@ -13,6 +14,9 @@ public class PauseMenuScript : MonoBehaviour
 
     [SerializeField]
     private StartSimulationPanelScript startSimScript;
+
+    [SerializeField]
+    private PopulationManagerScript populationManager;
 
     [SerializeField]
     private KeyCode pauseActivationKey;
@@ -56,4 +60,22 @@ public class PauseMenuScript : MonoBehaviour
         startSimScript.StopSimulation();
         startSimScript.DespawnSimulationObjects();
     }
+
+    public void SaveLearningProcess()
+    {
+        using (SaveFileDialog sfd = new SaveFileDialog())
+        {
+            sfd.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            switch (sfd.ShowDialog())
+            {
+                case DialogResult.OK:
+                    Debug.Log(sfd.FileName);
+
+                    populationManager.SaveLearningProcess(sfd.FileName);
+
+                    break;
+            }
+        }
+    }    
 }

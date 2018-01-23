@@ -1,6 +1,8 @@
-﻿using NeuralNetwork.Core.Learning.Enums;
+﻿using NeuralNetwork.Core.Learning;
+using NeuralNetwork.Core.Learning.Enums;
 using System.Collections;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,6 +49,33 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
     [SerializeField]
     private InputField SigmaInputField;
+
+    public void LoadLearningProcess()
+    {
+        PopulationManagerScript popScript = PopulationManagerObject.GetComponent<PopulationManagerScript>();
+        LearningProcess process = popScript.LoadLearningProcess( GetOpenFilePath() );
+
+        if(process != null)
+        {
+            ParentChoosingDropdown.value = (int)process.LearningAlgorithm.Config.ParentMethod;
+            ParentChoosingDropdown.RefreshShownValue();
+
+            MutationChanceInputField.text = process.LearningAlgorithm.Config.MutationChance.ToString();
+            SelectPercentInputField.text = process.LearningAlgorithm.Config.PercentToSelect.ToString();
+
+            SigmaInputField.text = process.LearningAlgorithm.Config.RandOptions.Sigma.ToString();
+
+            while(NumberOfCarsPanel.NumberOfCars > process.PopulationCount)
+            {
+                NumberOfCarsPanel.LessCars();
+            }
+
+            while (NumberOfCarsPanel.NumberOfCars < process.PopulationCount)
+            {
+                NumberOfCarsPanel.MoreCars();
+            }
+        }
+    }
 
     public void StartSimulation()
     {
@@ -104,8 +133,10 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
             if(!float.TryParse(temp, out sel))
             {
-
+                Debug.LogWarning("Mutation Chance ma błędny format... wait what");
             }
+
+            Debug.Log("SelectionChance: " + sel.ToString());
         }
 
         if(!float.TryParse(SigmaInputField.text, out popScript.sigma))
@@ -124,7 +155,7 @@ public class StartSimulationPanelScript : MonoBehaviour {
         sel = Mathf.Clamp01(sel);
 
         carsManager.StartSimulation(0f);
-        popScript.StartSimulation(mut, sel);        
+        popScript.StartSimulation(mut, sel, true);        
 
         HidePanel();       
     }
@@ -170,5 +201,26 @@ public class StartSimulationPanelScript : MonoBehaviour {
         {
             Destroy(InputSourcesCollectionObject.transform.GetChild(i).gameObject, 0.1f);
         }
+    }
+
+    private string GetOpenFilePath()
+    {
+        string result = null;
+
+        using (OpenFileDialog ofd = new OpenFileDialog())
+        {
+            ofd.Multiselect = false;
+            ofd.Filter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            switch (ofd.ShowDialog())
+            {
+                case DialogResult.OK:
+                    Debug.Log(ofd.FileName);
+                    result = ofd.FileName;
+                    break;
+            }
+        }
+
+        return result;
     }
 }
