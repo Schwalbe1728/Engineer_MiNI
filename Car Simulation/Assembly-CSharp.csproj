@@ -69,6 +69,8 @@
      <Compile Include="Assets\Scripts\Simulation\CarsOnSceneManager.cs" />
      <Compile Include="Assets\Scripts\Steering\AIInputSource.cs" />
      <Compile Include="Assets\Scripts\Steering\HumanInputSourceScript.cs" />
+     <Compile Include="Assets\Scripts\UI\GenerationListScript.cs" />
+     <Compile Include="Assets\Scripts\UI\GenerationPanelScript.cs" />
      <Compile Include="Assets\Scripts\UI\NoOfCarsPanel.cs" />
      <Compile Include="Assets\Scripts\UI\PauseMenuScript.cs" />
      <Compile Include="Assets\Scripts\UI\ScreenShotScript.cs" />

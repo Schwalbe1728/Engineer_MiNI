@@ -49,6 +49,9 @@ public class PopulationManagerScript : MonoBehaviour
     private NeuronDefinitionsPanelScript neuronDefinitionsPanelScript;
 
     [SerializeField]
+    private GenerationListScript GenerationList;
+
+    [SerializeField]
     private MultipleTrendPlotScript plot;
 
     private bool simulationStarted = false;
@@ -110,6 +113,11 @@ public class PopulationManagerScript : MonoBehaviour
 
         plot.PreviousLearningProcess(learningProcess);
         plot.RestartedSimulation(learningProcess);
+
+
+        ProcessData[] histData = new ProcessData[learningProcess.HistoricalData.Count];
+        learningProcess.HistoricalData.CopyTo(histData);
+        GenerationList.SetGenerationHistory(new List<ProcessData>(histData));
 
         return learningProcess;
     }

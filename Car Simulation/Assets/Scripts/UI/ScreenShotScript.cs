@@ -9,6 +9,10 @@ public class ScreenShotScript : MonoBehaviour {
     private RectTransform UIPanelToCapture;
 
     [SerializeField]
+    private UnityEngine.UI.Text debugText;
+
+
+    [SerializeField]
     private string targetPath;
 
     private static uint ScreenShotCount = 0;
@@ -52,12 +56,14 @@ public class ScreenShotScript : MonoBehaviour {
         Destroy(texture);
 
         string basePath = Application.dataPath + targetPath;
-        string tryPath = null;
+        string tryPath = null;        
 
         while(File.Exists( (tryPath = basePath + "Screenshot" + ScreenShotCount.ToString() + " " + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png" ) ))
         {
             ScreenShotCount++;
         }
+
+        debugText.text = tryPath;
 
         yield return null;
 
