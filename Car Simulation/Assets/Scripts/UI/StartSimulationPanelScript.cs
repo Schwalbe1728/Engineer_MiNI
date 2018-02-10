@@ -106,7 +106,26 @@ public class StartSimulationPanelScript : MonoBehaviour {
             }
         }
     }
+    
+    public void StartShowcase()
+    {
+        CarsOnSceneManager carsManager = CarsCollectionObject.GetComponent<CarsOnSceneManager>();
+        GameObject car = Instantiate(CarPrefab, CarsCollectionObject.transform);
+        car.GetComponent<GameplayScript>().SetStartPosition(CarsCollectionObject.transform);
+        GameObject AISpecimen = Instantiate(AISpecimanPrefab, PopulationManagerObject.transform);
+        GameObject inputSource = Instantiate(AIInputSourcePrefab, InputSourcesCollectionObject.transform);
+        AIInputSource AISource = inputSource.GetComponent<AIInputSource>();
 
+        AISource.BindWithAI(AISpecimen.GetComponent<SpecimenScript>());
+
+        car.GetComponent<OrdersReceiverScript>().SetInputSource(AISource);
+        AISource.BindWithCar(car);
+
+        carsManager.CarAdded();
+        carsManager.StartSimulation();
+        HidePanel();
+    }
+    
     public void StartSimulation()
     {
         Plots.RestartedSimulation(process);

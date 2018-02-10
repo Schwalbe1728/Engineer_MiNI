@@ -63,6 +63,8 @@ public class PopulationManagerScript : MonoBehaviour
     private List<int> HiddenLayersSettings;
     private List<Type> NeuronTypesSettings;
 
+    private bool showcase = false;
+
     public float sigma;
 
     public void SaveLearningProcess(string path)
@@ -161,7 +163,17 @@ public class PopulationManagerScript : MonoBehaviour
 
         learningProcess.LearningAlgorithm.Config = config;
     }
+    
+    public void StartShowcase(ProcessData generationChosen)
+    {
+        showcase = true;
+        simulationStarted = true;
+        if (Specimen == null) Specimen = transform.GetComponentsInChildren<SpecimenScript>();
 
+        Specimen[0].SetNeuralNetwork(generationChosen.BestSpecimen);
+        Specimen[0].GameStarted();
+    }
+    
     public void StartSimulation(float mutChance, float selectPercent, bool configurationStart = false)
     {
         //Debug.Log("Start Simulation - Mutation Chance = " + mutChance + ", Selection Percent = " + selectPercent);        
@@ -187,8 +199,26 @@ public class PopulationManagerScript : MonoBehaviour
 
     public void RoundEnded()
     {
-        StopSimulation();
-        StartSimulation(MutationChance, PercentToSelect);
+        if (!showcase)
+        {
+            StopSimulation();
+            StartSimulation(MutationChance, PercentToSelect);
+        }
+        else
+        {
+            StopShowcase();
+        }
+    }
+
+    public void StopShowcase()
+    {
+        showcase = false;
+        simulationStarted = false;
+
+        Specimen = null;
+
+        PauseMenuScript pauseScript = GameObject.Find("Menu Canvas").GetComponent<PauseMenuScript>();
+        pauseScript.RestartSimulation();
     }
 
     public void StopSimulation(bool stopForGood = false)

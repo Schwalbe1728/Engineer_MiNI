@@ -11,6 +11,9 @@ public class GenerationListScript : MonoBehaviour
     private PopulationManagerScript PopulationManager;
 
     [SerializeField]
+    private StartSimulationPanelScript StartSimulationMenu;
+
+    [SerializeField]
     private GameObject GenerationPanelPrefab;
 
     public void SetGenerationHistory(List<ProcessData> list)
@@ -47,6 +50,9 @@ public class GenerationListScript : MonoBehaviour
         ProcessData temp = GenerationHistory[index];
 
         Debug.Log("Gen: " + temp.GenerationIndex + ", best score: " + temp.BestScore);
+
+        StartSimulationMenu.StartShowcase();
+        PopulationManager.StartShowcase(temp);        
     }
 
     private void ResetList()
