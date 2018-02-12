@@ -291,8 +291,6 @@ public class PopulationManagerScript : MonoBehaviour
     {
         if (Specimen != null)
         {
-            GenNumberText.text = " ";
-
             float Min = int.MaxValue;
             float Max = int.MinValue;
             float Med;

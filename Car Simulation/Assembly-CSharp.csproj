@@ -76,6 +76,8 @@
      <Compile Include="Assets\Scripts\UI\ScreenShotScript.cs" />
      <Compile Include="Assets\Scripts\UI\StartSimulationPanelScript.cs" />
      <Compile Include="Assets\Scripts\UI\StatsToggles.cs" />
+     <Compile Include="Assets\Scripts\UI\Track Choice Menu\TrackListEntry.cs" />
+     <Compile Include="Assets\Scripts\UI\Track Choice Menu\TrackListManager.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Examples\ComboBox\ComboBoxChanged.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Examples\Cooldown\CooldownEffect_Image.cs" />
      <Compile Include="Assets\Scripts\UnityUIExtensions-unity-ui-extensions-d3671c3711b8\Examples\Cooldown\CooldownEffect_SAUIM.cs" />
