@@ -6,5 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TrackChoiceMenu.unity
+    guid: 8fdccd3df454a8b4e815d1bbe0870dae
+  - enabled: 1
     path: Assets/Scenes/TestDrive01.unity
     guid: aa572863891fc1c4ba30f986e2930884
+  - enabled: 1
+    path: Assets/Scenes/ShowDrive.unity
+    guid: a309f8ccd5b99ea4dbf6d5b8c9892d73
