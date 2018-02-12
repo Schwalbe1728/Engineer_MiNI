@@ -17,8 +17,8 @@ public class StartSimulationPanelScript : MonoBehaviour {
     [SerializeField]
     private GameObject PopulationManagerObject;
 
-    [SerializeField]
-    private MultipleTrendPlotScript Plots;
+    //[SerializeField]
+    //private MultipleTrendPlotScript Plots;
 
     [SerializeField]
     private NoOfCarsPanel NumberOfCarsPanel;
@@ -128,7 +128,7 @@ public class StartSimulationPanelScript : MonoBehaviour {
     
     public void StartSimulation()
     {
-        Plots.RestartedSimulation(process);
+        //Plots.RestartedSimulation(process);
 
         CarsOnSceneManager carsManager = CarsCollectionObject.GetComponent<CarsOnSceneManager>();
 

@@ -16047,7 +16047,6 @@ MonoBehaviour:
   CarsCollectionObject: {fileID: 862626074}
   InputSourcesCollectionObject: {fileID: 1247347201}
   PopulationManagerObject: {fileID: 1289849079}
-  Plots: {fileID: 629915796}
   NumberOfCarsPanel: {fileID: 26321431}
   CarPrefab: {fileID: 1956305412520490, guid: 686ab437fead8af41a9e67f3c1f08354, type: 2}
   HumanInputSourcePrefab: {fileID: 1178338704318356, guid: 4a3d0f70ab13c1d48a514c68026ae362,

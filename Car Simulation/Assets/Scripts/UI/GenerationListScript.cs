@@ -55,7 +55,7 @@ public class GenerationListScript : MonoBehaviour
         PopulationManager.StartShowcase(temp);        
     }
 
-    private void ResetList()
+    public void ResetList()
     {
         foreach(Transform child in transform)
         {

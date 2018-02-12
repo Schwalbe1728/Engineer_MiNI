@@ -113,7 +113,7 @@ public class PopulationManagerScript : MonoBehaviour
                 neuronTypes
             );
 
-        plot.PreviousLearningProcess(learningProcess);
+        //plot.PreviousLearningProcess(learningProcess);
         plot.RestartedSimulation(learningProcess);
 
 
@@ -215,7 +215,7 @@ public class PopulationManagerScript : MonoBehaviour
         showcase = false;
         simulationStarted = false;
 
-        Specimen = null;
+        //Specimen = null;
 
         PauseMenuScript pauseScript = GameObject.Find("Menu Canvas").GetComponent<PauseMenuScript>();
         pauseScript.RestartSimulation();
@@ -254,6 +254,8 @@ public class PopulationManagerScript : MonoBehaviour
         {
             Specimen = null;
             learningProcess = null;
+            GenerationList.ResetList();
+            plot.RestartedSimulation(null);
             OnRoundEnded(null);
         }
     }

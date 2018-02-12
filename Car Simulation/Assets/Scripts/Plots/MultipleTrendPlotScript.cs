@@ -73,6 +73,12 @@ public class MultipleTrendPlotScript : MonoBehaviour
             plot.Clear();
         }
 
+        foreach(UILineRenderer uiLR in PlotLinesRenderersArray)
+        {
+            uiLR.m_points = null;
+            uiLR.SetVerticesDirty();
+        }
+
         PreviousLearningProcess(process);
     }
 
