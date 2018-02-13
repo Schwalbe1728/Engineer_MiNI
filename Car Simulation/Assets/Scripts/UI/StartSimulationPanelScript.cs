@@ -122,7 +122,7 @@ public class StartSimulationPanelScript : MonoBehaviour {
         AISource.BindWithCar(car);
 
         carsManager.CarAdded();
-        carsManager.StartSimulation();
+        carsManager.StartSimulation(0f, false);
         HidePanel();
     }
     

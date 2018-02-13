@@ -69,8 +69,8 @@ public class AxisScript : MonoBehaviour {
 
             case AxisType.Y:
                 CreateQuants(QuantityOfQuants);
-                min = Plot.MinY;
-                max = Plot.MaxY;
+                min = (processData != null && Plot.MinY > processData.WorstScore)? (int)(processData.WorstScore) : Plot.MinY;
+                max = (processData != null && Plot.MaxY < processData.BestScore)? (int)(processData.BestScore) : Plot.MaxY;
                 break;
         }
 

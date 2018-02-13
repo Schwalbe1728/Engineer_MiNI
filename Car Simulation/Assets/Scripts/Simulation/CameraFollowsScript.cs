@@ -9,10 +9,12 @@ public class CameraFollowsScript : MonoBehaviour
 
     private Transform cameraPosition;
     private Vector3 velocity;
+    private Camera camera;
 
     void Awake()
     {
         cameraPosition = this.transform;
+        camera = GetComponent<Camera>();
     }
 
     void LateUpdate()
@@ -26,7 +28,7 @@ public class CameraFollowsScript : MonoBehaviour
             if (!float.IsNaN(temp.x) && !float.IsNaN(temp.y) && !float.IsNaN(temp.z))
             {
                 cameraPosition.position = //temp;
-                    Vector3.SmoothDamp(cameraPosition.position, temp, ref velocity, 0.4f);
+                    Vector3.SmoothDamp(cameraPosition.position, temp, ref velocity, 0.4f);                
             }
         }
     }

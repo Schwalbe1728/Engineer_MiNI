@@ -22,7 +22,7 @@ public class CarsOnSceneManager : MonoBehaviour
     [SerializeField]
     private Text CarsLeftText;
 
-    public void StartSimulation(float delay = 0f)
+    public void StartSimulation(float delay = 0f, bool checkForTimeout = true)
     {
         Debug.Log("CarsOnSceneManager.StartSimulation");
 
@@ -31,7 +31,7 @@ public class CarsOnSceneManager : MonoBehaviour
             simulationStarted = true;
             foreach(GameplayScript gs in CarsGameplayScripts)
             {
-                gs.Restart();
+                gs.Restart(checkForTimeout);
             }
         }
         else
@@ -202,7 +202,7 @@ public class CarsOnSceneManager : MonoBehaviour
                        
                 foreach (GameplayScript script in CarsGameplayScripts)
                 {
-                    script.Restart();
+                    script.Restart(true);
                 }
 
                 //Debug.Log("Restart");

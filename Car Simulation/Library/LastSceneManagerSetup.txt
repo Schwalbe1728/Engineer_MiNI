@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/TrackChoiceMenu.unity
+- path: Assets/Scenes/ShowDrive.unity
   isLoaded: 1
   isActive: 1

@@ -67,7 +67,7 @@ public class GameplayScript : MonoBehaviour
         }
     }
 
-    public void Restart()
+    public void Restart(bool checkForTimeout)
     {
         GameInProgress = true;
 
@@ -86,7 +86,7 @@ public class GameplayScript : MonoBehaviour
         ClearWaypointIndexes();
 
         //coroutine = StartCoroutine(PenalizeTime());
-        coroutine = StartCoroutine(CheckIfTimeout());
+        coroutine = (checkForTimeout)? StartCoroutine(CheckIfTimeout()) : null;
 
         //WaypointManager.Reset();
 
