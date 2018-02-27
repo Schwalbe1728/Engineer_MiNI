@@ -370,7 +370,7 @@ Prefab:
     - target: {fileID: 224884328129110658, guid: d347f7c8af0421145af5890479279194,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224884328129110658, guid: d347f7c8af0421145af5890479279194,
         type: 2}
@@ -380,7 +380,7 @@ Prefab:
     - target: {fileID: 224884328129110658, guid: d347f7c8af0421145af5890479279194,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -47
+      value: -19
       objectReference: {fileID: 0}
     - target: {fileID: 224884328129110658, guid: d347f7c8af0421145af5890479279194,
         type: 2}
@@ -429,12 +429,12 @@ Prefab:
     - target: {fileID: 114950892875016458, guid: d347f7c8af0421145af5890479279194,
         type: 2}
       propertyPath: entryName
-      value: Track02
+      value: Track01
       objectReference: {fileID: 0}
     - target: {fileID: 114950892875016458, guid: d347f7c8af0421145af5890479279194,
         type: 2}
       propertyPath: sceneId
-      value: ShowDrive
+      value: TestDrive00
       objectReference: {fileID: 0}
     - target: {fileID: 114950892875016458, guid: d347f7c8af0421145af5890479279194,
         type: 2}
@@ -563,8 +563,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1573732292}
   - {fileID: 195936629}
+  - {fileID: 1573732292}
   m_Father: {fileID: 361925273}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1364,7 +1364,7 @@ Prefab:
     - target: {fileID: 224884328129110658, guid: d347f7c8af0421145af5890479279194,
         type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224884328129110658, guid: d347f7c8af0421145af5890479279194,
         type: 2}
@@ -1374,7 +1374,7 @@ Prefab:
     - target: {fileID: 224884328129110658, guid: d347f7c8af0421145af5890479279194,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -19
+      value: -47
       objectReference: {fileID: 0}
     - target: {fileID: 224884328129110658, guid: d347f7c8af0421145af5890479279194,
         type: 2}
@@ -1421,6 +1421,11 @@ Prefab:
       propertyPath: trackManager
       value: 
       objectReference: {fileID: 478501972}
+    - target: {fileID: 114950892875016458, guid: d347f7c8af0421145af5890479279194,
+        type: 2}
+      propertyPath: entryName
+      value: Track02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d347f7c8af0421145af5890479279194, type: 2}
   m_IsPrefabParent: 0
@@ -1594,7 +1599,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1374340302}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.40195674
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
