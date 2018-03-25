@@ -118,7 +118,7 @@ public class MultipleTrendPlotScript : MonoBehaviour
 
     private void UpdatePlots(ProcessData generationResults)
     {
-        //Debug.Log("UpdatePlots");
+        //Debug.Log("OnRoundEnded: MultipleTrendPlotScript");
 
         if (generationResults != null)
         {
@@ -211,21 +211,5 @@ public static class ListExtension
         }
 
         return result;
-    }
-    /*
-    public static List<float> GetLastNElements(this List<float> list, int n)
-    {
-        List<float> result = null;
-
-        if (n > list.Count)
-        {
-            result = list;
-        }
-        else
-        {
-            result = list.GetRange(list.Count - n, n);
-        }
-
-        return result;
-    }*/
+    }    
 }
