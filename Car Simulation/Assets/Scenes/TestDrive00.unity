@@ -1257,6 +1257,10 @@ Prefab:
       propertyPath: PopulationManager
       value: 
       objectReference: {fileID: 2103829369}
+    - target: {fileID: 1418693014800698, guid: 11512624c50b8134fae4ffeab5c04dd9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11512624c50b8134fae4ffeab5c04dd9, type: 2}
   m_IsPrefabParent: 0
@@ -1895,7 +1899,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d347431cf0836514b9fa8c1bc3fc626a, type: 2}
+  - {fileID: 2100000, guid: 634ae92de1282e34cb5f2215b08d32f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
