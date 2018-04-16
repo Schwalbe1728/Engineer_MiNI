@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StartSimulationPanelScript : MonoBehaviour {
@@ -77,6 +78,11 @@ public class StartSimulationPanelScript : MonoBehaviour {
                 NumberOfCarsPanel.MoreCars();
             }
         }
+    }
+
+    public void BackToTrackSelectionMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ForceSaveInConfigurationMenu(bool overridePrevious)
