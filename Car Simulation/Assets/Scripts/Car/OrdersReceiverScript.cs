@@ -19,6 +19,8 @@ public class OrdersReceiverScript : MonoBehaviour {
     public float steerResetDelay;
     public float maxSpeed;
 
+	public bool log;
+
     //private float velocity;
     private float turnDegree;
     //private float torque;
@@ -97,7 +99,11 @@ public class OrdersReceiverScript : MonoBehaviour {
         {                   
             do
             {
-                AssertCommand(inputSource.FirstCommand);
+				var command = inputSource.FirstCommand;
+				if (log) {
+					Debug.Log("command: " +  command);
+				}
+				AssertCommand(command);
             }
             while (!inputSource.ListEmpty) ;
         }       
@@ -124,6 +130,10 @@ public class OrdersReceiverScript : MonoBehaviour {
         {
             CarBody.velocity = CarBody.velocity.normalized * maxSpeed / 3.6f;
         }
+
+		if (log) {
+			Debug.Log ("velocity: " + CarBody.velocity);
+		}
     }
 
     private void AssertCommand(Command com)

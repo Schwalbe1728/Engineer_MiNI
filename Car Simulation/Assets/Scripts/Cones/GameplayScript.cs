@@ -34,7 +34,6 @@ public class GameplayScript : MonoBehaviour
     [SerializeField]
     private Text VelocityValueText;
     */
-
     private float currentScore;
     //private float currentPenalty;
     private bool GameInProgress;

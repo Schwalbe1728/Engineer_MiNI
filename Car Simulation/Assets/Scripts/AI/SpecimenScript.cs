@@ -11,7 +11,7 @@ using Assets.Scripts.AI;
 
 public class SpecimenScript : MonoBehaviour, IAIUnityBinder
 {
-    private static float DeadZoneThreshold = 0.1f;
+    private static float DeadZoneThreshold = 0.01f;
 
     private IAcquireData DataReceiver;
     private IGiveCommand CommandGiver;
@@ -20,6 +20,7 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
     private SensorData LastSensorReading;
 
     public bool GameFinished { get; private set; }
+	public bool Log { get; set; }
 
     public void SetCommandGiver(IGiveCommand comm)
     {
@@ -93,7 +94,8 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
 
                 if (maxSensor == reeeee.Length) throw new Exception("Czujniki się zjebały?!!");
                 */
-                CalculateNextOrder(NeuralNetwork.Calculate(reeeee));
+				var result = NeuralNetwork.Calculate(reeeee);
+				CalculateNextOrder(result);
             }
             else
             {

@@ -21,6 +21,8 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
     [SerializeField]
     private GameplayScript gameplayScript;
 
+	public bool log;
+
     public void ActivateSensors()
     {
         if (Sensors != null)
