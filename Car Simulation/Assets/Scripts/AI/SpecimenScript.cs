@@ -20,7 +20,9 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
     private SensorData LastSensorReading;
 
     public bool GameFinished { get; private set; }
-	public bool Log { get; set; }
+
+    [SerializeField]
+    private bool logEnabled;
 
     public void SetCommandGiver(IGiveCommand comm)
     {
@@ -79,21 +81,19 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
 
                 reeeee[0] = LastSensorReading.Data("Velocity") / 60;
 
-                //reeeee[reeeee.Length - 1] = (double)LastSensorReading.Data("Score");
-                /*
-                if (UnityEngine.Random.Range(0f, 1f) < 0.01f || maxSensor == reeeee.Length)
+                if(logEnabled)
                 {
-                    Debug.Log("Sensors: Active = " + LastSensorReading.Data("Active Sensors").ToString("n0") + " " +
-                        reeeee[0].ToString("n3") + " " +
-                        reeeee[1].ToString("n3") + " " +
-                        reeeee[2].ToString("n3") + " " +
-                        reeeee[3].ToString("n3") + " " +
-                        reeeee[4].ToString("n3")
-                        );
+                    string temp =
+                        "Velocity: " + reeeee[0].ToString("n3") + ", " +
+                        "Sensor 0: " + reeeee[1].ToString("n3") + ", " +
+                        "Sensor 1: " + reeeee[2].ToString("n3") + ", " +
+                        "Sensor 2: " + reeeee[3].ToString("n3") + ", " +
+                        "Sensor 3: " + reeeee[4].ToString("n3") + ", " +
+                        "Sensor 4: " + reeeee[5].ToString("n3");
+
+                    Debug.Log(temp);
                 }
 
-                if (maxSensor == reeeee.Length) throw new Exception("Czujniki się zjebały?!!");
-                */
 				var result = NeuralNetwork.Calculate(reeeee);
 				CalculateNextOrder(result);
             }
