@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4166,7 +4166,7 @@ Prefab:
     - target: {fileID: 224485159249355592, guid: b1250a7497ce0dc4ab15a85c4e6c9de1,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.41000003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224485159249355592, guid: b1250a7497ce0dc4ab15a85c4e6c9de1,
         type: 2}
@@ -4181,7 +4181,7 @@ Prefab:
     - target: {fileID: 224270595427155178, guid: b1250a7497ce0dc4ab15a85c4e6c9de1,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.9716073
       objectReference: {fileID: 0}
     - target: {fileID: 224270595427155178, guid: b1250a7497ce0dc4ab15a85c4e6c9de1,
         type: 2}
@@ -4226,7 +4226,7 @@ Prefab:
     - target: {fileID: 224635491216920102, guid: b1250a7497ce0dc4ab15a85c4e6c9de1,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: -148.15002
+      value: 7.9499817
       objectReference: {fileID: 0}
     - target: {fileID: 224635491216920102, guid: b1250a7497ce0dc4ab15a85c4e6c9de1,
         type: 2}
