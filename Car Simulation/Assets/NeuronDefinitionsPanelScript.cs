@@ -9,8 +9,6 @@ public class NeuronDefinitionsPanelScript : MonoBehaviour
     [SerializeField]
     private GameObject NeuronDefinitionPanelPrefab;
 
-    //private List<>
-
     public void AddNeuronDefinition()
     {
         GameObject added = Instantiate(NeuronDefinitionPanelPrefab, transform);
@@ -60,8 +58,6 @@ public class NeuronDefinitionsPanelScript : MonoBehaviour
 
             inputField.text = layerCount[i].ToString();
             dropdown.value = GetNeuronTypeIndex(neuronTypes[i]);
-            //ustaw typ
-            //ustaw liczbę
         }
     }
 

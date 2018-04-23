@@ -18,13 +18,11 @@ public class HumanInputSourceScript : InputSource {
     [SerializeField]
     private KeyCode BreakKey;
         
-	// Use this for initialization
 	void Awake ()
     {
         CommandsList = new List<Command>();	
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
         bool rightPressed = Input.GetKey(TurnRightKey);
@@ -34,25 +32,21 @@ public class HumanInputSourceScript : InputSource {
 
         if(rightPressed && !leftPressed)
         {
-            //CommandsList.Add(new Turn(TurnDirection.Right));
             CommandsList.Add(new SimplifiedCommand(CommandType.TurnRight));
         }
 
         if(leftPressed && !rightPressed)
         {
-            //CommandsList.Add(new Turn(TurnDirection.Left));
             CommandsList.Add(new SimplifiedCommand(CommandType.TurnLeft));
         }
 
         if(accPressed && !breakPressed)
         {
-            //CommandsList.Add(new Accelerate());
             CommandsList.Add(new SimplifiedCommand(CommandType.Accelerate));
         }
 
         if (!accPressed && breakPressed)
         {
-            //CommandsList.Add(new Break());
             CommandsList.Add(new SimplifiedCommand(CommandType.Break));
         }
 

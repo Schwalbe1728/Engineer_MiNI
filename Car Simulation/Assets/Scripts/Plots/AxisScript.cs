@@ -31,17 +31,10 @@ public class AxisScript : MonoBehaviour {
 
     void Awake()
     {
-        //OnValidate();
-        //CreateQuants(QuantityOfQuants);
         QuantsCreated = new List<QuantScript>();
         processDataToApply = new List<ProcessData>();
         PopulationManager.OnRoundEnded += ManageQuantsDeferred;
-    }
-
-    void OnValidate()
-    {
-        //CreateQuants(QuantityOfQuants);
-    }
+    }    
     
     void Update()
     {
@@ -167,8 +160,6 @@ public class AxisScript : MonoBehaviour {
                     (
                         QuantsCreated[QuantsCreated.Count - 1].GetComponent<RectTransform>()
                     );
-
-                //Debug.Log("Quants: " + QuantsCreated.Count);
             }
 
         }

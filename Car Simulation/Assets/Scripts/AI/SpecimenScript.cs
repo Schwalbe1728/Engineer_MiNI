@@ -26,13 +26,11 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
 
     public void SetCommandGiver(IGiveCommand comm)
     {
-        //throw new NotImplementedException();
         CommandGiver = comm;
     }
 
     public void SetDataReceiver(IAcquireData data)
     {
-        //throw new NotImplementedException();
         DataReceiver = data;
     }
 
@@ -61,40 +59,36 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
     {        
         if(!GameFinished && DataReceiver != null)
         {
-            //Debug.Log("Wybieraj");
-
             LastSensorReading = DataReceiver.GetData();
             
             if (LastSensorReading != null && LastSensorReading.Data("Game In Progress") > 0)
             {
-                //Debug.Log("Score: " + LastSensorReading.Data("Score"));
                 int maxSensor = 0;
 
-                //float[] decisionValues = NeuralNetwork.Calculate(LastSensorReading.Sensors);
-                double[] reeeee = new double[LastSensorReading.Sensors.Length + 1];
-                for(int i = 1; i < reeeee.Length; i++)
+                double[] conversionDummy = new double[LastSensorReading.Sensors.Length + 1];
+                for(int i = 1; i < conversionDummy.Length; i++)
                 {
-                    reeeee[i] = (double)LastSensorReading.Sensors[i-1];
+                    conversionDummy[i] = (double)LastSensorReading.Sensors[i-1];
 
-                    if (reeeee[i] >= 1) maxSensor++;
+                    if (conversionDummy[i] >= 1) maxSensor++;
                 }
 
-                reeeee[0] = LastSensorReading.Data("Velocity") / 60;
+                conversionDummy[0] = LastSensorReading.Data("Velocity") / 60;
 
                 if(logEnabled)
                 {
                     string temp =
-                        "Velocity: " + reeeee[0].ToString("n3") + ", " +
-                        "Sensor 0: " + reeeee[1].ToString("n3") + ", " +
-                        "Sensor 1: " + reeeee[2].ToString("n3") + ", " +
-                        "Sensor 2: " + reeeee[3].ToString("n3") + ", " +
-                        "Sensor 3: " + reeeee[4].ToString("n3") + ", " +
-                        "Sensor 4: " + reeeee[5].ToString("n3");
+                        "Velocity: " + conversionDummy[0].ToString("n3") + ", " +
+                        "Sensor 0: " + conversionDummy[1].ToString("n3") + ", " +
+                        "Sensor 1: " + conversionDummy[2].ToString("n3") + ", " +
+                        "Sensor 2: " + conversionDummy[3].ToString("n3") + ", " +
+                        "Sensor 3: " + conversionDummy[4].ToString("n3") + ", " +
+                        "Sensor 4: " + conversionDummy[5].ToString("n3");
 
                     Debug.Log(temp);
                 }
 
-				var result = NeuralNetwork.Calculate(reeeee);
+				var result = NeuralNetwork.Calculate(conversionDummy);
 				CalculateNextOrder(result);
             }
             else
@@ -106,20 +100,11 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
 
     private void CalculateNextOrder(double[] sensorReadings)
     {
-        //Debug.Log("Interpretuj: " + sensorReadings[0].ToString("n2") + " " + sensorReadings[1].ToString("n2"));    
-
         double turningDecision = sensorReadings[0];
         double accelerateDecision = sensorReadings[1];
 
         if(ValueOverThreshold(turningDecision))
         {
-            /*CommandGiver.GiveCommand(
-                new Turn(
-                            (turningDecision > 0)? 
-                                TurnDirection.Right :
-                                TurnDirection.Left
-                                ));
-                                */
             float turnValue = (Mathf.Abs((float)turningDecision) - DeadZoneThreshold) / (1 - DeadZoneThreshold);
 
             CommandGiver.GiveCommand(
@@ -127,21 +112,10 @@ public class SpecimenScript : MonoBehaviour, IAIUnityBinder
                     (turningDecision > 0) ? 
                         CommandType.TurnRight : 
                         CommandType.TurnLeft, turnValue));
-
-            //Debug.Log("Turn");
         }
 
         if (ValueOverThreshold(accelerateDecision))
-        {/*
-            if(accelerateDecision > 0)
-            {
-                CommandGiver.GiveCommand(new Accelerate());
-            }
-            else
-            {
-                CommandGiver.GiveCommand(new Break());
-            }*/
-
+        {
             float accelValue = (Mathf.Abs((float)accelerateDecision) - DeadZoneThreshold) / (1 - DeadZoneThreshold);
 
             CommandGiver.GiveCommand(

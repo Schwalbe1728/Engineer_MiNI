@@ -32,9 +32,7 @@ public class GenerationListScript : MonoBehaviour
             );
         
         Debug.Log("SetGenerationHistory - Reset");
-        //pozbądź się poprzednich dzieci
         ResetList();
-        //utwórz dzieci
         
         int i = 0;
         Debug.Log("SetGenerationHistory - Create New Children");

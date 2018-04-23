@@ -4,8 +4,8 @@ using System.IO;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-public class ScreenShotScript : MonoBehaviour {
-    
+public class ScreenShotScript : MonoBehaviour
+{    
     private RectTransform UIPanelToCapture;
 
     [SerializeField]

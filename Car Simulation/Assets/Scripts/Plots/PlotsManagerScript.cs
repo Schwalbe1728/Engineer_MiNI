@@ -27,8 +27,6 @@ public class PlotsManagerScript : MonoBehaviour {
 
 	private void OnRoundEnded(ProcessData generationResults)
     {
-        //Debug.Log("OnRoundEnded: PlotsManagerScript");
-
         if (generationResults != null)
         {
             AddValueToPlot(BestScorePlot, generationResults.BestScore);

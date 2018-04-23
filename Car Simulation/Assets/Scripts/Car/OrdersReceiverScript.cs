@@ -10,20 +10,17 @@ public class OrdersReceiverScript : MonoBehaviour {
     private InputSource inputSource;
 
     public Rigidbody CarBody;
-    public List<AxleInfo> axleInfos; // the information about each individual axle
-    public float maxMotorTorque; // maximum torque the motor can apply to wheel
-    //public float torquePerSecond;
+    public List<AxleInfo> axleInfos;
+    public float maxMotorTorque;
     public float breakTorque;
-    public float maxSteeringAngle; // maximum steer angle the wheel can have
+    public float maxSteeringAngle;
     public float turnDegreePerSec;
     public float steerResetDelay;
     public float maxSpeed;
 
 	public bool log;
-
-    //private float velocity;
+    
     private float turnDegree;
-    //private float torque;
 
     private bool InProgress;
     private bool Human;
@@ -49,8 +46,7 @@ public class OrdersReceiverScript : MonoBehaviour {
         CarBody.velocity = Vector3.zero;
         CarBody.angularVelocity = Vector3.zero;        
         turnDegree = 0;
-        //torque = 0;
-
+        
         if (inputSource != null)
         {
             Command dump;
@@ -62,7 +58,6 @@ public class OrdersReceiverScript : MonoBehaviour {
 
             if(inputSource is AIInputSource)
             {
-                //Debug.LogWarning("OrdersReceiver Deactivate");
                 (inputSource as AIInputSource).DeativateSensors();
             }
         }
@@ -86,13 +81,12 @@ public class OrdersReceiverScript : MonoBehaviour {
     void Awake()
     {
         InProgress = false;
-        GameplayScript temp = gameObject.GetComponent<GameplayScript>(); //GameObject.Find("Gameplay Manager").GetComponent<GameplayScript>();
+        GameplayScript temp = gameObject.GetComponent<GameplayScript>();
 
         temp.OnGameEnded += GameEnded;
         temp.OnGameStarted += GameStarted;
     }
 
-	// Update is called once per frame
 	void FixedUpdate ()
     {        
         if (InProgress && inputSource != null && !inputSource.ListEmpty)
@@ -110,22 +104,13 @@ public class OrdersReceiverScript : MonoBehaviour {
         
         foreach (AxleInfo axle in axleInfos)
         {
-            /*
-            if (axle.motor)
-            {
-                axle.rightWheel.motorTorque = torque;
-                axle.leftWheel.motorTorque = torque;
-            }
-
-            axle.rightWheel.brakeTorque = breakTorque; //maxMotorTorque;
-            axle.leftWheel.brakeTorque = breakTorque; //maxMotorTorque; 
-            */
             if (axle.steering)
             {
                 UpdateSteeringWheels(axle.rightWheel, axle.rightWheelTransform);
                 UpdateSteeringWheels(axle.leftWheel, axle.leftWheelTransform);
             }
         }
+
         if (CarBody.velocity.magnitude * 3.6f > maxSpeed)
         {
             CarBody.velocity = CarBody.velocity.normalized * maxSpeed / 3.6f;
@@ -138,25 +123,6 @@ public class OrdersReceiverScript : MonoBehaviour {
 
     private void AssertCommand(Command com)
     {
-        /*
-        if(com is Accelerate)
-        {
-            InterpretAccelerate(com as Accelerate);
-        }
-        else
-
-        if(com is Break)
-        {
-            InterpretBreak(com as Break);
-        }
-        else
-
-        if(com is Turn)
-        {
-            InterpretTurn(com as Turn);
-        }
-        */
-
         SimplifiedCommand temp = com as SimplifiedCommand;
 
         switch(temp.ComType)
@@ -181,10 +147,6 @@ public class OrdersReceiverScript : MonoBehaviour {
 
     private void InterpretAccelerate(float val, Accelerate acc = null)
     {
-        //Debug.Log("Accelerate");
-
-        //torque = Mathf.Clamp(torque + torquePerSecond * Time.fixedDeltaTime, 0, maxMotorTorque);
-
         val = Mathf.Lerp(0.5f, 1, val);
 
         foreach(AxleInfo axle in axleInfos)
@@ -202,8 +164,6 @@ public class OrdersReceiverScript : MonoBehaviour {
 
     private void InterpretBreak(float val, Break br = null)
     {
-        //torque = Mathf.Clamp(torque - breakTorque, 0, maxMotorTorque);
-
         foreach (AxleInfo axle in axleInfos)
         {
             axle.rightWheel.brakeTorque = val * breakTorque;
@@ -214,35 +174,14 @@ public class OrdersReceiverScript : MonoBehaviour {
         }
     }
 
-    private void InterpretTurn(/*Turn turn */ float turn)
+    private void InterpretTurn(float turn)
     {
-        /*
-        turnDegree =
-            Mathf.Clamp(
-                turnDegree - turn * turnDegreePerSec * Time.fixedDeltaTime,
-                -maxSteeringAngle, 
-                maxSteeringAngle
-            );
-        */
-
-        turnDegree = maxSteeringAngle * turn;
-
-        /*
-        foreach (AxleInfo axle in axleInfos)
-        {
-            if (axle.steering)
-            {
-                UpdateSteeringWheels(axle.rightWheel, axle.rightWheelTransform);
-                UpdateSteeringWheels(axle.leftWheel, axle.leftWheelTransform);
-            }
-        }
-        */
+        turnDegree = maxSteeringAngle * turn;       
     }
 
     private void UpdateSteeringWheels(WheelCollider wheel, Transform wheelTransform)
     {
         wheel.steerAngle = -turnDegree;
-        //wheelTransform.localRotation = Quaternion.Euler(0, -turnDegree, 90);
     }
 }
 
@@ -253,6 +192,6 @@ public class AxleInfo
     public WheelCollider rightWheel;
     public Transform leftWheelTransform;
     public Transform rightWheelTransform;
-    public bool motor; // is this wheel attached to motor?
-    public bool steering; // does this wheel apply steer angle?
+    public bool motor;
+    public bool steering;
 }

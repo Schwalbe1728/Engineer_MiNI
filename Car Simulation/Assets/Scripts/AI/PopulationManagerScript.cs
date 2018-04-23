@@ -113,7 +113,6 @@ public class PopulationManagerScript : MonoBehaviour
                 neuronTypes
             );
 
-        //plot.PreviousLearningProcess(learningProcess);
         plot.RestartedSimulation(learningProcess);
 
 
@@ -157,8 +156,6 @@ public class PopulationManagerScript : MonoBehaviour
         else
         {
             Debug.Log("Istniał Learning Process");
-
-            //learningProcess.PopulationCount = Specimen.Length;
         }
 
         learningProcess.LearningAlgorithm.Config = config;
@@ -176,8 +173,6 @@ public class PopulationManagerScript : MonoBehaviour
     
     public void StartSimulation(float mutChance, float selectPercent, bool configurationStart = false)
     {
-        //Debug.Log("Start Simulation - Mutation Chance = " + mutChance + ", Selection Percent = " + selectPercent);        
-
         simulationStarted = true;
         if(Specimen == null) Specimen = transform.GetComponentsInChildren<SpecimenScript>();
 
@@ -214,8 +209,6 @@ public class PopulationManagerScript : MonoBehaviour
     {
         showcase = false;
         simulationStarted = false;
-
-        //Specimen = null;
 
         PauseMenuScript pauseScript = GameObject.Find("Menu Canvas").GetComponent<PauseMenuScript>();
         pauseScript.RestartSimulation();
@@ -286,7 +279,6 @@ public class PopulationManagerScript : MonoBehaviour
         config.RandOptions = new RandomizerOptions(-1, 1);
         config.PercentToSelect = PercentToSelect;
         config.MutationChance = MutationChance;
-        //config.ParentChances = Chances;
         config.SetParentChoosingMethod(parentChoosingMethod);
 
         Application.runInBackground = true;
@@ -323,36 +315,5 @@ public class PopulationManagerScript : MonoBehaviour
             AverageScoreText.text = (Sum / Specimen.Length).ToString("n1");
             MedianScoreText.text = Med.ToString("n1");
         }
-    }
-
-    private int[] Chances(int n)
-    {        
-        int[] result = new int[n];
-
-        for (int i = 0; i < n; i++)
-        {
-            result[i] = (3 * n - 2 * i);//*(n-i);
-        }
-        return result;
-        
-        /*
-        float[] scores = new float[Specimen.Length];
-        float max = -300;
-
-        for (int i = 0; i < Specimen.Length; i++)
-        {
-            scores[i] = Specimen[i].FinalScore();
-            if (max < scores[i]) max = scores[i];
-        }
-
-        int[] result = new int[n];
-
-        for(int i = 0; i < n; i++)
-        {
-            result[i] = Mathf.Max(1, Mathf.RoundToInt(20 * scores[i] / max));
-        }
-
-        return result;
-        */
     }
 }

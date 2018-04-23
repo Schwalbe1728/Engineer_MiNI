@@ -52,8 +52,6 @@ public class PauseMenuScript : MonoBehaviour
 
     public void RestartSimulation()
     {
-        //usunięcie wszystkiego na scenie
-
         Resume();
 
         startSimScript.ShowPanel();

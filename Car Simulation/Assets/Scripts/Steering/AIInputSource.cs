@@ -9,7 +9,6 @@ using BindAIToUnityModule;
 
 public class AIInputSource : InputSource, IAcquireData, IGiveCommand
 {
-    //[SerializeField]
     private SensorScript[] Sensors;
 
     [SerializeField]
@@ -68,7 +67,6 @@ public class AIInputSource : InputSource, IAcquireData, IGiveCommand
         return result;
     }
 
-    //TODO : wrzucić to do osobnej biblioteki i interfejsu!!!
     public void GiveCommand(Command command)
     {
         CommandsList.Add(command);

@@ -29,9 +29,6 @@ public class TrackListManager : MonoBehaviour {
     public void SetNextSceneID(string id)
     {
         NextSceneID = id;
-
-        //odpalScenę
-
         SceneManager.LoadScene(NextSceneID);
     }
 	

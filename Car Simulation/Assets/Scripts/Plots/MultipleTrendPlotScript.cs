@@ -59,8 +59,6 @@ public class MultipleTrendPlotScript : MonoBehaviour
                 UpdatePlots(data);
             }
         }
-
-        //RestartedSimulation(process);
     }
 
     public void RestartedSimulation(LearningProcess process)
@@ -118,8 +116,6 @@ public class MultipleTrendPlotScript : MonoBehaviour
 
     private void UpdatePlots(ProcessData generationResults)
     {
-        //Debug.Log("OnRoundEnded: MultipleTrendPlotScript");
-
         if (generationResults != null)
         {
             AddValueToPlot(BestScorePlot, generationResults.BestScore);
@@ -186,8 +182,6 @@ public class MultipleTrendPlotScript : MonoBehaviour
             float max = BestScorePlot.Count - 1;
             float min = Mathf.Max(BestScorePlot.Count - MaxPointsToShow, 0);
 
-            //result = Mathf.Max(0, Mathf.Min(1f, val / max));                                    
-            //result = Mathf.Max(0, Mathf.Min(1f, (val - (max - MaxPointsToShow + 1)) / (MaxPointsToShow - 1)));
             result = Mathf.Max(0, Mathf.Min(1f, (val - min) / (max - min)));
         }
 

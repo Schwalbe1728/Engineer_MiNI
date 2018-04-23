@@ -37,7 +37,6 @@ public class SensorScript : MonoBehaviour {
         Work = false;
     }
 
-	// Use this for initialization
 	void Start ()
     {
         currentDistance = 1;
@@ -49,7 +48,6 @@ public class SensorScript : MonoBehaviour {
         Activate();
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate ()
     {        
         if (Work && timer <= 0f)
@@ -59,7 +57,6 @@ public class SensorScript : MonoBehaviour {
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxRange))
             {
                 currentDistance = hit.distance / MaxRange;
-                //Debug.Log(hit.collider.tag);
             }
             else
             {

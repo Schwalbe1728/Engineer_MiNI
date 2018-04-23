@@ -7,8 +7,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartSimulationPanelScript : MonoBehaviour {
-
+public class StartSimulationPanelScript : MonoBehaviour
+{
     [SerializeField]
     private GameObject CarsCollectionObject;
 
@@ -17,9 +17,6 @@ public class StartSimulationPanelScript : MonoBehaviour {
 
     [SerializeField]
     private GameObject PopulationManagerObject;
-
-    //[SerializeField]
-    //private MultipleTrendPlotScript Plots;
 
     [SerializeField]
     private NoOfCarsPanel NumberOfCarsPanel;
@@ -138,8 +135,6 @@ public class StartSimulationPanelScript : MonoBehaviour {
     
     public void StartSimulation()
     {
-        //Plots.RestartedSimulation(process);
-
         CarsOnSceneManager carsManager = CarsCollectionObject.GetComponent<CarsOnSceneManager>();
 
         for(int i = 0; i < NumberOfCarsPanel.NumberOfCars; i++)
@@ -244,7 +239,6 @@ public class StartSimulationPanelScript : MonoBehaviour {
             if (!float.TryParse(temp, out mut))
             {
                 Debug.LogWarning("Mutation Chance ma błędny format... wait what");
-                //MutationChanceInputField.text.Replace(".", ",");
             }
         }
 

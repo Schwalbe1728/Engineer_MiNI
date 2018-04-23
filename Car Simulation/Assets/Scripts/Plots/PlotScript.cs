@@ -29,7 +29,6 @@ public class PlotScript : MonoBehaviour
 
     void Awake()
     {
-        //plotObject = new Plot();
         plotArea = GetComponent<RectTransform>();
         UpdatePlotArea();
     }
@@ -40,10 +39,7 @@ public class PlotScript : MonoBehaviour
 
         XAxisRenderer.m_points[0].y = plotObject.GetYPositionOfValue(0);
         XAxisRenderer.m_points[1].y = plotObject.GetYPositionOfValue(0);
-
-        // wyczyść listę UILineRenderera
-        // wstaw plotPoints jako punkty
-
+        
         PlotLineRenderer.m_points = plotPoints.ToArray();
 
         PlotLineRenderer.SetVerticesDirty();
@@ -69,8 +65,6 @@ public class Plot
 
     public Plot(float Expansion = 10f)
     {
-        //YExpansion = Expansion;
-        //XExpansion = Expansion;
         MaxY = 0;
         MinY = 0;
 

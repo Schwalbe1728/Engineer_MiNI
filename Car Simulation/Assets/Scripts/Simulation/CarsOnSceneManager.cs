@@ -45,33 +45,8 @@ public class CarsOnSceneManager : MonoBehaviour
         simulationStarted = false;
     }
 
-    [System.Obsolete]
-    public Vector3 AveragePosition()
-    {
-        Vector3 average = Vector3.zero;
-        int activeCars = 0;
-
-        if (CarsOnTheScene != null)
-        {
-            foreach (Transform car in CarsOnTheScene)
-            {
-                if (car.GetComponent<GameplayScript>().InProgress)
-                {
-                    average += car.position;
-                    activeCars++;
-                }
-            }
-        }
-        else
-            return Vector3.zero;        
-
-        return (activeCars > 0)? average / activeCars : Vector3.zero;
-    }
-
     public Vector3 AveragePositionAndRelax()
     {
-        //CarRectBounds = new Bounds();
-
         bool foundFirst = false;
 
         foreach (GameplayScript car in CarsGameplayScripts)
@@ -91,50 +66,10 @@ public class CarsOnSceneManager : MonoBehaviour
         }        
 
         return CarRectBounds.center;
-
-        #region Obsolete Previous Version
-        /*
-        Vector3 average = AveragePosition();
-
-        if (CarsOnTheScene != null && CarsOnTheScene.Length > 1)
-        {            
-            Vector3 temp = Vector3.zero;
-            float sumDist = 0;
-
-            foreach (Transform car in CarsOnTheScene)
-            {
-                if (car.GetComponent<GameplayScript>().InProgress)
-                {
-                    float tm = Vector3.Distance(car.position, average);
-                    sumDist += tm;
-
-                    temp += car.position * tm;                    
-                }
-            }
-
-            average = temp / (sumDist);
-        }        
-
-        return average;
-        */
-        #endregion
     }
 
     public float MaxDistanceFromPoint(Vector3 point, float min = 30)
-    {
-        /*
-        float result = min;
-
-        foreach(Transform car in CarsOnTheScene)
-        {
-            if(Vector3.Distance(point, car.position) > result && car.GetComponent<GameplayScript>().InProgress)
-            {
-                result = Vector3.Distance(point, car.position);
-            }
-        }
-
-        return result;
-        */
+    {        
         float res = Mathf.Max(CarRectBounds.size.x, CarRectBounds.size.y, CarRectBounds.size.z);
 
         return (CarRectBounds == null || res < min) ? min : res;
@@ -161,8 +96,6 @@ public class CarsOnSceneManager : MonoBehaviour
             for (int j = i + 1; j < CarsOnTheScene.Length; j++)
             {
                 Collider[] car2 = CarsOnTheScene[j].gameObject.GetComponentsInChildren<Collider>();
-
-                //Physics.IgnoreCollision(car1, car2);
                 SetIgnoreColliders(car1, car2);
             }
 
@@ -173,13 +106,11 @@ public class CarsOnSceneManager : MonoBehaviour
         SetCarColors(CarColors.Length);
     }
 
-	// Use this for initialization
 	void Awake ()
     {
         CarAdded();
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
         if (simulationStarted)
@@ -204,8 +135,6 @@ public class CarsOnSceneManager : MonoBehaviour
                 {
                     script.Restart(true);
                 }
-
-                //Debug.Log("Restart");
             }
         }
     }
@@ -219,10 +148,6 @@ public class CarsOnSceneManager : MonoBehaviour
 
             for (int i = 0; i < numberOfCars; i++)
             {
-                //R = 1 - value; //2 * Mathf.Max(0.5f - value, 0);
-                //G = 1 - Mathf.Abs(0.5f - value) * 2;
-                //B = 1 - R; //2 * Mathf.Max(value - 0.5f, 0);                        
-
                 if (value < 0.5f)
                 {
                     CarColors[i] = Color.Lerp(Color.red, Color.green, value * 2);

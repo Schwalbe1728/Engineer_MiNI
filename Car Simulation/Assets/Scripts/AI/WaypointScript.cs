@@ -41,7 +41,6 @@ public class WaypointScript : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        //rigidbodies.Remove(other.attachedRigidbody);
         if (other.attachedRigidbody.name.Contains("Car"))
         {
             GameplayScript script = other.attachedRigidbody.gameObject.GetComponent<GameplayScript>();
@@ -61,9 +60,7 @@ public class WaypointScript : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other)
-    {        
-        //Debug.Log(other.gameObject.name);
-
+    {
         if (other.attachedRigidbody.name.Contains("Car"))
         {
             GameplayScript gameplayScript = other.attachedRigidbody.gameObject.GetComponent<GameplayScript>();                        
@@ -81,8 +78,6 @@ public class WaypointScript : MonoBehaviour {
                 gameplayScript.SetNormalToWaypoint(Normal);
                 gameplayScript.IncreaseScore(BonusPointsForCrossing);
                 
-                //Debug.Log("Waypoint " + WaypointID + ", point: " + collisionPosition);                
-
                 rigidbodies.Add(gameplayScript, 1);
 
                 if(IsFinishLine)
@@ -94,7 +89,6 @@ public class WaypointScript : MonoBehaviour {
             {                
                 if(!rigidbodies.ContainsKey(gameplayScript))
                 {
-                    //Debug.Log("COFNĄŁ SIĘ - UBIT");
                     gameplayScript.EndGame();
                 }
             }
