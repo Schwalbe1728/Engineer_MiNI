@@ -221,7 +221,7 @@ public class PopulationManagerScript : MonoBehaviour
         pauseScript.RestartSimulation();
     }
 
-    public void StopSimulation(bool stopForGood = false)
+    public void StopSimulation(bool stopForGood = false, bool wipeData = true)
     {
         simulationStarted = false;
 
@@ -253,9 +253,14 @@ public class PopulationManagerScript : MonoBehaviour
         else
         {
             Specimen = null;
-            learningProcess = null;
-            GenerationList.ResetList();
-            plot.RestartedSimulation(null);
+
+            if (wipeData)
+            {
+                learningProcess = null;
+                GenerationList.ResetList();
+            }
+
+            plot.RestartedSimulation(learningProcess);
             OnRoundEnded(null);
         }
     }

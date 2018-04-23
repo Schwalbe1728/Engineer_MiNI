@@ -52,6 +52,8 @@ public class StartSimulationPanelScript : MonoBehaviour {
     private InputField SigmaInputField;
 
     private LearningProcess process;
+    private bool isShowcaseRun = false;
+
 
     public void LoadLearningProcess()
     {
@@ -115,6 +117,8 @@ public class StartSimulationPanelScript : MonoBehaviour {
     
     public void StartShowcase()
     {
+        isShowcaseRun = true;
+
         CarsOnSceneManager carsManager = CarsCollectionObject.GetComponent<CarsOnSceneManager>();
         GameObject car = Instantiate(CarPrefab, CarsCollectionObject.transform);
         car.GetComponent<GameplayScript>().SetStartPosition(CarsCollectionObject.transform);
@@ -195,8 +199,19 @@ public class StartSimulationPanelScript : MonoBehaviour {
          PopulationManagerScript populationScript =
             PopulationManagerObject.GetComponent<PopulationManagerScript>();
 
-        populationScript.StopSimulation(true);
+        populationScript.StopSimulation(true, !isShowcaseRun);
         populationScript.StopAllCoroutines();
+
+        if(process == null)
+        {
+            Debug.Log("Nastąpiło usunięcie procesu w StartSimulation");
+        }
+        else
+        {
+            Debug.Log("Proces jest wciąż dostępny w StartSimulation");
+        }
+
+        isShowcaseRun = false;
     }
 
     public void DespawnSimulationObjects()
