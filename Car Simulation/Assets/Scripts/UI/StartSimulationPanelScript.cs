@@ -65,10 +65,10 @@ public class StartSimulationPanelScript : MonoBehaviour {
             ParentChoosingDropdown.value = (int)process.LearningAlgorithm.Config.ParentMethod;
             ParentChoosingDropdown.RefreshShownValue();
 
-            MutationChanceInputField.text = process.LearningAlgorithm.Config.MutationChance.ToString();
-            SelectPercentInputField.text = process.LearningAlgorithm.Config.PercentToSelect.ToString();
+            MutationChanceInputField.text = process.LearningAlgorithm.Config.MutationChance.ToString("n3");
+            SelectPercentInputField.text = process.LearningAlgorithm.Config.PercentToSelect.ToString("n3");
 
-            SigmaInputField.text = process.LearningAlgorithm.Config.RandOptions.Sigma.ToString();
+            SigmaInputField.text = process.LearningAlgorithm.Config.RandOptions.Sigma.ToString("n3");
 
             while(NumberOfCarsPanel.NumberOfCars > process.PopulationCount)
             {
