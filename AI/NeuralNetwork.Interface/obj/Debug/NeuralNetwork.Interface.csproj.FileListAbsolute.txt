@@ -24,3 +24,4 @@ D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interfac
 D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interface.csproj.CoreCompileInputs.cache
 D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interface.exe
 D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interface.pdb
+D:\PROJEKTY\Engineer\AI\NeuralNetwork.Interface\obj\Debug\NeuralNetwork.Interface.csproj.CopyComplete

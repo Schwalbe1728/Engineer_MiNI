@@ -2,7 +2,7 @@ WindowsStandalone
 SceneListBegin?
 Assets/Scenes/TrackChoiceMenu.unity
 Assets/Scenes/TestDrive01.unity
-Assets/Scenes/ShowDrive.unity
+Assets/Scenes/TestDrive00.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:UnityEngine.UI.Extensions.ScrollSnapScrollbarHelper
 7d0aa0f64a823db9982e4fed92870a4c Assembly-CSharp.dll:UnityEngine.UI.Extensions.ResizePanel
@@ -148,8 +148,8 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 d652b451dfc2bf4ec7be253557f43222 Assembly-CSharp.dll:UnityEngine.UI.Extensions.UI_ScrollRectOcclusion
-aaf4d46f1e2e1edaea9c8aa6f3c47ec2 Assembly-CSharp.dll:.AIInputSource
-10a4780d373b8ef388a4cf8df714066d Assembly-CSharp.dll:.OrdersReceiverScript
+6e71086506cfbb8f81d0a423d156922e Assembly-CSharp.dll:.AIInputSource
+1c57606a37aac542c7994f26747f197d Assembly-CSharp.dll:.OrdersReceiverScript
 35a85271514203b44e5f0317c842c90b Assembly-CSharp.dll:UnityEngine.UI.Extensions.MultiTouchScrollRect
 ddad56a0cc275123771344136260487c Assembly-CSharp.dll:UnityEngine.UI.Extensions.ComboBox
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
@@ -213,7 +213,7 @@ f77b6d5491b8f137f46151f1767acc5a Assembly-CSharp.dll:UnityEngine.UI.Extensions.S
 222fa6cb32d6914db8138bd809c5ff5b Assembly-CSharp.dll:TornadoBanditsStudio.LowPolyFreePack.TBS_Water
 b58760e28db71dcaabe3d54384389728 Assembly-CSharp.dll:UnityEngine.UI.Extensions.DropDownList
 c1465577256149eb2fdaaf3754ab7da9 Assembly-CSharp.dll:UnityEngine.UI.Extensions.TiltWindow
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SpecimenScript
+c82e9e88fa95e9749babc13eab7a70b0 Assembly-CSharp.dll:.SpecimenScript
 7b8e7866f51a0817662577a68d076786 Assembly-CSharp.dll:UnityEngine.UI.Extensions.NonDrawingGraphic
 1ea37efd057656ca929a10228670ab6b Assembly-CSharp.dll:UnityEngine.UI.Extensions.Examples.Example02Scene
 fbcf7cbb02ed877dcdfe9f6d5535b189 Assembly-CSharp.dll:.PlotsManagerScript

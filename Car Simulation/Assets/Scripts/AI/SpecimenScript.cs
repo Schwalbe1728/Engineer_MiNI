@@ -11,7 +11,7 @@ using Assets.Scripts.AI;
 
 public class SpecimenScript : MonoBehaviour, IAIUnityBinder
 {
-    private static float DeadZoneThreshold = 0.01f;
+    private static float DeadZoneThreshold = 0.0005f;
 
     private IAcquireData DataReceiver;
     private IGiveCommand CommandGiver;

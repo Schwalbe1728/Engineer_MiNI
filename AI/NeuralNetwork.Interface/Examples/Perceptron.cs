@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Timers;
 using NeuralNetwork.Core.Helpers.Gen;
 using NeuralNetwork.Core.Helpers.Serializator;
 using NeuralNetwork.Core.Learning;
@@ -20,19 +22,21 @@ namespace NeuralNetwork.Interface.Examples
         public Perceptron()
         {
             GeneticAlgorithmConfig config = new GeneticAlgorithmConfig();
-            config.RandOptions = new RandomizerOptions(-1, 1, 0.3);
+            config.RandOptions = new RandomizerOptions(-1, 1, 0.05);
             config.PercentToSelect = 0.4;
-            config.MutationChance = 0.05;
+            config.MutationChance = 0.005;
             config.SetParentChoosingMethod(ParentChoosingMethod.Geom);
-            process = new LearningProcess(populationCount, config, new List<int> { 3, 2 }, new List<Type>() {typeof(IdentityNeuron)});
+            process = new LearningProcess(populationCount, config, new List<int> { 3,100, 2 }, new List<Type>() {  typeof(IdentityNeuron), typeof(IdentityNeuron) });
         }
 
         public void Run()
         {
+            Stopwatch t = new Stopwatch();
+            t.Start();
             int counter = 0;
             while (true)
             {
-
+                
                 double[] scores = new double[populationCount];
 
                 var testData = new[]
@@ -98,10 +102,22 @@ namespace NeuralNetwork.Interface.Examples
                         $"({Math.Round(neuron0[0], 2)}x1 {Math.Round(neuron0[1], 2)}x2 {Math.Round(neuron0[2], 2)}x3 {Math.Round(neuron0[3],3)})({Math.Round(neuron1[0], 2)}x1 {Math.Round(neuron1[1], 2)}x2 {Math.Round(neuron1[2], 2)}x3 {Math.Round(neuron1[3], 3)})");
                     Console.WriteLine("Expected: ");
                     Console.WriteLine($"(x1 + x2 - 2x3 + 0)(x1 - x2 + x3 + 1)");
+
+                    t.Stop();
+                       
+                    TimeSpan ts = t.Elapsed;
+
+                    string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                        ts.Hours, ts.Minutes, ts.Seconds,
+                        ts.Milliseconds / 10);
+                    Console.WriteLine("RunTime " + elapsedTime);
+
                     var key = Console.ReadKey();
                     if (key.Key == ConsoleKey.S)
                         process.Serialize("leariningtest.xml");
                     counter = 0;
+                    t.Reset();
+                    t.Start();
                 }
 
                 counter++;
@@ -122,7 +138,7 @@ namespace NeuralNetwork.Interface.Examples
 
         public static double[] Problem(double[] input)
         {
-            return new[] {input[0] + input[1] - 2 * input[2], input[0] - input[1] + input[2] + 1};
+            return new[] {input[0] + input[1] * input[2], input[0] - 2 * input[1] * input[2] + 1};
         }
 
         public static double FitnessFunction(double[] inputs, double[] output)
